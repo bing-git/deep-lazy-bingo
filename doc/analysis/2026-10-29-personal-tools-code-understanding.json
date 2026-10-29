@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "joycode.code-understanding/v1",
+  "runId": "run-2026-10-29T05-14-34-396Z-ecca203e",
+  "level": "L1",
+  "profile": "standard",
+  "runBaseCommit": null,
+  "indexSourceCommit": "NO_GIT_COMMIT",
+  "indexEvidence": {
+    "manifestExists": true,
+    "structureExists": true,
+    "indexVersion": 2,
+    "generatedAt": "2026-10-29T05:20:01.498Z",
+    "files": 562,
+    "nodes": 1401,
+    "edges": 1039,
+    "parentRefreshSuccessClaimed": false,
+    "childRefreshPerformed": false,
+    "fingerprintMatches": [
+      "deep-lazy-bingo-frontend/src/modules/local.ts",
+      "deep-lazy-bingo-frontend/src/router/modules/index.ts",
+      "deep-lazy-bingo-frontend/src/components/core/forms/art-wang-editor/index.vue",
+      "deep-lazy-bingo-backend/src/main/java/com/bingo/backend/config/SecurityConfiguration.java"
+    ],
+    "testedByEdgesForSelectedAnchors": [],
+    "fallback": "Targeted file/test imports and sanitized configuration key/default reads; properties are absent from this index. Search ranks are not feature coverage. No graph rebuild or cache write.",
+    "git": "git status --short --untracked-files=normal returned fatal: not a git repository; current source main package com/bingo, test physical path com/deeplazybingo with package com.bingo.backend."
+  },
+  "searches": [
+    { "query": "membership renewal reminder", "top": 5, "observedScores": [0.5], "result": "Generic FrameworkSecurityTest/UI candidates; no established membership implementation", "routing": ["deep-lazy-bingo-frontend/src/modules/local.ts", "deep-lazy-bingo-frontend/scripts/modules.test.ts"] },
+    { "query": "vault password", "top": 5, "observedScores": [3.5], "result": "PasswordStrength/setLockPassword/validators; not a vault", "routing": ["deep-lazy-bingo-frontend/src/modules/local.ts", "deep-lazy-bingo-backend/src/main/java/com/bingo/backend/config/SecurityConfiguration.java"] },
+    { "query": "notes markdown rich text", "top": 5, "observedScores": [2.25, 1.75], "result": "Unrelated text widgets; direct package/editor fallback", "routing": ["deep-lazy-bingo-frontend/src/components/core/forms/art-wang-editor/index.vue", "deep-lazy-bingo-frontend/package.json"] },
+    { "query": "application properties smoke configuration", "top": 5, "observedScores": [1.75], "result": "com/bingo config classes and existing old-path test files; properties explain missing", "routing": ["deep-lazy-bingo-backend/src/main/java/com/bingo/backend/config/SecurityConfiguration.java", "deep-lazy-bingo-backend/src/test/java/com/deeplazybingo/backend/SmokeProfileTests.java"] }
+  ],
+  "explanations": [
+    { "target": "deep-lazy-bingo-frontend/src/modules/local.ts", "found": true, "use": "Primitive-field validation, transaction and revision owner" },
+    { "target": "deep-lazy-bingo-frontend/src/components/core/forms/art-wang-editor/index.vue", "found": true, "truncated": false, "use": "Existing rich-text integration and remote uploader boundary" },
+    { "target": "deep-lazy-bingo-backend/src/main/resources/application.properties", "found": false, "use": "Record index coverage gap, inspect sanitized current configuration and test profiles instead" },
+    { "target": "deep-lazy-bingo-backend/src/main/java/com/bingo/backend/config/SecurityConfiguration.java", "found": true, "truncated": false, "use": "Deny-all backend; no real personal-tools authentication" }
+  ],
+  "modules": [
+    { "path": "deep-lazy-bingo-frontend/src/modules/local.ts", "score": null, "reason": "Direct fallback/fingerprint match: reuse transaction patterns; do not weaken credential rejection", "ac": ["PT-02", "PT-04", "PT-05"] },
+    { "path": "deep-lazy-bingo-frontend/src/config/family.ts", "score": null, "reason": "Native menu/preview guard owner", "ac": ["PT-06"] },
+    { "path": "deep-lazy-bingo-frontend/src/router/modules/index.ts", "score": null, "reason": "Exact generated route mapping, current fingerprint match", "ac": ["PT-06"] },
+    { "path": "deep-lazy-bingo-frontend/src/router/core/ComponentLoader.ts", "score": null, "reason": "Lazy view import whitelist", "ac": ["PT-06"] },
+    { "path": "deep-lazy-bingo-frontend/src/components/core/forms/art-wang-editor/index.vue", "score": null, "reason": "Explained existing editor; safe local upload/paste extension needed", "ac": ["PT-05"] },
+    { "path": "deep-lazy-bingo-backend/src/main/java/com/bingo/backend/config/SecurityConfiguration.java", "score": 1.75, "reason": "Search/explain plus current fingerprint match: health only, deny-all", "ac": ["PT-01", "PT-03", "PT-06"] },
+    { "path": "deep-lazy-bingo-backend/src/main/resources/application.properties", "score": null, "reason": "Index missing; safe direct metadata confirms conversion target", "ac": ["PT-01"] },
+    { "path": "deep-lazy-bingo-backend/src/main/resources/application-smoke.properties", "score": null, "reason": "Safe direct metadata confirms isolated profile", "ac": ["PT-01"] },
+    { "path": "deep-lazy-bingo-backend/src/test/resources/application-test.properties", "score": null, "reason": "Safe direct metadata plus H2/profile tests", "ac": ["PT-01"] }
+  ],
+  "entryPoints": [
+    { "nodeId": "file:deep-lazy-bingo-frontend/src/config/family.ts", "kind": "ui", "label": "familySections", "line": 85 },
+    { "nodeId": "file:deep-lazy-bingo-frontend/src/router/modules/index.ts", "kind": "ui", "label": "routeModules", "line": 16 },
+    { "nodeId": "file:deep-lazy-bingo-frontend/src/router/core/ComponentLoader.ts", "kind": "ui", "label": "ComponentLoader whitelist", "line": 16 },
+    { "nodeId": "file:deep-lazy-bingo-backend/src/main/java/com/bingo/backend/config/SecurityConfiguration.java", "kind": "http_boundary", "label": "health GET/HEAD only, no business auth", "line": 37 }
+  ],
+  "coreSymbols": [
+    { "nodeId": "function:deep-lazy-bingo-frontend/src/modules/local.ts:validateDraft", "file": "deep-lazy-bingo-frontend/src/modules/local.ts", "line": 92, "summary": "Reject credential keys and unbounded/nonprimitive fields" },
+    { "nodeId": "function:deep-lazy-bingo-frontend/src/modules/local.ts:writeRecords", "file": "deep-lazy-bingo-frontend/src/modules/local.ts", "line": 164, "summary": "Versioned atomic records/audit writes" },
+    { "nodeId": "function:deep-lazy-bingo-frontend/src/modules/local.ts:openModulesDB", "file": "deep-lazy-bingo-frontend/src/modules/local.ts", "line": 226, "summary": "Explicit-preview v1 database" },
+    { "nodeId": "function:deep-lazy-bingo-frontend/src/modules/local.ts:saveRecords", "file": "deep-lazy-bingo-frontend/src/modules/local.ts", "line": 265, "summary": "Validated transaction with abort recovery" },
+    { "nodeId": "function:deep-lazy-bingo-frontend/src/config/family.ts:isPreviewEnabled", "file": "deep-lazy-bingo-frontend/src/config/family.ts", "line": 1, "summary": "DEV/flag/backend-latch gate" },
+    { "nodeId": "function:deep-lazy-bingo-frontend/src/config/family.ts:assertClientRequest", "file": "deep-lazy-bingo-frontend/src/config/family.ts", "line": 45, "summary": "Same-origin and preview write restrictions" },
+    { "nodeId": "file:deep-lazy-bingo-frontend/src/router/modules/index.ts", "file": "deep-lazy-bingo-frontend/src/router/modules/index.ts", "line": 16, "summary": "Generated family routes" },
+    { "nodeId": "file:deep-lazy-bingo-frontend/src/router/core/ComponentLoader.ts", "file": "deep-lazy-bingo-frontend/src/router/core/ComponentLoader.ts", "line": 16, "summary": "Explicit build import whitelist" },
+    { "nodeId": "file:deep-lazy-bingo-frontend/src/components/core/forms/art-wang-editor/index.vue", "file": "deep-lazy-bingo-frontend/src/components/core/forms/art-wang-editor/index.vue", "line": 128, "summary": "Existing editor defaults include server uploader/token header" },
+    { "nodeId": "function:deep-lazy-bingo-backend/src/main/java/com/bingo/backend/config/SecurityConfiguration.java:securityFilterChain", "file": "deep-lazy-bingo-backend/src/main/java/com/bingo/backend/config/SecurityConfiguration.java", "line": 37, "summary": "No authenticated personal-tools API" }
+  ],
+  "dataEntities": [
+    { "name": "ModuleRecord / RecordDraft / ModulesSchema", "evidence": "deep-lazy-bingo-frontend/src/modules/local.ts:11", "decision": "Keep old DB/schema and secret rejection; reuse idb/CAS/abort patterns" },
+    { "name": "PersonalToolsSchema", "planned": true, "stores": ["memberships", "periods", "reminders", "notes", "attachments", "vault"], "decision": "Dedicated local database for specialized atomic/binary contracts; no SQL tables" },
+    { "name": "Period / Reminder", "planned": true, "contract": "Separate immutable renewal period; integer money; date-only month clamp; unique period/channel; no delivered without provider receipt" },
+    { "name": "Note / Attachment", "planned": true, "contract": "Explicit source format, sanitized bounded body, owned typed blobs, one atomic transaction and staged imports" },
+    { "name": "VaultCiphertext", "planned": true, "contract": "KDBX4 image plus nonsecret revision only; credentials/key never persisted; epoch-fenced worker and CAS" }
+  ],
+  "reusableWrappers": [
+    { "nodeId": "file:deep-lazy-bingo-frontend/src/components/business/ModuleShell.vue", "note": "Reuse unchanged; content/formal unconfigured frame does not replace data-access guard" },
+    { "nodeId": "file:deep-lazy-bingo-frontend/src/config/preview.ts", "note": "Reuse exact isInterfacePreview and BACKEND_LOCK behavior; no fallback/upload after latch" },
+    { "nodeId": "file:deep-lazy-bingo-frontend/src/config/family.ts", "note": "Native menu, preview/same-origin API controls and ri:* icon system" },
+    { "nodeId": "file:deep-lazy-bingo-frontend/src/components/core/forms/art-wang-editor/index.vue", "note": "Backwards-compatible local upload/paste callbacks, not a separate editor implementation" },
+    { "nodeId": "file:deep-lazy-bingo-frontend/src/modules/local.ts", "note": "Reuse validation/transaction/revision patterns; never credential-bearing records or audit titles" },
+    { "nodeId": "file:deep-lazy-bingo-backend/src/main/java/com/bingo/backend/config/redis/RedisInfrastructureConfiguration.java", "note": "Keep namespace serializers and mock-only test usage unchanged" }
+  ],
+  "tests": [
+    { "nodeId": "file:deep-lazy-bingo-frontend/scripts/modules.test.ts", "path": "deep-lazy-bingo-frontend/scripts/modules.test.ts", "association": "direct imports/assertions, no tested_by edge", "command": "C:/QXZ5KB5/CIH-Software/Environment/node-v24.21.0-win-x64/node.exe node_modules/tsx/dist/cli.mjs --test scripts/modules.test.ts", "cwd": "deep-lazy-bingo-frontend", "rootTask": "Modules: foundation tests" },
+    { "nodeId": "file:deep-lazy-bingo-frontend/scripts/family-shell.test.ts", "path": "deep-lazy-bingo-frontend/scripts/family-shell.test.ts", "association": "direct imports/assertions", "command": "C:/QXZ5KB5/CIH-Software/Environment/node-v24.21.0-win-x64/node.exe node_modules/tsx/dist/cli.mjs --test scripts/family-shell.test.ts", "cwd": "deep-lazy-bingo-frontend", "rootTask": "Art: family shell tests" },
+    { "nodeId": null, "path": "deep-lazy-bingo-frontend/scripts/personal-tools.test.ts", "planned": true, "command": "C:/QXZ5KB5/CIH-Software/Environment/node-v24.21.0-win-x64/node.exe node_modules/tsx/dist/cli.mjs --test scripts/personal-tools.test.ts scripts/family-shell.test.ts", "cwd": "deep-lazy-bingo-frontend" },
+    { "nodeId": "file:deep-lazy-bingo-backend/src/test/java/com/deeplazybingo/backend/FrameworkSecurityTest.java", "path": "deep-lazy-bingo-backend/src/test/java/com/deeplazybingo/backend/FrameworkSecurityTest.java", "association": "direct current assertions; main package is com.bingo", "command": "C:/QXZ5KB5/CIH-Software/Environment/node-v24.21.0-win-x64/node.exe ../.vscode/backend-maven.mjs framework", "cwd": "deep-lazy-bingo-backend", "rootTask": "Backend: framework tests", "alsoCovers": ["BingoBackendApplicationTests", "SmokeProfileTests"] },
+    { "nodeId": "file:deep-lazy-bingo-backend/src/test/java/com/deeplazybingo/backend/config/redis/RedisNamespaceTest.java", "path": "deep-lazy-bingo-backend/src/test/java/com/deeplazybingo/backend/config/redis/RedisNamespaceTest.java", "command": "C:/QXZ5KB5/CIH-Software/Environment/node-v24.21.0-win-x64/node.exe ../.vscode/backend-maven.mjs redis", "cwd": "deep-lazy-bingo-backend", "rootTask": "Backend: redis tests", "scope": "mock/context tests only" }
+  ],
+  "checkRunners": [
+    { "path": "deep-lazy-bingo-frontend/scripts/learning-check.ts", "line": 59, "command": "C:/QXZ5KB5/CIH-Software/Environment/node-v24.21.0-win-x64/node.exe node_modules/tsx/dist/cli.mjs scripts/learning-check.ts", "cwd": "deep-lazy-bingo-frontend", "requiredChange": "Add new tests/source/views to existing fixed command/snapshot/lint/style/format lists; retain full build and old suites" },
+    { "path": ".vscode/backend-maven.mjs", "line": 6, "command": "C:/QXZ5KB5/CIH-Software/Environment/node-v24.21.0-win-x64/node.exe ../.vscode/backend-maven.mjs verify", "cwd": "deep-lazy-bingo-backend", "env": { "JAVA_HOME": "C:/Users/qxz5kb5/.vscode/extensions/redhat.java-1.58.0-win32-x64/jre/25.0.4.1-win32-x86_64" }, "rootTask": "Backend: verify" }
+  ],
+  "crossModuleTouches": [
+    "Round1 repair: successful capability latch in learning/core.ts emits synchronous no-payload invalidation before main.ts reload; current-value access guards reject retained personal-tools handles even if dirty-note navigation is canceled.",
+    "Round1 repair: supported pre-consumption XML parser rejects inner compressed binaries/DTD and bounds input/tree before library load; single-flight worker commands prevent same-session mutable KDBX save/export races; any mutation failure discards session.",
+    "familySections -> routeModules -> ComponentLoader -> ModuleShell -> guarded personal-tools repository",
+    "ArtWangEditor/MdEditor -> common sanitized content and local attachment handlers -> atomic notes/attachments stores",
+    "Vault UI -> epoch-fenced worker -> KDBX/Argon2 -> ciphertext-only CAS store; no generic metadata/audit records",
+    "Three properties resources -> literal nonsecret YAML and minimal credential guard; existing security/Redis namespaces unchanged",
+    "No external SMTP/WeChat/DB/Redis transport, new API capability, shared SQL schema or source graph changes"
+  ],
+  "dependencies": {
+    "reuse": ["idb ^8.0.4", "@wangeditor/editor ^5.1.23", "@wangeditor/editor-for-vue current lock", "file-saver ^2.0.5", "native Element Plus/Iconify/Art layout"],
+    "selectedAdditions": ["kdbxweb@2.1.1 MIT", "hash-wasm@4.12.0 MIT", "md-editor-v3@5.3.2 license confirmation pending", "dompurify@3.3.0 Apache-2.0 option"],
+    "notChosen": ["crypto-js passphrase AES", "custom encrypted format", "date library", "backend transport/auth framework", "AGPL app source"],
+    "licenseAndSecurity": "Exact registry versions were read, not installed or scanned. Old kdbxweb published dependency ranges are an enablement gate. No speculative override/upgrade; unsafe or incompatible closure returns blocker. Joplin UX reference only, no source/assets copied."
+  },
+  "risks": [
+    { "kind": "config", "nodeId": "file:deep-lazy-bingo-backend/src/main/resources/application.properties", "note": "Properties absent from index; one permitted implementation-time YAML apply_patch probe, no blocked-write bypass. Literal credentials absent and pre-connection failure required." },
+    { "kind": "shared-import", "nodeId": "file:deep-lazy-bingo-frontend/src/config/preview.ts", "note": "Preserve backend latch and data access guard; frontend navigation cannot authorize APIs." },
+    { "kind": "shared-import", "nodeId": "file:deep-lazy-bingo-frontend/src/components/core/forms/art-wang-editor/index.vue", "note": "Default uploader can leak local data; pasted/dragged remote images and HTML must never bypass local mode." },
+    { "kind": "security", "nodeId": null, "note": "KDBX input/KDF/compression bounds, library closure, wrong unlock, staged restore, worker/session epoch and ciphertext CAS need real tests." },
+    { "kind": "data", "nodeId": null, "note": "Renewals preserve old periods; attachments/body atomic; old DBs untouched; quota and stale-session failures cannot overwrite." },
+    { "kind": "external", "nodeId": null, "note": "Email remains required and degraded; no provider receipt, credentials or scheduler. WeChat optional, disabled." },
+    { "kind": "evidence", "nodeId": null, "note": "No real Git commit, incomplete index/test edges, no native reviewer dispatch/loader; parent review and runtime booking outstanding." }
+  ],
+  "openUnknowns": [
+    "Live SMTP inputs/approved sender and recipient policy, safe setup, timezone/retry operations, persistent scheduler and authorized real receipt test absent",
+    "Optional WeChat provider/channel and credentials absent",
+    "YAML host-policy write permission not tested during research; historical refusal may block PT-01",
+    "KDBX old transitive advisories, header pre-load limits, independent fixture interoperability and browser worker build unverified",
+    "md-editor-v3 release license must be confirmed from package; raw tag LICENSE extraction failed",
+    "No independent browser/sanitizer/clipboard/visibility/dirty-state verification or product tests in this dispatch",
+    "No Git snapshot/transferable semantic annotations; tested snapshot must use content hashes",
+    "Host has no exposed tool_search loader/native reviewer dispatch; standard review is parent-owned and incomplete"
+  ],
+  "annotations": [],
+  "annotationDisposition": "Standard-profile array is present but intentionally empty: manifest sourceCommit is NO_GIT_COMMIT and git status confirms no repository metadata. Do not invent a commit or merge unbound semantic claims into L3. File-level evidence and four current fingerprint checks are retained above; parent may generate commit-bound annotations only after a real source commit is available.",
+  "permissionScope": {
+    "hostSandboxClaimed": false,
+    "allowedWrites": ["doc/analysis/2026-10-29-personal-tools-plan.json", "doc/analysis/2026-10-29-personal-tools-code-understanding.md", "doc/analysis/2026-10-29-personal-tools-code-understanding.json"],
+    "productChanges": [],
+    "productTestsRun": false,
+    "runtimeMutations": false,
+    "outboundMessages": false,
+    "reviewStatus": "Return to parent for mandatory independent standard plan review; no stage completion claimed."
+  }
+}

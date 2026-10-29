@@ -1,0 +1,20 @@
+{
+  "schemaVersion":"joycode.code-understanding/v1",
+  "runBaseCommit":null,
+  "indexSourceCommit":"NO_GIT_COMMIT",
+  "modules":[
+    {"path":"deep-lazy-bingo-frontend/src/views/workspace/domain.vue","score":2.5,"reason":"20 generic placeholder entries"},
+    {"path":"deep-lazy-bingo-frontend/src/views/workspace/index.vue","score":1.875,"reason":"workspace aggregation placeholder"},
+    {"path":"deep-lazy-bingo-frontend/src/router/modules/index.ts","score":0,"reason":"all28 route dispatch"}
+  ],
+  "entryPoints":[{"nodeId":"file:deep-lazy-bingo-frontend/src/router/modules/index.ts","kind":"ui","label":"routeModules"}],
+  "coreSymbols":[{"nodeId":"file:deep-lazy-bingo-frontend/src/config/family.ts","file":"deep-lazy-bingo-frontend/src/config/family.ts","line":79}],
+  "reusableWrappers":[
+    {"nodeId":"file:deep-lazy-bingo-frontend/src/config/preview.ts","note":"explicit local-mode gate"},
+    {"nodeId":"file:deep-lazy-bingo-frontend/src/components/business/AiSceneStatus.vue","note":"existing shared model status; no real inference"}
+  ],
+  "tests":[{"nodeId":"file:deep-lazy-bingo-frontend/scripts/family-shell.test.ts","path":"deep-lazy-bingo-frontend/scripts/family-shell.test.ts","command":"node node_modules/tsx/dist/cli.mjs scripts/learning-check.ts"}],
+  "risks":[{"kind":"shared-import","nodeId":"file:deep-lazy-bingo-frontend/src/router/modules/index.ts","note":"component whitelist and source-specific local storage preservation"}],
+  "openUnknowns":["No deployment service allowlist: do not activate unapproved links","No git commit metadata"],
+  "annotations":[]
+}

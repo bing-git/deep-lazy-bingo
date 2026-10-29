@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <rect width="600" height="800" fill="#edf2f8"/>
+  <path d="M0 0h24v800H0zM64 72h472v8H64z" fill="#285d91"/>
+  <text x="64" y="160" font-family="Georgia,serif" font-size="72" fill="#285d91">CET6</text>
+  <text x="64" y="214" font-family="Verdana,sans-serif" font-size="17" fill="#47596d">ORIGINAL READING SERIES</text>
+  <text x="60" y="342" font-family="Georgia,serif" font-size="66" fill="#233346">Everyday</text>
+  <text x="60" y="420" font-family="Georgia,serif" font-size="66" fill="#233346">Evidence</text>
+  <path d="M64 510h472M64 540h380M64 570h440" stroke="#285d91" stroke-width="3"/>
+  <text x="64" y="682" font-family="Verdana,sans-serif" font-size="21" fill="#285d91">EVIDENCE &amp; REASON</text>
+  <text x="64" y="735" font-family="Verdana,sans-serif" font-size="15" fill="#47596d">DEEP LAZY BINGO / ORIGINAL MATERIAL</text>
+</svg>

@@ -1,0 +1,70 @@
+{
+  "schemaVersion":"joycode.acceptance-evidence/v1",
+  "requirementRef":"doc/requirements/12-module-functional-experience.md",
+  "criteria":[
+    {
+      "ac":"AC-MOD-01: 全部 28 个现有路由可到达有业务内容的页面，替换统一离线图标和空表，不改变原生菜单、顶栏、面包屑、标签、主题和响应式壳。",
+      "evidence":[
+        {"kind":"case","locator":"scripts/family-shell.test.ts: all module routes use substantive views and all view owners are whitelisted","anchor":"run-2026-10-28T07-28-19-126Z-59d5d2b3","result":"pass"},
+        {"kind":"case","locator":"doc/analysis/2026-10-28-all-modules-browser-verification.md: 28 stable route visits","anchor":"run-2026-10-28T07-28-19-126Z-59d5d2b3","result":"pass"}
+      ],"conclusion":"verified","reason":"Verified for current local workflows, not production backend access."
+    },
+    {
+      "ac":"AC-MOD-02: 工作台提供来源可追溯的任务统计、今日待办、可操作日历和通知已读；创建、编辑、完成后刷新保持一致，统计由真实本地记录推导。",
+      "evidence":[
+        {"kind":"log","locator":"deep-lazy-bingo-frontend/data/modules/verification/independent-test.log: workbench aggregation, notifications and reopen cases","anchor":"run-2026-10-28T07-28-19-126Z-59d5d2b3","result":"pass"},
+        {"kind":"case","locator":"doc/analysis/2026-10-28-all-modules-browser-verification.md: operation1 task done/reload/notifications/audit","anchor":"run-2026-10-28T07-28-19-126Z-59d5d2b3","result":"pass"}
+      ],"conclusion":"verified"
+    },
+    {
+      "ac":"AC-MOD-03: 学习计划有目标、日期、任务状态；笔记可编辑检索；题库实际作答并记录结果；进度关联本地学习记录，缺失时长或成绩不得伪造。",
+      "evidence":[
+        {"kind":"log","locator":"deep-lazy-bingo-frontend/data/modules/verification/independent-test.log: workbench plan, note and practice cases","anchor":"run-2026-10-28T07-28-19-126Z-59d5d2b3","result":"pass"},
+        {"kind":"case","locator":"scripts/modules-integration.test.ts: edited knowledge draft becomes an editable searchable learning note after reopen without duplicate adoption","anchor":"run-2026-10-28T07-28-19-126Z-59d5d2b3","result":"pass"},
+        {"kind":"case","locator":"doc/analysis/2026-10-28-all-modules-browser-verification.md: operation4 note revision2 and retained origins","anchor":"run-2026-10-28T07-28-19-126Z-59d5d2b3","result":"pass"}
+      ],"conclusion":"verified","reason":"Existing textbook notes remain read-only in the new list and editable at their original reader; no old database migration."
+    },
+    {
+      "ac":"AC-MOD-04: 知识空间、来源、文档和摄取任务通过稳定标识关联；支持自有纯文本导入、查看和解析预览，任务产生实际本地结果或错误，不宣称向量化或联网全文采集。",
+      "evidence":[
+        {"kind":"log","locator":"deep-lazy-bingo-frontend/data/modules/verification/independent-test.log: knowledge rights, TXT byte validation, offsets, stale and failed ingestion cases","anchor":"run-2026-10-28T07-28-19-126Z-59d5d2b3","result":"pass"},
+        {"kind":"case","locator":"doc/analysis/2026-10-28-all-modules-browser-verification.md: operation2 actual185-character document/four chunks","anchor":"run-2026-10-28T07-28-19-126Z-59d5d2b3","result":"pass"}
+      ],"conclusion":"verified"
+    },
+    {
+      "ac":"AC-MOD-05: 学习 AI 有问答工作区、草稿编辑及采纳/拒绝、英语路径；未连接模型时仅提供明确标记的原创示例或本地文本检索摘录，不冒充模型生成。",
+      "evidence":[
+        {"kind":"log","locator":"deep-lazy-bingo-frontend/data/modules/verification/independent-test.log: local retrieval, shared draft adoption/rejection, paths and cross-domain case","anchor":"run-2026-10-28T07-28-19-126Z-59d5d2b3","result":"pass"},
+        {"kind":"case","locator":"doc/analysis/2026-10-28-all-modules-browser-verification.md: operations3-4 two local excerpts and confirmed adoption","anchor":"run-2026-10-28T07-28-19-126Z-59d5d2b3","result":"pass"}
+      ],"conclusion":"verified","reason":"Local excerpts and human draft decisions only; no real inference claimed."
+    },
+    {
+      "ac":"AC-MOD-06: 服务目录可维护条目、分类和启停，状态人工记录、历史可查询；地址按批准范围校验，禁止凭据、任意请求代理和伪造实时探测。",
+      "evidence":[
+        {"kind":"log","locator":"deep-lazy-bingo-frontend/data/modules/verification/independent-test.log: administration URL deny matrix, immutable empty approval, manual history/idempotence/archive cases","anchor":"run-2026-10-28T07-28-19-126Z-59d5d2b3","result":"pass"},
+        {"kind":"case","locator":"doc/analysis/2026-10-28-all-modules-browser-verification.md: operation5 manual maintenance history survives reload","anchor":"run-2026-10-28T07-28-19-126Z-59d5d2b3","result":"pass"}
+      ],"conclusion":"verified","reason":"Absent deployment allowlist means no activated links; this is the frozen fail-closed boundary, not a real service connectivity claim."
+    },
+    {
+      "ac":"AC-MOD-07: 家庭成员和偏好有完整管理表单与状态，敏感变更确认；审计只读可筛选、记录实际本机变更，不含凭据或完整敏感正文；角色样例不是服务端授权事实。",
+      "evidence":[
+        {"kind":"log","locator":"deep-lazy-bingo-frontend/data/modules/verification/independent-test.log: member confirmation/last-parent, preferences reopen/reset and metadata-only audit cases","anchor":"run-2026-10-28T07-28-19-126Z-59d5d2b3","result":"pass"},
+        {"kind":"case","locator":"doc/analysis/2026-10-28-all-modules-browser-verification.md: operations6-7 invalid member rejected/three members retained/33readonly audit rows","anchor":"run-2026-10-28T07-28-19-126Z-59d5d2b3","result":"pass"}
+      ],"conclusion":"verified","reason":"Local member profiles only, no real login or authorization."
+    },
+    {
+      "ac":"AC-MOD-08: 持久化错误、输入错误、删除确认、搜索无结果和重复操作有正确反馈；跨页数据关系明确，不使用不可追溯的随机指标。",
+      "evidence":[
+        {"kind":"log","locator":"deep-lazy-bingo-frontend/data/modules/verification/independent-test.log: actual transaction rollback, invalid inputs, revision/no-op/duplicate attempt and adoption cases","anchor":"run-2026-10-28T07-28-19-126Z-59d5d2b3","result":"pass"},
+        {"kind":"case","locator":"doc/analysis/2026-10-28-all-modules-browser-verification.md: confirmation, invalid name feedback and linked records","anchor":"run-2026-10-28T07-28-19-126Z-59d5d2b3","result":"pass"}
+      ],"conclusion":"verified","reason":"IndexedDB faults are injected in actual fake-indexeddb transactions; browser disk-quota/disabled-storage combinations and physical pointer hits are residual unexecuted probes."
+    },
+    {
+      "ac":"AC-MOD-09: 后续实现需通过标准测试、类型检查、生产构建及限定 lint/style/format，并检查桌面、390px、768px 的主要流程、长文字和横向溢出；本理解任务未执行这些检查。",
+      "evidence":[
+        {"kind":"snapshot","locator":"deep-lazy-bingo-frontend/data/modules/verification/independent-full-results.json:129tests and six exits0;48stable checker fingerprints","anchor":"run-2026-10-28T07-28-19-126Z-59d5d2b3","result":"pass"},
+        {"kind":"case","locator":"doc/analysis/2026-10-28-all-modules-browser-verification.md:28routes,desktop screenshot and42narrow/tablet width checks","anchor":"run-2026-10-28T07-28-19-126Z-59d5d2b3","result":"pass"}
+      ],"conclusion":"verified","reason":"Browser observations belong to parent; independent verifier actually ran commands and fingerprints, not browser flows. No production acceptance."
+    }
+  ]
+}

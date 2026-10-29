@@ -1,0 +1,210 @@
+{
+  "schemaVersion": "joycode.findings-batch/v1",
+  "stance": "plan",
+  "round": 1,
+  "findings": [
+    {
+      "findingId": "PLAN-R1-001",
+      "phase": "plan",
+      "category": "ac-coverage",
+      "severity": "major",
+      "claim": "P0 站内通知没有明确的实施落点。S04 的产物只有学习事实、进度及工作台，其他步骤也未安排通知生成、未读计数和已读操作；唯一通知专门约束是其功能启用后的撤权测试。这样无法从当前步骤及退出条件判定 FR-WS-030 至 032 何时完成，不能仅凭工作台相关 P0 或 S01 将来列清单视为已经覆盖。",
+      "evidence": [
+        {
+          "role": "source",
+          "path": "doc/requirements/02-workspace-global-experience.md",
+          "lineStart": 56,
+          "lineEnd": 58,
+          "quote": "用户必须能查看未读计数、将通知标记为已读，并跳转到仍有权限访问的目标对象。"
+        },
+        {
+          "role": "understanding",
+          "path": "doc/analysis/2026-10-27-project-optimization-understanding.md",
+          "lineStart": 61,
+          "lineEnd": 61,
+          "quote": "覆盖站内通知、已读/跳转重授权、摘要裁剪及 P1 全局搜索"
+        },
+        {
+          "role": "plan",
+          "path": "doc/architecture/05-phased-delivery-plan.md",
+          "lineStart": 84,
+          "lineEnd": 89,
+          "quote": "真实进度/今日任务/按角色工作台"
+        },
+        {
+          "role": "plan",
+          "path": "doc/architecture/05-phased-delivery-plan.md",
+          "lineStart": 168,
+          "lineEnd": 168,
+          "quote": "通知/搜索（其功能启用后）"
+        }
+      ],
+      "affectedAc": ["AC-OPT-002", "AC-OPT-003", "AC-OPT-008"],
+      "affectedRequirements": ["FR-WS-030", "FR-WS-031", "FR-WS-032"],
+      "round": 1,
+      "repair": "在 S04 或一个有明确依赖的相邻步骤中，补入 P0 通知事件到收件人的生成、未读计数、幂等已读、按接收者裁剪及目标跳转重授权的 API/UI 产物和退出条件。任务到期与练习反馈先随 S04 验证；AI 草稿及批准服务异常的事件接入分别随 S10/S06 验证。不把 P1 全局搜索、自动探测或通知类型配置提前升为 P0。",
+      "disconfirmingCheck": "逐项展示 FR-WS-030/031/032 对应的具体步骤、产物和退出检查；用任务到期或练习反馈生成一条有权通知，验证未读到已读、刷新一致、重复事件不重复通知、撤权后摘要和跳转不泄漏。这里要求补计划与未来验收，不要求本轮实现通知。"
+    },
+    {
+      "findingId": "PLAN-R1-002",
+      "phase": "plan",
+      "category": "ac-coverage",
+      "severity": "major",
+      "claim": "S04 未安排 P0 学习会话/手填时长的事实写入，却计划交付真实进度和工作台。其学习输入仅列 001 至 005、020 至 024，产物和退出条件覆盖任务与答题而未覆盖 030 至 033；不伪造页面停留时长只是禁令，不是合法时长的录入路径。仅完成列出的答题闭环仍不能满足成人记录时长后进度与工作台一致的原始验收。",
+      "evidence": [
+        {
+          "role": "source",
+          "path": "doc/requirements/03-learning-knowledge.md",
+          "lineStart": 63,
+          "lineEnd": 66,
+          "quote": "成员必须能记录学习会话的开始/结束或直接填写时长，并可关联计划、内容或任务。"
+        },
+        {
+          "role": "source",
+          "path": "doc/requirements/03-learning-knowledge.md",
+          "lineStart": 85,
+          "lineEnd": 85,
+          "quote": "成人记录学习时长后，本人进度与工作台数据一致更新；家长在无授权时不看到该成人数据。"
+        },
+        {
+          "role": "understanding",
+          "path": "doc/analysis/2026-10-27-project-optimization-understanding.md",
+          "lineStart": 71,
+          "lineEnd": 71,
+          "quote": "真实会话/手填时长，周期、时区、口径明确的进度及角色范围"
+        },
+        {
+          "role": "plan",
+          "path": "doc/architecture/05-phased-delivery-plan.md",
+          "lineStart": 86,
+          "lineEnd": 89,
+          "quote": "不以页面停留伪造学习时长"
+        }
+      ],
+      "affectedAc": ["AC-LEARN-004", "AC-WS-003", "AC-OPT-002", "AC-OPT-007", "AC-OPT-008"],
+      "affectedRequirements": ["FR-LEARN-030", "FR-LEARN-031", "FR-LEARN-032", "FR-LEARN-033"],
+      "round": 1,
+      "repair": "在 S04 明确包含 FR-LEARN-030 至 033，安排最小手填时长或开始/结束录入的 API、事实持久化和真实界面，列出负时长/逆序时间/无权关联的拒绝、重试幂等、家庭时区统计及三角色进度退出条件。不为此引入自动计时、反作弊或 P1 会话更正流程。",
+      "disconfirmingCheck": "在步骤产物和退出条件中找到成人合法录入时长后，明细、进度、工作台刷新一致且家长无权读取的完整路径，以及非法输入和重复请求反例；若只能找到答题计分或禁止伪造时长，缺口仍存在。"
+    },
+    {
+      "findingId": "PLAN-R1-003",
+      "phase": "plan",
+      "category": "ac-coverage",
+      "severity": "major",
+      "claim": "不受 D01/D02 阻断的家庭管理 P0 没有明确步骤归属。S03 只列 IAM 输入和认证/授权/审计产物，未安排成员管理页面的确认交互、家庭名称/时区/基础开关维护，以及受限审计查询。审计被一次建设或记录了脱敏事件，不等于家长能在授权范围查询事件，也不能满足原始 AC-ADMIN-004。D01/D02 的待决不能覆盖这些独立要求。",
+      "evidence": [
+        {
+          "role": "source",
+          "path": "doc/requirements/07-administration-audit-preferences.md",
+          "lineStart": 25,
+          "lineEnd": 28,
+          "quote": "家庭设置必须支持显示名称、时区和允许的基础功能开关；设置变更影响后续请求的行为，且需记录审计事件。"
+        },
+        {
+          "role": "source",
+          "path": "doc/requirements/07-administration-audit-preferences.md",
+          "lineStart": 48,
+          "lineEnd": 48,
+          "quote": "普通业务用户不能修改或删除审计事件。审计查看者只能检索自己有权了解的家庭和对象范围。"
+        },
+        {
+          "role": "source",
+          "path": "doc/requirements/07-administration-audit-preferences.md",
+          "lineStart": 77,
+          "lineEnd": 77,
+          "quote": "成员停用、服务地址变更、AI 草稿采纳和数据导出均可在授权范围内被审计查询到"
+        },
+        {
+          "role": "understanding",
+          "path": "doc/analysis/2026-10-27-project-optimization-understanding.md",
+          "lineStart": 107,
+          "lineEnd": 109,
+          "quote": "家长管理入口/API、脱敏成员资料、高风险确认、敏感共享入口、名称/时区/功能开关审计"
+        },
+        {
+          "role": "plan",
+          "path": "doc/architecture/05-phased-delivery-plan.md",
+          "lineStart": 77,
+          "lineEnd": 82,
+          "quote": "认证会话/停用/角色能力、逐对象查询授权、脱敏审计"
+        },
+        {
+          "role": "plan",
+          "path": "doc/architecture/05-phased-delivery-plan.md",
+          "lineStart": 160,
+          "lineEnd": 160,
+          "quote": "共享授权上下文、统一错误和审计一次建设"
+        }
+      ],
+      "affectedAc": ["AC-ADMIN-001", "AC-ADMIN-004", "AC-OPT-002", "AC-OPT-008"],
+      "affectedRequirements": ["FR-ADMIN-002", "FR-ADMIN-003", "FR-ADMIN-005", "FR-ADMIN-022"],
+      "round": 1,
+      "repair": "在 S03 或相邻管理步骤列出成员列表及 P0 成员操作确认、家庭名称/时区/已允许基础开关维护、受限只读审计查询的产物和退出检查。跨家庭/普通成人/儿童访问必须拒绝；时区变更只影响后续显示统计，不改历史 UTC；审计查询按事件对象权限裁剪。事件先覆盖已实现业务，服务/AI/导出启用后再接入对应事件，不提前实现 P1 审计高级筛选/导出、儿童独立登录或未确认的共享语义。",
+      "disconfirmingCheck": "为上述四个原始 P0 ID 指定步骤与可执行验收：家长维护家庭设置并在后续请求见效，成员操作须确认，已实现业务的审计事件可被有权家长查询且不能经业务接口修改/删除；普通成员、跨家庭及无对象权限的查询不泄漏。仅存在日志写入或角色拒绝测试不能反证该缺口。"
+    }
+  ],
+  "summary": {
+    "recommendation": "revise",
+    "criticalCount": 0,
+    "majorCount": 3,
+    "minorCount": 0,
+    "hasBlockingIssues": true,
+    "blockingMeaning": "建议修复这三项 P0 可追溯覆盖缺口后再通过全项目方案出口；不是产品漏洞实证，不阻止保存文档，不代表运行过 runtime 门禁或取得实施授权。最终采纳、反驳和裁决由主协调者处理。",
+    "fidelityConclusion": "理解稿已保留被指出的原始要求，未发现足以报告的冻结源到理解稿的明确语义漂移。本轮 findings 指向方案实施覆盖，不以理解稿代替原始源证据。",
+    "nonFindings": [
+      "D01 至 D03 仍为未批准候选，用户暂不可用不等于选择；方案没有将其写成授权事实。共享未完成不得宣称全项目 P0 完成，不因未获答案单独报错。",
+      "AI 默认关闭、成人健康及私有学习边界、儿童独立登录 P1 均被保留；受控测试身份未被宣称为儿童独立可用。",
+      "P0 健康记录及营养来源/未知/人工修正有 S05；共享保留 D01 门槛。服务人工状态、批准地址及非代理边界有 S06，自动探测未被升为 P0。",
+      "K0 至 K7 编号保留，S09 未删除 P1 词法混合与检查器；K7 被定义为持续验证证据的汇总。",
+      "许可/撤权 SQL 谓词、引用预览和后续回合再授权、外发前配置确认、异步提交前重验、取消条件更新及重试幂等均有明确边界。",
+      "普通迁移与可选向量迁移分开启用，数据库连接失败不能伪装正常；没有把缺扩展降级解释成吞掉全部迁移错误。",
+      "开源 Art Design Pro、真实状态、三角色与窄屏检查、Java 21/JDBC/Flyway/Spring AI 及项目约束优先均被保留。未将 Joycode 的四件事 charter 套用为家庭应用业务范围。"
+    ]
+  },
+  "sourceCoverage": {
+    "readMode": "每个文件以 read_file 从第 1 行读至超过 EOF；工具返回未出现正文截断。共完整读取 18 份冻结业务源，以及方案、理解稿和协作入口。",
+    "frozenSourceCount": 18,
+    "frozenSources": [
+      "README.md",
+      "doc/requirements/00-overview.md",
+      "doc/requirements/01-identity-family-access.md",
+      "doc/requirements/02-workspace-global-experience.md",
+      "doc/requirements/03-learning-knowledge.md",
+      "doc/requirements/04-health-fitness-nutrition.md",
+      "doc/requirements/05-family-services.md",
+      "doc/requirements/06-ai-drafts-governance.md",
+      "doc/requirements/07-administration-audit-preferences.md",
+      "doc/requirements/08-non-functional-quality.md",
+      "doc/requirements/09-knowledge-base-rag.md",
+      "doc/requirements/10-learning-ai-experience.md",
+      "doc/requirements/11-knowledge-ai-delivery-slices.md",
+      "doc/architecture/README.md",
+      "doc/architecture/01-knowledge-base-pgvector.md",
+      "doc/architecture/02-learning-ai-architecture.md",
+      "doc/architecture/03-frontend-architecture.md",
+      "doc/architecture/04-knowledge-ai-api-contract.md"
+    ],
+    "reviewedArtifacts": [
+      "doc/architecture/05-phased-delivery-plan.md",
+      "doc/analysis/2026-10-27-project-optimization-understanding.md",
+      ".github/AGENTS.md"
+    ],
+    "personaRead": "C:/Users/qxz5kb5/.copilot/installed-plugins/joycode/joycode-2/skills/joycode/native-agents/agents/joycode-plan-reviewer.md",
+    "packageCoordinates": {
+      "version": "2.39.0",
+      "revision": "7c5a4f8e2e921b3d350f7243714893772153022f",
+      "verification": "任务提供的来源坐标，未独立核验包版本或 revision。"
+    },
+    "sourceIntegrity": "只读上述来源；源文件 SHA256 的评审后比对由主协调者执行，本报告不冒充已完成哈希比对。"
+  },
+  "assumptions": [
+    "按本次独立 native invocation 的专用评审职责执行，完整加载 persona body，未派生任何子代理；不声称异构模型评审。",
+    "只写指定普通 JSON 是任务行为约束，不是 persona/frontmatter 配置的宿主沙箱或经验证的强制隔离。",
+    "AC-OPT-001 至 008 是建议验收，不是原始业务 AC；affectedRequirements 列出真实原始 ID。",
+    "本轮未启用交付 run，不创建账本/配置、不注册产物、不安装、不运行工程或外部系统操作。",
+    "Git 坐标不可得、产品目录为空且 codeUnderstanding.skipped 按调度输入接受；本轮未重新探测，不虚构已有源码、测试或 CI 通过结果。",
+    "约束卡片适用性以方案第 8 节及项目权威来源核对；本轮未另行加载包卡片全文，不声称完成逐条约束合规认证。",
+    "无产品执行验证；本报告写入后的校验仅限 JSON 解析、结构、引用文件/行号/引文和需求编号存在性。"
+  ]
+}

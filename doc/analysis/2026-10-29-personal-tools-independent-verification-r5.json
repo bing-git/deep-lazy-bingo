@@ -1,0 +1,2491 @@
+{
+  "schemaVersion": "personal-tools.independent-verification/v1",
+  "runId": "run-2026-10-29T05-14-34-396Z-ecca203e",
+  "attempt": "r5",
+  "level": "L1",
+  "profile": "standard",
+  "stage": "implement",
+  "escalation": false,
+  "role": "fresh_builtin_general_purpose_independent_verifier_full_native_persona_no_custom_role_or_nested_agents",
+  "status": "VERIFICATION_PASSED_WITH_UNMET_PRODUCT_ACCEPTANCE",
+  "fullIndependentSuiteCompleted": true,
+  "allSuitesFreshInR5": false,
+  "overallAcceptancePassed": false,
+  "developerSelfTestsReused": false,
+  "summary": "Input-equivalent R4 priority18/Redis12/frontend136 plus six gates reused at original commands/times, no frontend rerun. R4 collector exit1 preserved. R5 freshly passed original backend verify35 and new JAR/source-layout checks. Original PT01..08 request remains incomplete; no task/stage completion claimed.",
+  "inputs": {
+    "worktree": "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo",
+    "persona": "C:/Users/qxz5kb5/.copilot/installed-plugins/joycode/joycode-2/skills/joycode/native-agents/agents/joycode-test-verifier.md",
+    "personaBodyRead": true,
+    "frozenInputAndRunnerHashes": [
+      {
+        "path": "doc/analysis/2026-10-29-personal-tools-request.md",
+        "bytes": 5206,
+        "sha256": "4db661407f0b5025facce7364bdcb871a4e89725547a901f5e37ba99a18cee55"
+      },
+      {
+        "path": "doc/analysis/2026-10-29-personal-tools-plan.json",
+        "bytes": 49375,
+        "sha256": "2312e21df99cd959974e8b497fb29e9a47fcc65e7241f669267dad3eb26ccda1"
+      },
+      {
+        "path": "doc/analysis/2026-10-29-personal-tools-code-understanding.md",
+        "bytes": 17228,
+        "sha256": "1093bf5bf821415169813113c1cb4493d554e9bea225301a18bcb056b116ffa8"
+      },
+      {
+        "path": "doc/analysis/2026-10-29-personal-tools-code-understanding.json",
+        "bytes": 18515,
+        "sha256": "b8d4a1230557177e9b9a632220c9279ca064c92f7b2e5772521608001f6f8b9f"
+      },
+      {
+        "path": "doc/analysis/2026-10-29-personal-tools-independent-verification-r2.json",
+        "bytes": 22454,
+        "sha256": "dccbccfd1194add0aad0a85570d962a23c32cfd9faf94d357a29f527769871cd"
+      },
+      {
+        "path": "deep-lazy-bingo-frontend/scripts/health-sources.test.ts",
+        "bytes": 14746,
+        "sha256": "cdd867b4fa418ffe8c3eff899a0f09a45d31180e5b27856d325612aa050ebecb"
+      },
+      {
+        "path": "deep-lazy-bingo-frontend/scripts/learning-check.ts",
+        "bytes": 7848,
+        "sha256": "b9a0c05e0586c454c0cff1140010969711b1638b47b403e17d835d2a5bef2be5"
+      },
+      {
+        "path": ".vscode/backend-maven.mjs",
+        "bytes": 4039,
+        "sha256": "8862b47b7ab55b26cc2f5161fd0c3ae16d472aa08a088f7054968c381a7ca756"
+      },
+      {
+        "path": "deep-lazy-bingo-backend/pom.xml",
+        "bytes": 4558,
+        "sha256": "630cbcd902ed82ec65c9595db6e1485885edca7b73451c0f935814f18089e950"
+      }
+    ],
+    "priorRunsReusedForPass": true,
+    "registeredDiffImpactExists": false,
+    "prioritySelection": "Explicit dispatcher personal-tools plus family-shell; no registered diff-impact report exists.",
+    "testInputs": "Original reviewed test files; synthetic fake-indexeddb records, EventTarget/fetch stubs, isolated H2/mock Redis and temporary loopback smoke server. Health CLI operates only an isolated temporary ESM fixture copied from actual cached Free snapshots/catalog/media; no live source flags or catalog collection. Random UUID database names and Date.now input are not fixed replay seeds; future equivalence is not asserted.",
+    "productInputDigest": "9f36b6bbebafefdacc2163784d17a784d32afbbf03a1ffd262142a053901e815",
+    "currentFinalDigest": "9f36b6bbebafefdacc2163784d17a784d32afbbf03a1ffd262142a053901e815",
+    "exactGeneratedReceiptExclusions": [
+      "deep-lazy-bingo-frontend/data/english/verification/latest-tests.json",
+      "deep-lazy-bingo-frontend/data/modules/verification/administration-green-2026-10-29T08-06-54-821Z.json",
+      "deep-lazy-bingo-frontend/data/modules/verification/foundation-green-2026-10-29T08-07-49-887Z.json",
+      "deep-lazy-bingo-frontend/data/modules/verification/knowledge-green-2026-10-29T08-07-43-501Z.json",
+      "deep-lazy-bingo-frontend/data/modules/verification/workbench-green-2026-10-29T08-07-53-377Z.json"
+    ],
+    "previouslyApprovedExclusions": [
+      ".git/**",
+      ".joycode/**",
+      "node_modules/**",
+      "target/**",
+      "dist/**",
+      ".env* and sensitive credential files",
+      "deep-lazy-bingo-frontend/data/health/verification/**",
+      "deep-lazy-bingo-frontend/src/types/auto-imports.d.ts",
+      "deep-lazy-bingo-frontend/src/types/components.d.ts",
+      "doc/analysis/2026-10-29-personal-tools-independent-verification-r4.json"
+    ],
+    "additionalDeclaredReportExclusion": "doc/analysis/2026-10-29-personal-tools-independent-verification-r5.json",
+    "noOtherProductInputExclusionsAdded": true,
+    "historicalRandomInputClarification": "Reuse is of the actual completed R4 executions, not a claim that UUID/Date.now values would replay identically in a new run. No new external data or rerun test input is introduced.",
+    "frozenRequest": "doc/analysis/2026-10-29-personal-tools-request.md"
+  },
+  "inputReconciliation": {
+    "reference": "target/verification/personal-tools-independent-r5-20261029-91e7ad/equivalence.json",
+    "equivalent": true,
+    "productInputDigest": "9f36b6bbebafefdacc2163784d17a784d32afbbf03a1ffd262142a053901e815",
+    "allSixHistoricalBoundaryManifestsMatched": true,
+    "environmentFingerprintMatched": true,
+    "originalAfterHookWritersConfirmed": [
+      {
+        "path": "deep-lazy-bingo-frontend/scripts/english.test.ts",
+        "sha256": "018667371d821e1800a6e07773e927b74b6fc5ad8fb4c55e894b8805ff308dbc",
+        "inFrozenManifest": true,
+        "originalAfterHookWriterConfirmed": true
+      },
+      {
+        "path": "deep-lazy-bingo-frontend/scripts/administration.test.ts",
+        "sha256": "84bb3232cd7cb412d3b0e159c9529a8715ffba786ded5d071bb27aeb6abdb4da",
+        "inFrozenManifest": true,
+        "originalAfterHookWriterConfirmed": true
+      },
+      {
+        "path": "deep-lazy-bingo-frontend/scripts/modules.test.ts",
+        "sha256": "c5b8a094556802963fc3609ab70e259949e5d5e14a3b0a20b44d4970a6780b22",
+        "inFrozenManifest": true,
+        "originalAfterHookWriterConfirmed": true
+      },
+      {
+        "path": "deep-lazy-bingo-frontend/scripts/knowledge.test.ts",
+        "sha256": "44496f5f10a17be7b979944ca4bb91ed586f37932acbfa6163be4cda63976f2a",
+        "inFrozenManifest": true,
+        "originalAfterHookWriterConfirmed": true
+      },
+      {
+        "path": "deep-lazy-bingo-frontend/scripts/workbench.test.ts",
+        "sha256": "97759f32d8a8a67c3d7b7da24c15337f4259c800871ffaf872853fc64a05eeea",
+        "inFrozenManifest": true,
+        "originalAfterHookWriterConfirmed": true
+      }
+    ],
+    "receipts": [
+      {
+        "path": "deep-lazy-bingo-frontend/data/english/verification/latest-tests.json",
+        "sha256": "1d2dd42d7b94ca4ea60328a94eacde94a98232bf29f11984fd8551ecf3972ab0",
+        "r4AfterSha256": "1d2dd42d7b94ca4ea60328a94eacde94a98232bf29f11984fd8551ecf3972ab0",
+        "matchesR4Output": true,
+        "startedAt": "2026-10-29T08:07:06.138Z",
+        "finishedAt": "2026-10-29T08:07:20.716Z",
+        "passed": 12,
+        "failed": 0,
+        "processExitCode": null,
+        "invocation": [
+          "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+          "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend\\scripts\\english.test.ts"
+        ],
+        "snapshot": [
+          {
+            "path": "src/learning/english.ts",
+            "sha256": "52a54ca575b1fca2e2abe2723cf5262508b28c9c859cdd7db7bf09fa6538b390"
+          },
+          {
+            "path": "src/views/learning/EnglishPractice.vue",
+            "sha256": "14c0d9cfd2aa77d6affc814a269822628c816e818b222c092c2cc1e4250df712"
+          },
+          {
+            "path": "scripts/english.test.ts",
+            "sha256": "018667371d821e1800a6e07773e927b74b6fc5ad8fb4c55e894b8805ff308dbc"
+          }
+        ]
+      },
+      {
+        "path": "deep-lazy-bingo-frontend/data/modules/verification/administration-green-2026-10-29T08-06-54-821Z.json",
+        "sha256": "4f27fabe2a9bd3004eab0f056482035e32071f869ffc0a548e3babe5309f8a8a",
+        "r4AfterSha256": "4f27fabe2a9bd3004eab0f056482035e32071f869ffc0a548e3babe5309f8a8a",
+        "matchesR4Output": true,
+        "startedAt": "2026-10-29T08:06:54.821Z",
+        "finishedAt": "2026-10-29T08:07:01.594Z",
+        "passed": 14,
+        "failed": 0,
+        "processExitCode": 0,
+        "invocation": [
+          "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+          "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend\\scripts\\administration.test.ts"
+        ],
+        "snapshot": [
+          {
+            "path": "src/modules/administration.ts",
+            "sha256": "77a2d5226a4a06b6da406f60f8b9b07eac8e60623e60be1636f1071af9f7627f"
+          },
+          {
+            "path": "src/views/services/index.vue",
+            "sha256": "1c0fc31ab743bca2263064208234529c6eefb4f4200942d80d9cd81a0898047d"
+          },
+          {
+            "path": "src/views/family/index.vue",
+            "sha256": "0d372b60eeb5109325eab4ed1efe573045234d41fc14cbf9f7b0cf40f0ac580c"
+          },
+          {
+            "path": "scripts/administration.test.ts",
+            "sha256": "84bb3232cd7cb412d3b0e159c9529a8715ffba786ded5d071bb27aeb6abdb4da"
+          },
+          {
+            "path": "src/modules/local.ts",
+            "sha256": "761a972f8b9522b2c05c90682d0de79b1d41b1dd711b343831e55217807b8813"
+          },
+          {
+            "path": "src/components/business/ModuleShell.vue",
+            "sha256": "72fa7f899da681a4c7accca19b035365041aa0893213463258135ff2639e42a2"
+          }
+        ]
+      },
+      {
+        "path": "deep-lazy-bingo-frontend/data/modules/verification/foundation-green-2026-10-29T08-07-49-887Z.json",
+        "sha256": "f463331461b2ec350d2ea39c2a28ac40e665ca6177e6bce3109ac2d77b6f2ba8",
+        "r4AfterSha256": "f463331461b2ec350d2ea39c2a28ac40e665ca6177e6bce3109ac2d77b6f2ba8",
+        "matchesR4Output": true,
+        "startedAt": "2026-10-29T08:07:49.887Z",
+        "finishedAt": "2026-10-29T08:07:50.491Z",
+        "passed": 11,
+        "failed": 0,
+        "processExitCode": 0,
+        "invocation": [
+          "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+          "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend\\scripts\\modules.test.ts"
+        ],
+        "snapshot": [
+          {
+            "path": "src/modules/local.ts",
+            "sha256": "761a972f8b9522b2c05c90682d0de79b1d41b1dd711b343831e55217807b8813"
+          },
+          {
+            "path": "src/components/business/ModuleShell.vue",
+            "sha256": "72fa7f899da681a4c7accca19b035365041aa0893213463258135ff2639e42a2"
+          },
+          {
+            "path": "scripts/modules.test.ts",
+            "sha256": "c5b8a094556802963fc3609ab70e259949e5d5e14a3b0a20b44d4970a6780b22"
+          }
+        ]
+      },
+      {
+        "path": "deep-lazy-bingo-frontend/data/modules/verification/knowledge-green-2026-10-29T08-07-43-501Z.json",
+        "sha256": "fdbebfd70ca35201da257c44501bcfaae408bdafef1a54842377f8756b3c6cea",
+        "r4AfterSha256": "fdbebfd70ca35201da257c44501bcfaae408bdafef1a54842377f8756b3c6cea",
+        "matchesR4Output": true,
+        "startedAt": "2026-10-29T08:07:43.501Z",
+        "finishedAt": "2026-10-29T08:07:44.294Z",
+        "passed": 13,
+        "failed": 0,
+        "processExitCode": 0,
+        "invocation": [
+          "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+          "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend\\scripts\\knowledge.test.ts"
+        ],
+        "snapshot": [
+          {
+            "path": "src/modules/knowledge.ts",
+            "sha256": "937ec78bf08f7a3ff68c95a130b646f94070ebd10ec250524915e2e2ca2b8ddc"
+          },
+          {
+            "path": "src/views/knowledge/index.vue",
+            "sha256": "e994b141cdc5ba42cf6063fd8d40680f98cae9a8a8b9fdb61fa4c75c4ee9de80"
+          },
+          {
+            "path": "src/views/ai/workspace.vue",
+            "sha256": "6d0b7031931964795eca52e75af8a4b3f818680aef165bf16db2b908f34c047d"
+          },
+          {
+            "path": "scripts/knowledge.test.ts",
+            "sha256": "44496f5f10a17be7b979944ca4bb91ed586f37932acbfa6163be4cda63976f2a"
+          },
+          {
+            "path": "src/modules/local.ts",
+            "sha256": "761a972f8b9522b2c05c90682d0de79b1d41b1dd711b343831e55217807b8813"
+          },
+          {
+            "path": "src/components/business/ModuleShell.vue",
+            "sha256": "72fa7f899da681a4c7accca19b035365041aa0893213463258135ff2639e42a2"
+          }
+        ]
+      },
+      {
+        "path": "deep-lazy-bingo-frontend/data/modules/verification/workbench-green-2026-10-29T08-07-53-377Z.json",
+        "sha256": "6554cbe1259f743ad5cc3ea61ac935630494ab82cd92f9d6f3bb29ff73466204",
+        "r4AfterSha256": "6554cbe1259f743ad5cc3ea61ac935630494ab82cd92f9d6f3bb29ff73466204",
+        "matchesR4Output": true,
+        "startedAt": "2026-10-29T08:07:53.377Z",
+        "finishedAt": "2026-10-29T08:07:53.645Z",
+        "passed": 13,
+        "failed": 0,
+        "processExitCode": 0,
+        "invocation": [
+          "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+          "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend\\scripts\\workbench.test.ts"
+        ],
+        "snapshot": [
+          {
+            "path": "src/modules/local.ts",
+            "sha256": "761a972f8b9522b2c05c90682d0de79b1d41b1dd711b343831e55217807b8813"
+          },
+          {
+            "path": "src/modules/workbench.ts",
+            "sha256": "34346596568540e1048ca2ffef6756ef49f311800f9e32fe64f8441e367781e0"
+          },
+          {
+            "path": "src/components/business/ModuleShell.vue",
+            "sha256": "72fa7f899da681a4c7accca19b035365041aa0893213463258135ff2639e42a2"
+          },
+          {
+            "path": "src/views/workspace/functional.vue",
+            "sha256": "4cbcfd1e49b06371943df016b084db14a6049bd9087204d8a5d657284bd93b7f"
+          },
+          {
+            "path": "src/views/learning/manage.vue",
+            "sha256": "5bf4a1bc453cbe24bd95b127e9f939064d999678879de7ba6946e200aa59e7b8"
+          },
+          {
+            "path": "scripts/workbench.test.ts",
+            "sha256": "97759f32d8a8a67c3d7b7da24c15337f4259c800871ffaf872853fc64a05eeea"
+          }
+        ]
+      }
+    ],
+    "scope": "Only these five observed original-test generated receipts plus previously approved outputs and the new declared R5 report are omitted. No entire English/Modules data directory exclusion.",
+    "originalR4CollectorExitCode": 1,
+    "originalR4FrontendCheckerExitCode": 0,
+    "originalR4WriteContractCompliant": false,
+    "originalR4Status": "BLOCKED_VERIFIER_OUTPUT_SCOPE",
+    "originalR4ReportUnmodified": true,
+    "historicalContractFootprintLimitation": "R4 generated five receipts outside its then-declared scope. This R5 permission permits their classification/reuse now, not a rewrite of R4 historical compliance or collector exit. Original R4 dependency/body and host-permission measurement limitations remain.",
+    "dependencyAssuranceLimit": "Identical installed package manifests, package/lock/resolution YAML and environment fingerprint using original R4 measurement. R4 did not hash every dependency body; this reconciliation does not invent a stronger historical measurement."
+  },
+  "executions": [
+    {
+      "phase": "priority",
+      "command": [
+        "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+        "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend\\node_modules\\tsx\\dist\\cli.mjs",
+        "--test",
+        "scripts/personal-tools.test.ts",
+        "scripts/family-shell.test.ts"
+      ],
+      "cwd": "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend",
+      "startedAt": "2026-10-29T08:04:53.664Z",
+      "finishedAt": "2026-10-29T08:04:57.126Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "output": "target/verification/personal-tools-independent-r4-20261029-b62c91/priority.log",
+      "git": {
+        "evidence": "priority-git-before.json",
+        "head": null,
+        "headExitCode": 128,
+        "statusExitCode": 0
+      },
+      "before": "5d4a1cd8a210146cae8a3ca697303eee48f5a04c62f2b440db9db61f2bb40cd7",
+      "after": "5d4a1cd8a210146cae8a3ca697303eee48f5a04c62f2b440db9db61f2bb40cd7",
+      "stable": true,
+      "actualChanges": [],
+      "dependenciesBefore": "a5a30ff5f55dca57c363b1da443e3d901c477175f559c265b46a08dc557cf835",
+      "dependenciesAfter": "a5a30ff5f55dca57c363b1da443e3d901c477175f559c265b46a08dc557cf835",
+      "evidenceDirectory": null,
+      "checkerCommands": null,
+      "counts": {
+        "tests": 18,
+        "passed": 18,
+        "skipped": 0
+      },
+      "jarValidation": null,
+      "accepted": true,
+      "order": 1,
+      "expectedTests": 18,
+      "tests": {
+        "tests": 18,
+        "pass": 18,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "expandedChildCommand": null,
+      "mavenExitCode": null,
+      "helperReceipt": null,
+      "receipt": "target/verification/personal-tools-independent-r4-20261029-b62c91/priority.json",
+      "launcherExecution": {
+        "phase": "priority",
+        "command": [
+          "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+          "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\target\\verification\\personal-tools-independent-r4-20261029-b62c91\\collect.mjs",
+          "priority"
+        ],
+        "startedAt": "2026-10-29T08:04:41.657Z",
+        "finishedAt": "2026-10-29T08:05:05.168Z",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "environmentReference": "target/verification/personal-tools-independent-r4-20261029-b62c91/preflight.json",
+      "dependencyReferences": [
+        "target/verification/personal-tools-independent-r4-20261029-b62c91/priority-dependencies-before.json",
+        "target/verification/personal-tools-independent-r4-20261029-b62c91/priority-dependencies-after.json"
+      ],
+      "sourceSnapshotReferences": [
+        "target/verification/personal-tools-independent-r4-20261029-b62c91/priority-before.json",
+        "target/verification/personal-tools-independent-r4-20261029-b62c91/priority-after.json"
+      ],
+      "reuse": true,
+      "originalExecutionReference": "doc/analysis/2026-10-29-personal-tools-independent-verification-r4.json",
+      "outputSha256": "cac0b9a89b4bcc04e78e6f46d969b9eeaa2a4457d6bb98be5395d68bb5161b49",
+      "originalLogConfirmsCounts": true,
+      "checkerExitUnchanged": 0,
+      "collectorExitUnchanged": 0,
+      "acceptedUnderOriginalR4Contract": true,
+      "reconciledOutputPermission": false,
+      "newlyExecuted": false
+    },
+    {
+      "phase": "redis",
+      "command": [
+        "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+        "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\.vscode\\backend-maven.mjs",
+        "redis"
+      ],
+      "cwd": "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-backend",
+      "startedAt": "2026-10-29T08:05:16.660Z",
+      "finishedAt": "2026-10-29T08:06:29.950Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "output": "target/verification/personal-tools-independent-r4-20261029-b62c91/redis.log",
+      "git": {
+        "evidence": "redis-git-before.json",
+        "head": null,
+        "headExitCode": 128,
+        "statusExitCode": 0
+      },
+      "before": "5d4a1cd8a210146cae8a3ca697303eee48f5a04c62f2b440db9db61f2bb40cd7",
+      "after": "5d4a1cd8a210146cae8a3ca697303eee48f5a04c62f2b440db9db61f2bb40cd7",
+      "stable": true,
+      "actualChanges": [],
+      "dependenciesBefore": "a5a30ff5f55dca57c363b1da443e3d901c477175f559c265b46a08dc557cf835",
+      "dependenciesAfter": "a5a30ff5f55dca57c363b1da443e3d901c477175f559c265b46a08dc557cf835",
+      "evidenceDirectory": null,
+      "checkerCommands": null,
+      "counts": null,
+      "jarValidation": null,
+      "accepted": true,
+      "order": 2,
+      "expectedTests": 12,
+      "tests": {
+        "tests": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "expandedChildCommand": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "C:\\Users\\qxz5kb5\\AppData\\Local\\deep-lazy-bingo\\tools\\apache-maven-3.10.0\\bin\\mvn.cmd",
+        "--batch-mode",
+        "--no-transfer-progress",
+        "--settings",
+        ".mvn/network.xml",
+        "-Dtest=RedisNamespaceTest",
+        "test"
+      ],
+      "mavenExitCode": 0,
+      "helperReceipt": "target/verification/personal-tools-independent-r4-20261029-b62c91/maven-redis.json",
+      "receipt": "target/verification/personal-tools-independent-r4-20261029-b62c91/redis.json",
+      "launcherExecution": {
+        "phase": "redis",
+        "command": [
+          "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+          "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\target\\verification\\personal-tools-independent-r4-20261029-b62c91\\collect.mjs",
+          "redis"
+        ],
+        "startedAt": "2026-10-29T08:05:05.170Z",
+        "finishedAt": "2026-10-29T08:06:39.765Z",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "environmentReference": "target/verification/personal-tools-independent-r4-20261029-b62c91/preflight.json",
+      "dependencyReferences": [
+        "target/verification/personal-tools-independent-r4-20261029-b62c91/redis-dependencies-before.json",
+        "target/verification/personal-tools-independent-r4-20261029-b62c91/redis-dependencies-after.json"
+      ],
+      "sourceSnapshotReferences": [
+        "target/verification/personal-tools-independent-r4-20261029-b62c91/redis-before.json",
+        "target/verification/personal-tools-independent-r4-20261029-b62c91/redis-after.json"
+      ],
+      "reuse": true,
+      "originalExecutionReference": "doc/analysis/2026-10-29-personal-tools-independent-verification-r4.json",
+      "outputSha256": "8968ba763b2e960fdb74f81254699686a6d0a215dfcf1d354454542f3e59dab6",
+      "originalLogConfirmsCounts": true,
+      "checkerExitUnchanged": 0,
+      "collectorExitUnchanged": 0,
+      "acceptedUnderOriginalR4Contract": true,
+      "reconciledOutputPermission": false,
+      "newlyExecuted": false
+    },
+    {
+      "phase": "frontend",
+      "command": [
+        "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+        "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend\\node_modules\\tsx\\dist\\cli.mjs",
+        "scripts/learning-check.ts"
+      ],
+      "cwd": "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend",
+      "startedAt": "2026-10-29T08:06:47.902Z",
+      "finishedAt": "2026-10-29T08:16:11.268Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "output": "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend.log",
+      "git": {
+        "evidence": "frontend-git-before.json",
+        "head": null,
+        "headExitCode": 128,
+        "statusExitCode": 0
+      },
+      "before": "5d4a1cd8a210146cae8a3ca697303eee48f5a04c62f2b440db9db61f2bb40cd7",
+      "after": "9cf41523c646f56e8a3749575d45cb543e4b81956f491c741749174f84e99f25",
+      "stable": false,
+      "actualChanges": [
+        {
+          "path": "deep-lazy-bingo-frontend/data/english/verification/latest-tests.json",
+          "before": "d1530fa5ec17a7f95574330809ad2a7e4eae9477617a45aed62aa800aa0dfcce",
+          "after": "1d2dd42d7b94ca4ea60328a94eacde94a98232bf29f11984fd8551ecf3972ab0"
+        },
+        {
+          "path": "deep-lazy-bingo-frontend/data/modules/verification/administration-green-2026-10-29T08-06-54-821Z.json",
+          "before": null,
+          "after": "4f27fabe2a9bd3004eab0f056482035e32071f869ffc0a548e3babe5309f8a8a"
+        },
+        {
+          "path": "deep-lazy-bingo-frontend/data/modules/verification/foundation-green-2026-10-29T08-07-49-887Z.json",
+          "before": null,
+          "after": "f463331461b2ec350d2ea39c2a28ac40e665ca6177e6bce3109ac2d77b6f2ba8"
+        },
+        {
+          "path": "deep-lazy-bingo-frontend/data/modules/verification/knowledge-green-2026-10-29T08-07-43-501Z.json",
+          "before": null,
+          "after": "fdbebfd70ca35201da257c44501bcfaae408bdafef1a54842377f8756b3c6cea"
+        },
+        {
+          "path": "deep-lazy-bingo-frontend/data/modules/verification/workbench-green-2026-10-29T08-07-53-377Z.json",
+          "before": null,
+          "after": "6554cbe1259f743ad5cc3ea61ac935630494ab82cd92f9d6f3bb29ff73466204"
+        }
+      ],
+      "dependenciesBefore": "a5a30ff5f55dca57c363b1da443e3d901c477175f559c265b46a08dc557cf835",
+      "dependenciesAfter": "a5a30ff5f55dca57c363b1da443e3d901c477175f559c265b46a08dc557cf835",
+      "evidenceDirectory": "C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\learning-evidence-42xbbe",
+      "checkerCommands": [
+        {
+          "label": "test",
+          "command": [
+            "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend\\node_modules\\tsx\\dist\\cli.mjs",
+            "--test",
+            "--test-concurrency=1",
+            "scripts/personal-tools.test.ts",
+            "scripts/family-shell.test.ts",
+            "scripts/learning.test.ts",
+            "scripts/health.test.ts",
+            "scripts/health-sources.test.ts",
+            "scripts/english.test.ts",
+            "scripts/ai-models.test.ts",
+            "scripts/modules.test.ts",
+            "scripts/workbench.test.ts",
+            "scripts/knowledge.test.ts",
+            "scripts/administration.test.ts",
+            "scripts/modules-integration.test.ts"
+          ],
+          "exitCode": 0,
+          "log": "C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\learning-evidence-42xbbe\\test.log"
+        },
+        {
+          "label": "typecheck",
+          "command": [
+            "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend\\node_modules\\vue-tsc\\bin\\vue-tsc.js",
+            "--noEmit"
+          ],
+          "exitCode": 0,
+          "log": "C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\learning-evidence-42xbbe\\typecheck.log"
+        },
+        {
+          "label": "build",
+          "command": [
+            "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend\\node_modules\\vite\\bin\\vite.js",
+            "build"
+          ],
+          "exitCode": 0,
+          "log": "C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\learning-evidence-42xbbe\\build.log"
+        },
+        {
+          "label": "lint",
+          "command": [
+            "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend\\node_modules\\eslint\\bin\\eslint.js",
+            "src/personal-tools/local.ts",
+            "src/personal-tools/membership.ts",
+            "src/personal-tools/notes.ts",
+            "src/personal-tools/content.ts",
+            "src/personal-tools/session.ts",
+            "src/views/personal-tools/memberships.vue",
+            "src/views/personal-tools/vault.vue",
+            "src/views/personal-tools/notes.vue",
+            "src/components/core/forms/art-wang-editor/index.vue",
+            "scripts/personal-tools.test.ts",
+            "src/modules/local.ts",
+            "src/modules/workbench.ts",
+            "src/modules/knowledge.ts",
+            "src/modules/administration.ts",
+            "src/components/business/ModuleShell.vue",
+            "src/views/workspace/functional.vue",
+            "src/views/learning/manage.vue",
+            "src/views/knowledge/index.vue",
+            "src/views/ai/workspace.vue",
+            "src/views/services/index.vue",
+            "src/views/family/index.vue",
+            "scripts/modules.test.ts",
+            "scripts/workbench.test.ts",
+            "scripts/knowledge.test.ts",
+            "scripts/administration.test.ts",
+            "scripts/modules-integration.test.ts",
+            "src/learning/core.ts",
+            "src/learning/api.ts",
+            "src/learning/speech.ts",
+            "src/learning/english.ts",
+            "src/ai/models.ts",
+            "src/views/learning/EnglishPractice.vue",
+            "src/views/ai/models.vue",
+            "src/views/workspace/domain.vue",
+            "src/components/business/AiSceneStatus.vue",
+            "src/views/learning/library.vue",
+            "src/health/core.ts",
+            "src/health/catalog.ts",
+            "src/views/health/index.vue",
+            "src/config/family.ts",
+            "src/config/preview.ts",
+            "src/store/modules/worktab.ts",
+            "src/main.ts",
+            "src/router/modules/index.ts",
+            "src/router/core/ComponentLoader.ts",
+            "scripts/learning.test.ts",
+            "scripts/english.test.ts",
+            "scripts/ai-models.test.ts",
+            "scripts/health.test.ts",
+            "scripts/health-sources.test.ts",
+            "scripts/health-sources.ts",
+            "scripts/health-sync.ts",
+            "scripts/family-shell.test.ts",
+            "scripts/learning-connector.ts",
+            "scripts/learning-check.ts",
+            "vite.config.ts"
+          ],
+          "exitCode": 0,
+          "log": "C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\learning-evidence-42xbbe\\lint.log"
+        },
+        {
+          "label": "style",
+          "command": [
+            "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend\\node_modules\\stylelint\\bin\\stylelint.mjs",
+            "src/views/personal-tools/memberships.vue",
+            "src/views/personal-tools/vault.vue",
+            "src/views/personal-tools/notes.vue",
+            "src/components/core/forms/art-wang-editor/index.vue",
+            "src/views/learning/library.vue",
+            "src/views/health/index.vue",
+            "src/views/learning/EnglishPractice.vue",
+            "src/views/ai/models.vue",
+            "src/views/workspace/domain.vue",
+            "src/components/business/AiSceneStatus.vue",
+            "src/components/business/ModuleShell.vue",
+            "src/views/workspace/functional.vue",
+            "src/views/learning/manage.vue",
+            "src/views/knowledge/index.vue",
+            "src/views/ai/workspace.vue",
+            "src/views/services/index.vue",
+            "src/views/family/index.vue"
+          ],
+          "exitCode": 0,
+          "log": "C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\learning-evidence-42xbbe\\style.log"
+        },
+        {
+          "label": "format",
+          "command": [
+            "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend\\node_modules\\prettier\\bin\\prettier.cjs",
+            "--check",
+            "src/personal-tools/local.ts",
+            "src/personal-tools/membership.ts",
+            "src/personal-tools/notes.ts",
+            "src/personal-tools/content.ts",
+            "src/personal-tools/session.ts",
+            "src/views/personal-tools/memberships.vue",
+            "src/views/personal-tools/vault.vue",
+            "src/views/personal-tools/notes.vue",
+            "src/components/core/forms/art-wang-editor/index.vue",
+            "scripts/personal-tools.test.ts",
+            "src/modules/local.ts",
+            "src/modules/workbench.ts",
+            "src/modules/knowledge.ts",
+            "src/modules/administration.ts",
+            "src/components/business/ModuleShell.vue",
+            "src/views/workspace/functional.vue",
+            "src/views/learning/manage.vue",
+            "src/views/knowledge/index.vue",
+            "src/views/ai/workspace.vue",
+            "src/views/services/index.vue",
+            "src/views/family/index.vue",
+            "scripts/modules.test.ts",
+            "scripts/workbench.test.ts",
+            "scripts/knowledge.test.ts",
+            "scripts/administration.test.ts",
+            "scripts/modules-integration.test.ts",
+            "src/learning/core.ts",
+            "src/learning/api.ts",
+            "src/learning/speech.ts",
+            "src/learning/english.ts",
+            "src/ai/models.ts",
+            "src/views/learning/EnglishPractice.vue",
+            "src/views/ai/models.vue",
+            "src/views/workspace/domain.vue",
+            "src/components/business/AiSceneStatus.vue",
+            "src/views/learning/library.vue",
+            "src/health/core.ts",
+            "src/health/catalog.ts",
+            "src/views/health/index.vue",
+            "src/config/family.ts",
+            "src/config/preview.ts",
+            "src/store/modules/worktab.ts",
+            "src/main.ts",
+            "src/router/modules/index.ts",
+            "src/router/core/ComponentLoader.ts",
+            "scripts/learning.test.ts",
+            "scripts/english.test.ts",
+            "scripts/ai-models.test.ts",
+            "scripts/health.test.ts",
+            "scripts/health-sources.test.ts",
+            "scripts/health-sources.ts",
+            "scripts/health-sync.ts",
+            "scripts/family-shell.test.ts",
+            "scripts/learning-connector.ts",
+            "scripts/learning-check.ts",
+            "vite.config.ts",
+            "package.json"
+          ],
+          "exitCode": 0,
+          "log": "C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\learning-evidence-42xbbe\\format.log"
+        }
+      ],
+      "counts": null,
+      "jarValidation": null,
+      "accepted": false,
+      "order": 3,
+      "expectedTests": 136,
+      "tests": {
+        "tests": 136,
+        "pass": 136,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "expandedChildCommand": null,
+      "mavenExitCode": null,
+      "helperReceipt": null,
+      "receipt": "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend.json",
+      "launcherExecution": {
+        "phase": "frontend",
+        "command": [
+          "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+          "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\target\\verification\\personal-tools-independent-r4-20261029-b62c91\\collect.mjs",
+          "frontend"
+        ],
+        "startedAt": "2026-10-29T08:06:39.768Z",
+        "finishedAt": "2026-10-29T08:17:23.835Z",
+        "exitCode": 1,
+        "signal": null,
+        "error": null
+      },
+      "environmentReference": "target/verification/personal-tools-independent-r4-20261029-b62c91/preflight.json",
+      "dependencyReferences": [
+        "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend-dependencies-before.json",
+        "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend-dependencies-after.json"
+      ],
+      "sourceSnapshotReferences": [
+        "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend-before.json",
+        "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend-after.json"
+      ],
+      "reuse": true,
+      "originalExecutionReference": "doc/analysis/2026-10-29-personal-tools-independent-verification-r4.json",
+      "outputSha256": "4fc63d4539537e535a0c11b6b9431e5a6863adfca58f11f6a7a16fc4dfa1e6ab",
+      "originalLogConfirmsCounts": true,
+      "checkerExitUnchanged": 0,
+      "collectorExitUnchanged": 1,
+      "acceptedUnderOriginalR4Contract": false,
+      "reconciledOutputPermission": true,
+      "newlyExecuted": false
+    },
+    {
+      "phase": "backend",
+      "command": [
+        "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+        "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\.vscode\\backend-maven.mjs",
+        "verify"
+      ],
+      "cwd": "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-backend",
+      "startedAt": "2026-10-29T08:25:44.527Z",
+      "finishedAt": "2026-10-29T08:27:29.536Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "output": "target/verification/personal-tools-independent-r5-20261029-91e7ad/backend.log",
+      "expandedChildCommand": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "C:\\Users\\qxz5kb5\\AppData\\Local\\deep-lazy-bingo\\tools\\apache-maven-3.10.0\\bin\\mvn.cmd",
+        "--batch-mode",
+        "--no-transfer-progress",
+        "--settings",
+        ".mvn/network.xml",
+        "verify"
+      ],
+      "before": "9f36b6bbebafefdacc2163784d17a784d32afbbf03a1ffd262142a053901e815",
+      "after": "9f36b6bbebafefdacc2163784d17a784d32afbbf03a1ffd262142a053901e815",
+      "sourceStable": true,
+      "productInputsStable": true,
+      "actualChanges": [],
+      "dependencyDigestBefore": "a5a30ff5f55dca57c363b1da443e3d901c477175f559c265b46a08dc557cf835",
+      "dependencyDigestAfter": "a5a30ff5f55dca57c363b1da443e3d901c477175f559c265b46a08dc557cf835",
+      "helperReceipt": "target/verification/personal-tools-independent-r5-20261029-91e7ad/maven-verify.json",
+      "helperFresh": true,
+      "mavenExitCode": 0,
+      "suites": [
+        {
+          "path": "deep-lazy-bingo-backend/target/surefire-reports/com.deeplazy.bingo.BingoBackendApplicationTests.txt",
+          "sha256": "0dcd9d9b475a7f17b8007cd79f8566252ee068dfb53c4423006533556294a3a2",
+          "fresh": true,
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "path": "deep-lazy-bingo-backend/target/surefire-reports/com.deeplazy.bingo.config.redis.RedisNamespaceTest.txt",
+          "sha256": "60217cdccd7e81cd98f2f6b3a7ad9a140e489fefb16b8d5a1c0e804c022f252b",
+          "fresh": true,
+          "tests": 12,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "path": "deep-lazy-bingo-backend/target/surefire-reports/com.deeplazy.bingo.FrameworkSecurityTest.txt",
+          "sha256": "c03111c6679c96518bc7b9b21d9488249fa1f1e3eca569420d1d58369d83e1a4",
+          "fresh": true,
+          "tests": 14,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "path": "deep-lazy-bingo-backend/target/surefire-reports/com.deeplazy.bingo.SmokeProfileTests.txt",
+          "sha256": "935c315080a86c0d631debf82623ede6da6ca370424abb9f75bf34c2f7205f2b",
+          "fresh": true,
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      ],
+      "totals": {
+        "tests": 35,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "logConfirms35": true,
+      "git": {
+        "evidence": "backend-git-before.json",
+        "head": null,
+        "headExitCode": 128,
+        "statusExitCode": 0
+      },
+      "accepted": true,
+      "environment": "target/verification/personal-tools-independent-r5-20261029-91e7ad/environment.json",
+      "ephemeralHttpSmoke": "Original SmokeProfileTests uses loopback random-port HTTP and excludes DataSource and Redis factories; no persistent app launch.",
+      "newlyExecuted": true,
+      "reuse": false
+    },
+    {
+      "phase": "jar",
+      "newlyExecuted": true,
+      "reuse": false,
+      "receipt": "target/verification/personal-tools-independent-r5-20261029-91e7ad/jar.json",
+      "accepted": true,
+      "commands": [
+        {
+          "command": [
+            "C:\\Users\\qxz5kb5\\.vscode\\extensions\\redhat.java-1.58.0-win32-x64\\jre\\25.0.4.1-win32-x86_64\\bin\\jar.exe",
+            "tf",
+            "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-backend\\target\\deep-lazy-bingo-backend-0.1.0.jar"
+          ],
+          "cwd": "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-backend",
+          "startedAt": "2026-10-29T08:28:15.683Z",
+          "finishedAt": "2026-10-29T08:28:15.970Z",
+          "exitCode": 0,
+          "signal": null,
+          "error": null
+        },
+        {
+          "command": [
+            "C:\\Users\\qxz5kb5\\.vscode\\extensions\\redhat.java-1.58.0-win32-x64\\jre\\25.0.4.1-win32-x86_64\\bin\\jar.exe",
+            "xf",
+            "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-backend\\target\\deep-lazy-bingo-backend-0.1.0.jar",
+            "META-INF/MANIFEST.MF",
+            "BOOT-INF/classes/com/deeplazy/bingo/BingoBackendApplication.class",
+            "BOOT-INF/classes/com/deeplazy/bingo/config/PersistenceConfiguration.class",
+            "BOOT-INF/classes/com/deeplazy/bingo/config/SecurityConfiguration.class",
+            "BOOT-INF/classes/com/deeplazy/bingo/config/redis/BingoRedisKeySerializer.class",
+            "BOOT-INF/classes/com/deeplazy/bingo/config/redis/RedisInfrastructureConfiguration.class",
+            "BOOT-INF/classes/com/deeplazy/bingo/config/redis/RedisKeyNames.class",
+            "BOOT-INF/classes/com/deeplazy/bingo/controller/package-info.class",
+            "BOOT-INF/classes/com/deeplazy/bingo/entity/package-info.class",
+            "BOOT-INF/classes/com/deeplazy/bingo/mapper/package-info.class",
+            "BOOT-INF/classes/com/deeplazy/bingo/service/package-info.class",
+            "BOOT-INF/classes/com/deeplazy/bingo/web/RequestIdFilter.class",
+            "BOOT-INF/classes/com/deeplazy/bingo/web/RestExceptionHandler.class"
+          ],
+          "cwd": "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\target\\verification\\personal-tools-independent-r5-20261029-91e7ad\\jar-inspection",
+          "startedAt": "2026-10-29T08:28:15.971Z",
+          "finishedAt": "2026-10-29T08:28:16.288Z",
+          "exitCode": 0,
+          "signal": null,
+          "error": null,
+          "stdout": "",
+          "stderr": ""
+        }
+      ]
+    }
+  ],
+  "originalFrontendChecker": {
+    "copiedOrTransformed": false,
+    "args": [
+      "scripts/learning-check.ts"
+    ],
+    "originalPackageContext": "deep-lazy-bingo-frontend type=module",
+    "receipt": "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend-original-results.json",
+    "commands": [
+      {
+        "label": "test",
+        "command": [
+          "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+          "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend\\node_modules\\tsx\\dist\\cli.mjs",
+          "--test",
+          "--test-concurrency=1",
+          "scripts/personal-tools.test.ts",
+          "scripts/family-shell.test.ts",
+          "scripts/learning.test.ts",
+          "scripts/health.test.ts",
+          "scripts/health-sources.test.ts",
+          "scripts/english.test.ts",
+          "scripts/ai-models.test.ts",
+          "scripts/modules.test.ts",
+          "scripts/workbench.test.ts",
+          "scripts/knowledge.test.ts",
+          "scripts/administration.test.ts",
+          "scripts/modules-integration.test.ts"
+        ],
+        "exitCode": 0,
+        "log": "C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\learning-evidence-42xbbe\\test.log"
+      },
+      {
+        "label": "typecheck",
+        "command": [
+          "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+          "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend\\node_modules\\vue-tsc\\bin\\vue-tsc.js",
+          "--noEmit"
+        ],
+        "exitCode": 0,
+        "log": "C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\learning-evidence-42xbbe\\typecheck.log"
+      },
+      {
+        "label": "build",
+        "command": [
+          "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+          "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend\\node_modules\\vite\\bin\\vite.js",
+          "build"
+        ],
+        "exitCode": 0,
+        "log": "C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\learning-evidence-42xbbe\\build.log"
+      },
+      {
+        "label": "lint",
+        "command": [
+          "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+          "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend\\node_modules\\eslint\\bin\\eslint.js",
+          "src/personal-tools/local.ts",
+          "src/personal-tools/membership.ts",
+          "src/personal-tools/notes.ts",
+          "src/personal-tools/content.ts",
+          "src/personal-tools/session.ts",
+          "src/views/personal-tools/memberships.vue",
+          "src/views/personal-tools/vault.vue",
+          "src/views/personal-tools/notes.vue",
+          "src/components/core/forms/art-wang-editor/index.vue",
+          "scripts/personal-tools.test.ts",
+          "src/modules/local.ts",
+          "src/modules/workbench.ts",
+          "src/modules/knowledge.ts",
+          "src/modules/administration.ts",
+          "src/components/business/ModuleShell.vue",
+          "src/views/workspace/functional.vue",
+          "src/views/learning/manage.vue",
+          "src/views/knowledge/index.vue",
+          "src/views/ai/workspace.vue",
+          "src/views/services/index.vue",
+          "src/views/family/index.vue",
+          "scripts/modules.test.ts",
+          "scripts/workbench.test.ts",
+          "scripts/knowledge.test.ts",
+          "scripts/administration.test.ts",
+          "scripts/modules-integration.test.ts",
+          "src/learning/core.ts",
+          "src/learning/api.ts",
+          "src/learning/speech.ts",
+          "src/learning/english.ts",
+          "src/ai/models.ts",
+          "src/views/learning/EnglishPractice.vue",
+          "src/views/ai/models.vue",
+          "src/views/workspace/domain.vue",
+          "src/components/business/AiSceneStatus.vue",
+          "src/views/learning/library.vue",
+          "src/health/core.ts",
+          "src/health/catalog.ts",
+          "src/views/health/index.vue",
+          "src/config/family.ts",
+          "src/config/preview.ts",
+          "src/store/modules/worktab.ts",
+          "src/main.ts",
+          "src/router/modules/index.ts",
+          "src/router/core/ComponentLoader.ts",
+          "scripts/learning.test.ts",
+          "scripts/english.test.ts",
+          "scripts/ai-models.test.ts",
+          "scripts/health.test.ts",
+          "scripts/health-sources.test.ts",
+          "scripts/health-sources.ts",
+          "scripts/health-sync.ts",
+          "scripts/family-shell.test.ts",
+          "scripts/learning-connector.ts",
+          "scripts/learning-check.ts",
+          "vite.config.ts"
+        ],
+        "exitCode": 0,
+        "log": "C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\learning-evidence-42xbbe\\lint.log"
+      },
+      {
+        "label": "style",
+        "command": [
+          "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+          "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend\\node_modules\\stylelint\\bin\\stylelint.mjs",
+          "src/views/personal-tools/memberships.vue",
+          "src/views/personal-tools/vault.vue",
+          "src/views/personal-tools/notes.vue",
+          "src/components/core/forms/art-wang-editor/index.vue",
+          "src/views/learning/library.vue",
+          "src/views/health/index.vue",
+          "src/views/learning/EnglishPractice.vue",
+          "src/views/ai/models.vue",
+          "src/views/workspace/domain.vue",
+          "src/components/business/AiSceneStatus.vue",
+          "src/components/business/ModuleShell.vue",
+          "src/views/workspace/functional.vue",
+          "src/views/learning/manage.vue",
+          "src/views/knowledge/index.vue",
+          "src/views/ai/workspace.vue",
+          "src/views/services/index.vue",
+          "src/views/family/index.vue"
+        ],
+        "exitCode": 0,
+        "log": "C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\learning-evidence-42xbbe\\style.log"
+      },
+      {
+        "label": "format",
+        "command": [
+          "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+          "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend\\node_modules\\prettier\\bin\\prettier.cjs",
+          "--check",
+          "src/personal-tools/local.ts",
+          "src/personal-tools/membership.ts",
+          "src/personal-tools/notes.ts",
+          "src/personal-tools/content.ts",
+          "src/personal-tools/session.ts",
+          "src/views/personal-tools/memberships.vue",
+          "src/views/personal-tools/vault.vue",
+          "src/views/personal-tools/notes.vue",
+          "src/components/core/forms/art-wang-editor/index.vue",
+          "scripts/personal-tools.test.ts",
+          "src/modules/local.ts",
+          "src/modules/workbench.ts",
+          "src/modules/knowledge.ts",
+          "src/modules/administration.ts",
+          "src/components/business/ModuleShell.vue",
+          "src/views/workspace/functional.vue",
+          "src/views/learning/manage.vue",
+          "src/views/knowledge/index.vue",
+          "src/views/ai/workspace.vue",
+          "src/views/services/index.vue",
+          "src/views/family/index.vue",
+          "scripts/modules.test.ts",
+          "scripts/workbench.test.ts",
+          "scripts/knowledge.test.ts",
+          "scripts/administration.test.ts",
+          "scripts/modules-integration.test.ts",
+          "src/learning/core.ts",
+          "src/learning/api.ts",
+          "src/learning/speech.ts",
+          "src/learning/english.ts",
+          "src/ai/models.ts",
+          "src/views/learning/EnglishPractice.vue",
+          "src/views/ai/models.vue",
+          "src/views/workspace/domain.vue",
+          "src/components/business/AiSceneStatus.vue",
+          "src/views/learning/library.vue",
+          "src/health/core.ts",
+          "src/health/catalog.ts",
+          "src/views/health/index.vue",
+          "src/config/family.ts",
+          "src/config/preview.ts",
+          "src/store/modules/worktab.ts",
+          "src/main.ts",
+          "src/router/modules/index.ts",
+          "src/router/core/ComponentLoader.ts",
+          "scripts/learning.test.ts",
+          "scripts/english.test.ts",
+          "scripts/ai-models.test.ts",
+          "scripts/health.test.ts",
+          "scripts/health-sources.test.ts",
+          "scripts/health-sources.ts",
+          "scripts/health-sync.ts",
+          "scripts/family-shell.test.ts",
+          "scripts/learning-connector.ts",
+          "scripts/learning-check.ts",
+          "vite.config.ts",
+          "package.json"
+        ],
+        "exitCode": 0,
+        "log": "C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\learning-evidence-42xbbe\\format.log"
+      }
+    ],
+    "childLogs": [
+      {
+        "label": "test",
+        "original": "C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\learning-evidence-42xbbe\\test.log",
+        "retainedRedacted": "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend-test.log",
+        "exitCode": 0
+      },
+      {
+        "label": "typecheck",
+        "original": "C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\learning-evidence-42xbbe\\typecheck.log",
+        "retainedRedacted": "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend-typecheck.log",
+        "exitCode": 0
+      },
+      {
+        "label": "build",
+        "original": "C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\learning-evidence-42xbbe\\build.log",
+        "retainedRedacted": "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend-build.log",
+        "exitCode": 0
+      },
+      {
+        "label": "lint",
+        "original": "C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\learning-evidence-42xbbe\\lint.log",
+        "retainedRedacted": "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend-lint.log",
+        "exitCode": 0
+      },
+      {
+        "label": "style",
+        "original": "C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\learning-evidence-42xbbe\\style.log",
+        "retainedRedacted": "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend-style.log",
+        "exitCode": 0
+      },
+      {
+        "label": "format",
+        "original": "C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\learning-evidence-42xbbe\\format.log",
+        "retainedRedacted": "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend-format.log",
+        "exitCode": 0
+      }
+    ],
+    "stopSemantics": "Dispatcher chain stops after first failed phase. Unmodified original checker itself runs all six gates even if an earlier gate fails; that existing behavior was not changed by this verifier. Any nonzero gate means the full frontend phase fails, and backend/JAR stages are not launched.",
+    "reuseOriginalExecutionOnly": true,
+    "originalExecutionStartedAt": "2026-10-29T08:06:47.902Z",
+    "originalExecutionFinishedAt": "2026-10-29T08:16:11.268Z",
+    "frontendSuiteRerunInR5": false
+  },
+  "environment": {
+    "reference": "target/verification/personal-tools-independent-r5-20261029-91e7ad/environment.json",
+    "javaHome": "C:/Users/qxz5kb5/.vscode/extensions/redhat.java-1.58.0-win32-x64/jre/25.0.4.1-win32-x86_64",
+    "node": "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+    "originalJavaMavenVersionReference": "target/verification/personal-tools-independent-r4-20261029-b62c91/preflight.json",
+    "secretValuesRecorded": false,
+    "noInstall": true
+  },
+  "dependencies": {
+    "node": "v24.21.0",
+    "executable": "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+    "platform": "win32",
+    "arch": "x64",
+    "release": "10.0.26200",
+    "totalMemory": 16794439680,
+    "freeMemory": 471793664,
+    "JAVA_HOME": "C:/Users/qxz5kb5/.vscode/extensions/redhat.java-1.58.0-win32-x64/jre/25.0.4.1-win32-x86_64",
+    "NODE_OPTIONS": null,
+    "NODE_ENV": null,
+    "CI": null,
+    "TZ": null,
+    "PATH_sha256": "187e906b40d0f54da8e31672d01c1026ba81a71f5245a529b7d008e18da7dad5",
+    "inheritedEnvironmentIdentity": "e1b76e6080b9fa7441613e60f1eca760b335bbe2d429f92a318d12da7ce1947d",
+    "proxyConfigured": true,
+    "secretValuesRecorded": false,
+    "observedJava": {
+      "command": [
+        "C:\\Users\\qxz5kb5\\.vscode\\extensions\\redhat.java-1.58.0-win32-x64\\jre\\25.0.4.1-win32-x86_64\\bin\\java.exe",
+        "-version"
+      ],
+      "cwd": "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo",
+      "startedAt": "2026-10-29T08:03:10.687Z",
+      "finishedAt": "2026-10-29T08:03:11.092Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": "",
+      "stderr": "openjdk version \"25.0.4.1\" 2026-08-18 LTS\r\nOpenJDK Runtime Environment Temurin-25.0.4.1+1 (build 25.0.4.1+1-LTS)\r\nOpenJDK 64-Bit Server VM Temurin-25.0.4.1+1 (build 25.0.4.1+1-LTS, mixed mode, sharing)\r\n"
+    },
+    "observedMaven": {
+      "command": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "C:\\Users\\qxz5kb5\\AppData\\Local\\deep-lazy-bingo\\tools\\apache-maven-3.10.0\\bin\\mvn.cmd",
+        "--version"
+      ],
+      "cwd": "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-backend",
+      "startedAt": "2026-10-29T08:03:11.092Z",
+      "finishedAt": "2026-10-29T08:03:23.639Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": "Apache Maven 3.10.0 (c43a36b8d67be7e0805a411bc0898af1a51f5472)\r\nMaven home: C:\\Users\\qxz5kb5\\AppData\\Local\\deep-lazy-bingo\\tools\\apache-maven-3.10.0\r\nJava version: 25.0.4.1, vendor: Eclipse Adoptium, runtime: C:\\Users\\qxz5kb5\\.vscode\\extensions\\redhat.java-1.58.0-win32-x64\\jre\\25.0.4.1-win32-x86_64\r\nDefault locale: zh_CN, platform encoding: UTF-8, time zone: Asia/Shanghai\r\nOS name: \"windows 11\", version: \"10.0\", arch: \"amd64\", family: \"windows\"\r\n",
+      "stderr": ""
+    },
+    "preflight": "target/verification/personal-tools-independent-r4-20261029-b62c91/preflight.json",
+    "testVersions": [
+      "dompurify@3.3.0",
+      "eslint@9.36.0",
+      "fake-indexeddb@6.2.6",
+      "prettier@3.6.2",
+      "stylelint@16.24.0",
+      "tsx@4.20.6",
+      "typescript@5.6.3",
+      "vite@7.1.7",
+      "vue-tsc@2.1.10",
+      "vue@3.5.22"
+    ],
+    "installedFrontendBefore": "a5a30ff5f55dca57c363b1da443e3d901c477175f559c265b46a08dc557cf835",
+    "installedFrontendAfter": "a5a30ff5f55dca57c363b1da443e3d901c477175f559c265b46a08dc557cf835",
+    "packageSha256": "a3085178c0cb9795866916a4001adf11a49c62c367ff0201c8be09e32e4fbcb4",
+    "lockSha256": "52eb6a9b4f3c38afcd57722b1e7d5a57d073d61d7093fa66dec4e8a170b10319",
+    "resolutionYamlSha256": "5b235637aa8915b61cccc4a0e60b02582a0486252e0d7726fe429de0515b5ad9",
+    "before": "target/verification/personal-tools-independent-r4-20261029-b62c91/dependencies-baseline.json",
+    "after": "target/verification/personal-tools-independent-r4-20261029-b62c91/dependencies-final.json",
+    "backendVersions": {
+      "springBoot": "4.1.2",
+      "mybatisPlus": "3.5.18",
+      "springdoc": "3.2.0",
+      "springAiBom": "2.0.0",
+      "targetJava": 21
+    },
+    "limitations": "Resolved pnpm package manifests and lock/resolution YAML are hashed, not every dependency body. Backend POM/source/test configuration is hashed; executed Redis log records Surefire3.5.6/compiler3.15.0/resources3.5.0. Full backend verify and fresh packaged dependencies were not reached. Entire Maven cache and test dependency bytes were not inventoried. Secret/.env/user Maven settings were not read or hashed by the verifier; internal standard-tool configuration loading is not a proof of future input equivalence. No future-run equivalence is claimed. Existing Maven helper may contact configured dependency repositories; no shared application DB/Redis/API/livecatalog operation is authorized or claimed.",
+    "freshResolvedBackendClasspath": [
+      "BOOT-INF/lib/HdrHistogram-2.2.2.jar",
+      "BOOT-INF/lib/HikariCP-7.0.2.jar",
+      "BOOT-INF/lib/checker-qual-3.55.1.jar",
+      "BOOT-INF/lib/classmate-1.7.3.jar",
+      "BOOT-INF/lib/commons-lang3-3.20.0.jar",
+      "BOOT-INF/lib/commons-logging-1.3.6.jar",
+      "BOOT-INF/lib/flyway-core-12.4.0.jar",
+      "BOOT-INF/lib/flyway-database-postgresql-12.4.0.jar",
+      "BOOT-INF/lib/hibernate-validator-9.1.5.Final.jar",
+      "BOOT-INF/lib/jackson-annotations-2.21.jar",
+      "BOOT-INF/lib/jackson-core-2.21.7.jar",
+      "BOOT-INF/lib/jackson-core-3.1.7.jar",
+      "BOOT-INF/lib/jackson-databind-2.21.7.jar",
+      "BOOT-INF/lib/jackson-databind-3.1.7.jar",
+      "BOOT-INF/lib/jackson-dataformat-yaml-2.21.7.jar",
+      "BOOT-INF/lib/jackson-datatype-jsr310-2.21.7.jar",
+      "BOOT-INF/lib/jakarta.activation-api-2.1.4.jar",
+      "BOOT-INF/lib/jakarta.annotation-api-3.0.0.jar",
+      "BOOT-INF/lib/jakarta.validation-api-3.1.1.jar",
+      "BOOT-INF/lib/jakarta.xml.bind-api-4.0.5.jar",
+      "BOOT-INF/lib/jboss-logging-3.6.3.Final.jar",
+      "BOOT-INF/lib/jspecify-1.0.1.jar",
+      "BOOT-INF/lib/jsqlparser-5.4.jar",
+      "BOOT-INF/lib/jul-to-slf4j-2.0.20.jar",
+      "BOOT-INF/lib/lettuce-core-7.5.2.RELEASE.jar",
+      "BOOT-INF/lib/log4j-api-2.25.5.jar",
+      "BOOT-INF/lib/log4j-to-slf4j-2.25.5.jar",
+      "BOOT-INF/lib/logback-classic-1.5.38.jar",
+      "BOOT-INF/lib/logback-core-1.5.38.jar",
+      "BOOT-INF/lib/micrometer-commons-1.17.2.jar",
+      "BOOT-INF/lib/micrometer-core-1.17.2.jar",
+      "BOOT-INF/lib/micrometer-jakarta9-1.17.2.jar",
+      "BOOT-INF/lib/micrometer-observation-1.17.2.jar",
+      "BOOT-INF/lib/mybatis-3.5.19.jar",
+      "BOOT-INF/lib/mybatis-plus-3.5.18.jar",
+      "BOOT-INF/lib/mybatis-plus-annotation-3.5.18.jar",
+      "BOOT-INF/lib/mybatis-plus-core-3.5.18.jar",
+      "BOOT-INF/lib/mybatis-plus-extension-3.5.18.jar",
+      "BOOT-INF/lib/mybatis-plus-jsqlparser-3.5.18.jar",
+      "BOOT-INF/lib/mybatis-plus-jsqlparser-common-3.5.18.jar",
+      "BOOT-INF/lib/mybatis-plus-spring-3.5.18.jar",
+      "BOOT-INF/lib/mybatis-plus-spring-boot-autoconfigure-3.5.18.jar",
+      "BOOT-INF/lib/mybatis-plus-spring-boot-native-image-3.5.18.jar",
+      "BOOT-INF/lib/mybatis-plus-spring-boot4-starter-3.5.18.jar",
+      "BOOT-INF/lib/mybatis-spring-4.1.0.jar",
+      "BOOT-INF/lib/netty-buffer-4.2.19.Final.jar",
+      "BOOT-INF/lib/netty-codec-base-4.2.19.Final.jar",
+      "BOOT-INF/lib/netty-codec-dns-4.2.19.Final.jar",
+      "BOOT-INF/lib/netty-common-4.2.19.Final.jar",
+      "BOOT-INF/lib/netty-handler-4.2.19.Final.jar",
+      "BOOT-INF/lib/netty-resolver-4.2.19.Final.jar",
+      "BOOT-INF/lib/netty-resolver-dns-4.2.19.Final.jar",
+      "BOOT-INF/lib/netty-transport-4.2.19.Final.jar",
+      "BOOT-INF/lib/netty-transport-native-unix-common-4.2.19.Final.jar",
+      "BOOT-INF/lib/postgresql-42.7.14.jar",
+      "BOOT-INF/lib/reactive-streams-1.0.4.jar",
+      "BOOT-INF/lib/reactor-core-3.8.8.jar",
+      "BOOT-INF/lib/redis-authx-core-0.1.1-beta2.jar",
+      "BOOT-INF/lib/slf4j-api-2.0.20.jar",
+      "BOOT-INF/lib/snakeyaml-2.6.jar",
+      "BOOT-INF/lib/spring-aop-7.0.10.jar",
+      "BOOT-INF/lib/spring-beans-7.0.10.jar",
+      "BOOT-INF/lib/spring-boot-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-actuator-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-actuator-autoconfigure-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-autoconfigure-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-cache-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-data-commons-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-data-redis-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-flyway-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-health-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-http-converter-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-jackson-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-jarmode-tools-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-jdbc-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-micrometer-metrics-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-micrometer-observation-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-netty-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-persistence-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-security-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-servlet-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-sql-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-tomcat-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-transaction-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-validation-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-web-server-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-webmvc-4.1.2.jar",
+      "BOOT-INF/lib/spring-context-7.0.10.jar",
+      "BOOT-INF/lib/spring-context-support-7.0.10.jar",
+      "BOOT-INF/lib/spring-core-7.0.10.jar",
+      "BOOT-INF/lib/spring-data-commons-4.1.2.jar",
+      "BOOT-INF/lib/spring-data-keyvalue-4.1.2.jar",
+      "BOOT-INF/lib/spring-data-redis-4.1.2.jar",
+      "BOOT-INF/lib/spring-expression-7.0.10.jar",
+      "BOOT-INF/lib/spring-jdbc-7.0.10.jar",
+      "BOOT-INF/lib/spring-messaging-7.0.10.jar",
+      "BOOT-INF/lib/spring-oxm-7.0.10.jar",
+      "BOOT-INF/lib/spring-security-config-7.1.2.jar",
+      "BOOT-INF/lib/spring-security-core-7.1.2.jar",
+      "BOOT-INF/lib/spring-security-crypto-7.1.2.jar",
+      "BOOT-INF/lib/spring-security-web-7.1.2.jar",
+      "BOOT-INF/lib/spring-tx-7.0.10.jar",
+      "BOOT-INF/lib/spring-web-7.0.10.jar",
+      "BOOT-INF/lib/spring-webmvc-7.0.10.jar",
+      "BOOT-INF/lib/springdoc-openapi-starter-common-3.2.0.jar",
+      "BOOT-INF/lib/springdoc-openapi-starter-webmvc-api-3.2.0.jar",
+      "BOOT-INF/lib/springdoc-openapi-starter-webmvc-ui-3.2.0.jar",
+      "BOOT-INF/lib/swagger-annotations-jakarta-2.2.55.jar",
+      "BOOT-INF/lib/swagger-core-jakarta-2.2.55.jar",
+      "BOOT-INF/lib/swagger-models-jakarta-2.2.55.jar",
+      "BOOT-INF/lib/swagger-ui-5.34.0.jar",
+      "BOOT-INF/lib/tomcat-embed-core-11.0.27.jar",
+      "BOOT-INF/lib/tomcat-embed-el-11.0.27.jar",
+      "BOOT-INF/lib/tomcat-embed-websocket-11.0.27.jar",
+      "BOOT-INF/lib/webjars-locator-lite-1.1.5.jar"
+    ],
+    "freshBackendMavenReceipt": "target/verification/personal-tools-independent-r5-20261029-91e7ad/maven-verify.json",
+    "originalR4LimitationsRetained": true,
+    "currentReference": "target/verification/personal-tools-independent-r5-20261029-91e7ad/dependencies-current.json",
+    "finalReference": "target/verification/personal-tools-independent-r5-20261029-91e7ad/dependencies-final.json"
+  },
+  "snapshot": {
+    "baseline": "target/verification/personal-tools-independent-r5-20261029-91e7ad/product-input-current.json",
+    "final": "target/verification/personal-tools-independent-r5-20261029-91e7ad/product-input-final.json",
+    "baselineDigest": "9f36b6bbebafefdacc2163784d17a784d32afbbf03a1ffd262142a053901e815",
+    "finalDigest": "9f36b6bbebafefdacc2163784d17a784d32afbbf03a1ffd262142a053901e815",
+    "stable": true,
+    "actualChanges": [],
+    "git": {
+      "evidence": "git-final.json",
+      "head": null,
+      "headExitCode": 128,
+      "statusExitCode": 0
+    },
+    "revision": null,
+    "revisionCaveat": "No valid HEAD observed by R4/R5 git snapshots; this is a per-file content-bound dirty/untracked working tree, not a committed/clean revision."
+  },
+  "backend": {
+    "receipt": "target/verification/personal-tools-independent-r5-20261029-91e7ad/backend.json",
+    "command": [
+      "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+      "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\.vscode\\backend-maven.mjs",
+      "verify"
+    ],
+    "expandedChildCommand": [
+      "cmd.exe",
+      "/d",
+      "/c",
+      "C:\\Users\\qxz5kb5\\AppData\\Local\\deep-lazy-bingo\\tools\\apache-maven-3.10.0\\bin\\mvn.cmd",
+      "--batch-mode",
+      "--no-transfer-progress",
+      "--settings",
+      ".mvn/network.xml",
+      "verify"
+    ],
+    "cwd": "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-backend",
+    "startedAt": "2026-10-29T08:25:44.527Z",
+    "finishedAt": "2026-10-29T08:27:29.536Z",
+    "trueExitCode": 0,
+    "mavenExitCode": 0,
+    "tests": {
+      "tests": 35,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "sourceStable": true,
+    "productInputsStable": true,
+    "output": "target/verification/personal-tools-independent-r5-20261029-91e7ad/backend.log",
+    "suites": [
+      {
+        "path": "deep-lazy-bingo-backend/target/surefire-reports/com.deeplazy.bingo.BingoBackendApplicationTests.txt",
+        "sha256": "0dcd9d9b475a7f17b8007cd79f8566252ee068dfb53c4423006533556294a3a2",
+        "fresh": true,
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "deep-lazy-bingo-backend/target/surefire-reports/com.deeplazy.bingo.config.redis.RedisNamespaceTest.txt",
+        "sha256": "60217cdccd7e81cd98f2f6b3a7ad9a140e489fefb16b8d5a1c0e804c022f252b",
+        "fresh": true,
+        "tests": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "deep-lazy-bingo-backend/target/surefire-reports/com.deeplazy.bingo.FrameworkSecurityTest.txt",
+        "sha256": "c03111c6679c96518bc7b9b21d9488249fa1f1e3eca569420d1d58369d83e1a4",
+        "fresh": true,
+        "tests": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "deep-lazy-bingo-backend/target/surefire-reports/com.deeplazy.bingo.SmokeProfileTests.txt",
+        "sha256": "935c315080a86c0d631debf82623ede6da6ca370424abb9f75bf34c2f7205f2b",
+        "fresh": true,
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ],
+    "sourcePerFileHashes": "target/verification/personal-tools-independent-r5-20261029-91e7ad/maven-verify.json"
+  },
+  "jar": {
+    "phase": "jar",
+    "listing": {
+      "command": [
+        "C:\\Users\\qxz5kb5\\.vscode\\extensions\\redhat.java-1.58.0-win32-x64\\jre\\25.0.4.1-win32-x86_64\\bin\\jar.exe",
+        "tf",
+        "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-backend\\target\\deep-lazy-bingo-backend-0.1.0.jar"
+      ],
+      "cwd": "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-backend",
+      "startedAt": "2026-10-29T08:28:15.683Z",
+      "finishedAt": "2026-10-29T08:28:15.970Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    },
+    "extraction": {
+      "command": [
+        "C:\\Users\\qxz5kb5\\.vscode\\extensions\\redhat.java-1.58.0-win32-x64\\jre\\25.0.4.1-win32-x86_64\\bin\\jar.exe",
+        "xf",
+        "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-backend\\target\\deep-lazy-bingo-backend-0.1.0.jar",
+        "META-INF/MANIFEST.MF",
+        "BOOT-INF/classes/com/deeplazy/bingo/BingoBackendApplication.class",
+        "BOOT-INF/classes/com/deeplazy/bingo/config/PersistenceConfiguration.class",
+        "BOOT-INF/classes/com/deeplazy/bingo/config/SecurityConfiguration.class",
+        "BOOT-INF/classes/com/deeplazy/bingo/config/redis/BingoRedisKeySerializer.class",
+        "BOOT-INF/classes/com/deeplazy/bingo/config/redis/RedisInfrastructureConfiguration.class",
+        "BOOT-INF/classes/com/deeplazy/bingo/config/redis/RedisKeyNames.class",
+        "BOOT-INF/classes/com/deeplazy/bingo/controller/package-info.class",
+        "BOOT-INF/classes/com/deeplazy/bingo/entity/package-info.class",
+        "BOOT-INF/classes/com/deeplazy/bingo/mapper/package-info.class",
+        "BOOT-INF/classes/com/deeplazy/bingo/service/package-info.class",
+        "BOOT-INF/classes/com/deeplazy/bingo/web/RequestIdFilter.class",
+        "BOOT-INF/classes/com/deeplazy/bingo/web/RestExceptionHandler.class"
+      ],
+      "cwd": "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\target\\verification\\personal-tools-independent-r5-20261029-91e7ad\\jar-inspection",
+      "startedAt": "2026-10-29T08:28:15.971Z",
+      "finishedAt": "2026-10-29T08:28:16.288Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    "artifact": {
+      "path": "deep-lazy-bingo-backend/target/deep-lazy-bingo-backend-0.1.0.jar",
+      "sha256": "b0f0aedeace3a7b3849b1f732d41b0b824ccf581e2e7b3a2c4e301853f03cf97",
+      "bytes": 54800957,
+      "mtime": "1980-02-01T00:00:00.000Z",
+      "matchesFreshMavenArtifact": true
+    },
+    "manifest": "Manifest-Version: 1.0\r\nCreated-By: Maven JAR Plugin 3.5.1\r\nJava-Version: 21\r\nBuild-Jdk-Spec: 25\r\nImplementation-Title: BingoBackend\r\nImplementation-Version: 0.1.0\r\nMain-Class: org.springframework.boot.loader.launch.JarLauncher\r\nStart-Class: com.deeplazy.bingo.BingoBackendApplication\r\nSpring-Boot-Version: 4.1.2\r\nSpring-Boot-Classes: BOOT-INF/classes/\r\nSpring-Boot-Lib: BOOT-INF/lib/\r\nSpring-Boot-Classpath-Index: BOOT-INF/classpath.idx\r\nSpring-Boot-Layers-Index: BOOT-INF/layers.idx\r\n\r\n",
+    "startClasses": [
+      "com.deeplazy.bingo.BingoBackendApplication"
+    ],
+    "classes": [
+      {
+        "path": "BOOT-INF/classes/com/deeplazy/bingo/BingoBackendApplication.class",
+        "bytes": 761,
+        "sha256": "0a2f7bb893076afa33a3c1554d7dbf6d3a00fd25fc736cd59d98f4b939ed09a0",
+        "magic": "cafebabe",
+        "major": 65
+      },
+      {
+        "path": "BOOT-INF/classes/com/deeplazy/bingo/config/PersistenceConfiguration.class",
+        "bytes": 1464,
+        "sha256": "fdab1da2809da8be07bde2087ed03d05787a9a739e77a6ed73270b55f71616e8",
+        "magic": "cafebabe",
+        "major": 65
+      },
+      {
+        "path": "BOOT-INF/classes/com/deeplazy/bingo/config/SecurityConfiguration.class",
+        "bytes": 9579,
+        "sha256": "0395b2e0f099d11ad58eddc971683102c42adee556075cc440078ce7ee691e8a",
+        "magic": "cafebabe",
+        "major": 65
+      },
+      {
+        "path": "BOOT-INF/classes/com/deeplazy/bingo/config/redis/BingoRedisKeySerializer.class",
+        "bytes": 2364,
+        "sha256": "c0453b92bfbfd47ac301d7ed726ea06d12fcf19f4c7f531a8e23950b58e2b213",
+        "magic": "cafebabe",
+        "major": 65
+      },
+      {
+        "path": "BOOT-INF/classes/com/deeplazy/bingo/config/redis/RedisInfrastructureConfiguration.class",
+        "bytes": 6179,
+        "sha256": "f1c7bb016fce31b6486f0ef693acf23e47bf0a79447759b431304939a0c06d10",
+        "magic": "cafebabe",
+        "major": 65
+      },
+      {
+        "path": "BOOT-INF/classes/com/deeplazy/bingo/config/redis/RedisKeyNames.class",
+        "bytes": 2520,
+        "sha256": "6ad7d0de3d68ea84fc1fd508103c2ea7937a72870d0401ad0a3b434def3ab6c7",
+        "magic": "cafebabe",
+        "major": 65
+      },
+      {
+        "path": "BOOT-INF/classes/com/deeplazy/bingo/controller/package-info.class",
+        "bytes": 135,
+        "sha256": "985ee4e149e45f32a08ac640271d2618f501535e74d95f2a1be32c75b27a6bd1",
+        "magic": "cafebabe",
+        "major": 65
+      },
+      {
+        "path": "BOOT-INF/classes/com/deeplazy/bingo/entity/package-info.class",
+        "bytes": 131,
+        "sha256": "bc26271517bfa732e8046ef248a2ea66922cc1a65195ac837b197ff3ed90a3a5",
+        "magic": "cafebabe",
+        "major": 65
+      },
+      {
+        "path": "BOOT-INF/classes/com/deeplazy/bingo/mapper/package-info.class",
+        "bytes": 131,
+        "sha256": "e36b4cb166d0cf4ccebf9f64df000c5804cadc71d0fa15f05a905d037da6aabe",
+        "magic": "cafebabe",
+        "major": 65
+      },
+      {
+        "path": "BOOT-INF/classes/com/deeplazy/bingo/service/package-info.class",
+        "bytes": 132,
+        "sha256": "dc0b1275a6b3fc0255c64f94f61f3f0c71e9d6aa6d473902ef9b9865bbe60ada",
+        "magic": "cafebabe",
+        "major": 65
+      },
+      {
+        "path": "BOOT-INF/classes/com/deeplazy/bingo/web/RequestIdFilter.class",
+        "bytes": 2242,
+        "sha256": "cbbdbf388bb6534e26449a2503b55ae926d5f2d0011f10dfb73a96dcf11586c6",
+        "magic": "cafebabe",
+        "major": 65
+      },
+      {
+        "path": "BOOT-INF/classes/com/deeplazy/bingo/web/RestExceptionHandler.class",
+        "bytes": 6223,
+        "sha256": "19c335b86575d71e8a81a00121b44bb230c8812ff0130aeabeffbe477827518f",
+        "magic": "cafebabe",
+        "major": 65
+      }
+    ],
+    "layers": [
+      {
+        "layer": "controller",
+        "path": "BOOT-INF/classes/com/deeplazy/bingo/controller/package-info.class",
+        "present": true
+      },
+      {
+        "layer": "service",
+        "path": "BOOT-INF/classes/com/deeplazy/bingo/service/package-info.class",
+        "present": true
+      },
+      {
+        "layer": "entity",
+        "path": "BOOT-INF/classes/com/deeplazy/bingo/entity/package-info.class",
+        "present": true
+      },
+      {
+        "layer": "mapper",
+        "path": "BOOT-INF/classes/com/deeplazy/bingo/mapper/package-info.class",
+        "present": true
+      }
+    ],
+    "oldClasses": [],
+    "otherApplicationClasses": [],
+    "noFakeBusinessClasses": true,
+    "classpath": [
+      "BOOT-INF/lib/HdrHistogram-2.2.2.jar",
+      "BOOT-INF/lib/HikariCP-7.0.2.jar",
+      "BOOT-INF/lib/checker-qual-3.55.1.jar",
+      "BOOT-INF/lib/classmate-1.7.3.jar",
+      "BOOT-INF/lib/commons-lang3-3.20.0.jar",
+      "BOOT-INF/lib/commons-logging-1.3.6.jar",
+      "BOOT-INF/lib/flyway-core-12.4.0.jar",
+      "BOOT-INF/lib/flyway-database-postgresql-12.4.0.jar",
+      "BOOT-INF/lib/hibernate-validator-9.1.5.Final.jar",
+      "BOOT-INF/lib/jackson-annotations-2.21.jar",
+      "BOOT-INF/lib/jackson-core-2.21.7.jar",
+      "BOOT-INF/lib/jackson-core-3.1.7.jar",
+      "BOOT-INF/lib/jackson-databind-2.21.7.jar",
+      "BOOT-INF/lib/jackson-databind-3.1.7.jar",
+      "BOOT-INF/lib/jackson-dataformat-yaml-2.21.7.jar",
+      "BOOT-INF/lib/jackson-datatype-jsr310-2.21.7.jar",
+      "BOOT-INF/lib/jakarta.activation-api-2.1.4.jar",
+      "BOOT-INF/lib/jakarta.annotation-api-3.0.0.jar",
+      "BOOT-INF/lib/jakarta.validation-api-3.1.1.jar",
+      "BOOT-INF/lib/jakarta.xml.bind-api-4.0.5.jar",
+      "BOOT-INF/lib/jboss-logging-3.6.3.Final.jar",
+      "BOOT-INF/lib/jspecify-1.0.1.jar",
+      "BOOT-INF/lib/jsqlparser-5.4.jar",
+      "BOOT-INF/lib/jul-to-slf4j-2.0.20.jar",
+      "BOOT-INF/lib/lettuce-core-7.5.2.RELEASE.jar",
+      "BOOT-INF/lib/log4j-api-2.25.5.jar",
+      "BOOT-INF/lib/log4j-to-slf4j-2.25.5.jar",
+      "BOOT-INF/lib/logback-classic-1.5.38.jar",
+      "BOOT-INF/lib/logback-core-1.5.38.jar",
+      "BOOT-INF/lib/micrometer-commons-1.17.2.jar",
+      "BOOT-INF/lib/micrometer-core-1.17.2.jar",
+      "BOOT-INF/lib/micrometer-jakarta9-1.17.2.jar",
+      "BOOT-INF/lib/micrometer-observation-1.17.2.jar",
+      "BOOT-INF/lib/mybatis-3.5.19.jar",
+      "BOOT-INF/lib/mybatis-plus-3.5.18.jar",
+      "BOOT-INF/lib/mybatis-plus-annotation-3.5.18.jar",
+      "BOOT-INF/lib/mybatis-plus-core-3.5.18.jar",
+      "BOOT-INF/lib/mybatis-plus-extension-3.5.18.jar",
+      "BOOT-INF/lib/mybatis-plus-jsqlparser-3.5.18.jar",
+      "BOOT-INF/lib/mybatis-plus-jsqlparser-common-3.5.18.jar",
+      "BOOT-INF/lib/mybatis-plus-spring-3.5.18.jar",
+      "BOOT-INF/lib/mybatis-plus-spring-boot-autoconfigure-3.5.18.jar",
+      "BOOT-INF/lib/mybatis-plus-spring-boot-native-image-3.5.18.jar",
+      "BOOT-INF/lib/mybatis-plus-spring-boot4-starter-3.5.18.jar",
+      "BOOT-INF/lib/mybatis-spring-4.1.0.jar",
+      "BOOT-INF/lib/netty-buffer-4.2.19.Final.jar",
+      "BOOT-INF/lib/netty-codec-base-4.2.19.Final.jar",
+      "BOOT-INF/lib/netty-codec-dns-4.2.19.Final.jar",
+      "BOOT-INF/lib/netty-common-4.2.19.Final.jar",
+      "BOOT-INF/lib/netty-handler-4.2.19.Final.jar",
+      "BOOT-INF/lib/netty-resolver-4.2.19.Final.jar",
+      "BOOT-INF/lib/netty-resolver-dns-4.2.19.Final.jar",
+      "BOOT-INF/lib/netty-transport-4.2.19.Final.jar",
+      "BOOT-INF/lib/netty-transport-native-unix-common-4.2.19.Final.jar",
+      "BOOT-INF/lib/postgresql-42.7.14.jar",
+      "BOOT-INF/lib/reactive-streams-1.0.4.jar",
+      "BOOT-INF/lib/reactor-core-3.8.8.jar",
+      "BOOT-INF/lib/redis-authx-core-0.1.1-beta2.jar",
+      "BOOT-INF/lib/slf4j-api-2.0.20.jar",
+      "BOOT-INF/lib/snakeyaml-2.6.jar",
+      "BOOT-INF/lib/spring-aop-7.0.10.jar",
+      "BOOT-INF/lib/spring-beans-7.0.10.jar",
+      "BOOT-INF/lib/spring-boot-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-actuator-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-actuator-autoconfigure-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-autoconfigure-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-cache-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-data-commons-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-data-redis-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-flyway-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-health-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-http-converter-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-jackson-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-jarmode-tools-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-jdbc-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-micrometer-metrics-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-micrometer-observation-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-netty-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-persistence-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-security-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-servlet-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-sql-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-tomcat-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-transaction-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-validation-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-web-server-4.1.2.jar",
+      "BOOT-INF/lib/spring-boot-webmvc-4.1.2.jar",
+      "BOOT-INF/lib/spring-context-7.0.10.jar",
+      "BOOT-INF/lib/spring-context-support-7.0.10.jar",
+      "BOOT-INF/lib/spring-core-7.0.10.jar",
+      "BOOT-INF/lib/spring-data-commons-4.1.2.jar",
+      "BOOT-INF/lib/spring-data-keyvalue-4.1.2.jar",
+      "BOOT-INF/lib/spring-data-redis-4.1.2.jar",
+      "BOOT-INF/lib/spring-expression-7.0.10.jar",
+      "BOOT-INF/lib/spring-jdbc-7.0.10.jar",
+      "BOOT-INF/lib/spring-messaging-7.0.10.jar",
+      "BOOT-INF/lib/spring-oxm-7.0.10.jar",
+      "BOOT-INF/lib/spring-security-config-7.1.2.jar",
+      "BOOT-INF/lib/spring-security-core-7.1.2.jar",
+      "BOOT-INF/lib/spring-security-crypto-7.1.2.jar",
+      "BOOT-INF/lib/spring-security-web-7.1.2.jar",
+      "BOOT-INF/lib/spring-tx-7.0.10.jar",
+      "BOOT-INF/lib/spring-web-7.0.10.jar",
+      "BOOT-INF/lib/spring-webmvc-7.0.10.jar",
+      "BOOT-INF/lib/springdoc-openapi-starter-common-3.2.0.jar",
+      "BOOT-INF/lib/springdoc-openapi-starter-webmvc-api-3.2.0.jar",
+      "BOOT-INF/lib/springdoc-openapi-starter-webmvc-ui-3.2.0.jar",
+      "BOOT-INF/lib/swagger-annotations-jakarta-2.2.55.jar",
+      "BOOT-INF/lib/swagger-core-jakarta-2.2.55.jar",
+      "BOOT-INF/lib/swagger-models-jakarta-2.2.55.jar",
+      "BOOT-INF/lib/swagger-ui-5.34.0.jar",
+      "BOOT-INF/lib/tomcat-embed-core-11.0.27.jar",
+      "BOOT-INF/lib/tomcat-embed-el-11.0.27.jar",
+      "BOOT-INF/lib/tomcat-embed-websocket-11.0.27.jar",
+      "BOOT-INF/lib/webjars-locator-lite-1.1.5.jar"
+    ],
+    "sourceFiles": [
+      {
+        "path": "deep-lazy-bingo-backend/src/main/java/com/deeplazy/bingo/BingoBackendApplication.java",
+        "bytes": 323,
+        "sha256": "d871005d7f3b17260d7df5dff4d3a1eaac860ef1d2abb7a5cada8bc21752e336",
+        "packageName": "com.deeplazy.bingo",
+        "physicalPathMatchesPackage": true,
+        "inNewRoot": true
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/main/java/com/deeplazy/bingo/config/PersistenceConfiguration.java",
+        "bytes": 1181,
+        "sha256": "48df35d0cb4e01771f9861095756fffb923c7bd9fdcf09261b82cf354cb030a3",
+        "packageName": "com.deeplazy.bingo.config",
+        "physicalPathMatchesPackage": true,
+        "inNewRoot": true
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/main/java/com/deeplazy/bingo/config/redis/BingoRedisKeySerializer.java",
+        "bytes": 1426,
+        "sha256": "33999c6d54ff70c64488ce492a21c5211fec45d1c994f2cd4de9b14c67385cf5",
+        "packageName": "com.deeplazy.bingo.config.redis",
+        "physicalPathMatchesPackage": true,
+        "inNewRoot": true
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/main/java/com/deeplazy/bingo/config/redis/RedisInfrastructureConfiguration.java",
+        "bytes": 3449,
+        "sha256": "b144431eaece99c05dd87f70abf8e83f8e27137acee2ce53dfcbb49c1e8767d5",
+        "packageName": "com.deeplazy.bingo.config.redis",
+        "physicalPathMatchesPackage": true,
+        "inNewRoot": true
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/main/java/com/deeplazy/bingo/config/redis/RedisKeyNames.java",
+        "bytes": 1420,
+        "sha256": "b184902e62896b41f69aa8aa95cbf67c26871134b2c9f628c34266a9ade8b657",
+        "packageName": "com.deeplazy.bingo.config.redis",
+        "physicalPathMatchesPackage": true,
+        "inNewRoot": true
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/main/java/com/deeplazy/bingo/config/SecurityConfiguration.java",
+        "bytes": 2943,
+        "sha256": "060ed6a791f5a8b29a0909ccc6cb84b9ee2181b00603b170cda70f9e6e7d355a",
+        "packageName": "com.deeplazy.bingo.config",
+        "physicalPathMatchesPackage": true,
+        "inNewRoot": true
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/main/java/com/deeplazy/bingo/controller/package-info.java",
+        "bytes": 38,
+        "sha256": "95ea61f1009ba3734d17f7967359fe5624884e8e05f587270f7db3da85ae1838",
+        "packageName": "com.deeplazy.bingo.controller",
+        "physicalPathMatchesPackage": true,
+        "inNewRoot": true
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/main/java/com/deeplazy/bingo/entity/package-info.java",
+        "bytes": 34,
+        "sha256": "654d9a7946e25fb7a78d35ffe253a1d625e6d688408e0c070561b3201ff3c1ef",
+        "packageName": "com.deeplazy.bingo.entity",
+        "physicalPathMatchesPackage": true,
+        "inNewRoot": true
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/main/java/com/deeplazy/bingo/mapper/package-info.java",
+        "bytes": 34,
+        "sha256": "fc621852b8a87346e8a8c4fe2de993eb37fb34bfeaf8045f0229ad100de46f50",
+        "packageName": "com.deeplazy.bingo.mapper",
+        "physicalPathMatchesPackage": true,
+        "inNewRoot": true
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/main/java/com/deeplazy/bingo/service/package-info.java",
+        "bytes": 35,
+        "sha256": "acd026f945f093c706176be4f5d623a3b27f89af3c9126d4b0466baf8254b377",
+        "packageName": "com.deeplazy.bingo.service",
+        "physicalPathMatchesPackage": true,
+        "inNewRoot": true
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/main/java/com/deeplazy/bingo/web/RequestIdFilter.java",
+        "bytes": 1359,
+        "sha256": "a32498939893f43e1510bca5bdf6d98464e6e6866ab1998483b9f036b8286128",
+        "packageName": "com.deeplazy.bingo.web",
+        "physicalPathMatchesPackage": true,
+        "inNewRoot": true
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/main/java/com/deeplazy/bingo/web/RestExceptionHandler.java",
+        "bytes": 2905,
+        "sha256": "b925d5ea563f532d5ded7cfd80f392200a6c111f03418289eb52e3725f1f598a",
+        "packageName": "com.deeplazy.bingo.web",
+        "physicalPathMatchesPackage": true,
+        "inNewRoot": true
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/test/java/com/deeplazy/bingo/BingoBackendApplicationTests.java",
+        "bytes": 2722,
+        "sha256": "2fb6a5b4df03e3b1224c788fb336874f5429629721911380839574a317fad473",
+        "packageName": "com.deeplazy.bingo",
+        "physicalPathMatchesPackage": true,
+        "inNewRoot": true
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/test/java/com/deeplazy/bingo/config/redis/RedisNamespaceTest.java",
+        "bytes": 12774,
+        "sha256": "ac1c3d154a826a579ae596afb06d2f1961e9c153552d4f471a6f95f84e0b2868",
+        "packageName": "com.deeplazy.bingo.config.redis",
+        "physicalPathMatchesPackage": true,
+        "inNewRoot": true
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/test/java/com/deeplazy/bingo/FrameworkSecurityTest.java",
+        "bytes": 8980,
+        "sha256": "0c24700543ce7c1dd0f3f21b7925bfc13684174fb0ec22e0b910bac21684d40a",
+        "packageName": "com.deeplazy.bingo",
+        "physicalPathMatchesPackage": true,
+        "inNewRoot": true
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/test/java/com/deeplazy/bingo/SmokeProfileTests.java",
+        "bytes": 4458,
+        "sha256": "5a17c9bb79bc72c3a8b778d319036eab037763793acbb65a8c01f1d2853df3d1",
+        "packageName": "com.deeplazy.bingo",
+        "physicalPathMatchesPackage": true,
+        "inNewRoot": true
+      }
+    ],
+    "emptyLegacyDirectories": [
+      {
+        "path": "deep-lazy-bingo-backend/src/main/java/com/bingo",
+        "entries": [
+          "backend"
+        ]
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/main/java/com/bingo/backend",
+        "entries": [
+          "config",
+          "web"
+        ]
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/main/java/com/bingo/backend/config",
+        "entries": [
+          "redis"
+        ]
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/main/java/com/bingo/backend/config/redis",
+        "entries": []
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/main/java/com/bingo/backend/web",
+        "entries": []
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/test/java/com/bingo",
+        "entries": [
+          "backend"
+        ]
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/test/java/com/bingo/backend",
+        "entries": [
+          "config"
+        ]
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/test/java/com/bingo/backend/config",
+        "entries": [
+          "redis"
+        ]
+      },
+      {
+        "path": "deep-lazy-bingo-backend/src/test/java/com/bingo/backend/config/redis",
+        "entries": []
+      }
+    ],
+    "legacyDirectoryInterpretation": "Empty old directories are harmless, not copied classes. No user directories removed.",
+    "productInputDigestAfter": "9f36b6bbebafefdacc2163784d17a784d32afbbf03a1ffd262142a053901e815",
+    "sourceStable": true,
+    "accepted": true,
+    "freshness": {
+      "initialVerifierAccepted": false,
+      "initialCheckReference": "target/verification/personal-tools-independent-r5-20261029-91e7ad/jar-initial-check.json",
+      "issue": "Verifier-only assumption that archive filesystem mtime must be later than execution start was false; archive has normalized 1980-02-01 timestamp.",
+      "rule": "Actual fresh successful Maven invocation with observed build/repackage/replacement log and matching post-build helper SHA, not normalized archive mtime.",
+      "freshExecution": true,
+      "packagingObserved": true,
+      "packagingLines": [
+        "[INFO] Building jar: C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-backend\\target\\deep-lazy-bingo-backend-0.1.0.jar",
+        "[INFO] --- spring-boot:4.1.2:repackage (repackage) @ deep-lazy-bingo-backend ---",
+        "[INFO] Replacing main artifact C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-backend\\target\\deep-lazy-bingo-backend-0.1.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.",
+        "[INFO] The original artifact has been renamed to C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-backend\\target\\deep-lazy-bingo-backend-0.1.0.jar.original",
+        "[INFO] BUILD SUCCESS"
+      ],
+      "sameArtifact": true,
+      "inputsStillEquivalent": true,
+      "noRuntimeCommandFailure": true,
+      "noTestOrJarCommandRerun": true,
+      "productEdits": false
+    }
+  },
+  "healthIsolation": {
+    "protectedData": [
+      {
+        "path": "deep-lazy-bingo-frontend/public/health/catalog.json",
+        "beforeSha256": "082e4a912285dab64118a45b29b30ced5e16da8dc2d0fa56e52b7c812a2366eb",
+        "afterSha256": "082e4a912285dab64118a45b29b30ced5e16da8dc2d0fa56e52b7c812a2366eb",
+        "beforeBytes": 29666,
+        "afterBytes": 29666,
+        "byteIdentityStable": true
+      },
+      {
+        "path": "deep-lazy-bingo-frontend/data/health/audit.jsonl",
+        "beforeSha256": "ae176091e2f0d34e81ced29fd491b49a4c89e97e3690cb98059e8eec9fe8d905",
+        "afterSha256": "ae176091e2f0d34e81ced29fd491b49a4c89e97e3690cb98059e8eec9fe8d905",
+        "beforeBytes": 16138,
+        "afterBytes": 16138,
+        "byteIdentityStable": true
+      }
+    ],
+    "observedPrivateCliReceipt": {
+      "receipt": "target/verification/personal-tools-independent-r4-20261029-b62c91/health-isolated-noop-check.json",
+      "checkedAt": "2026-10-29T08:07:38.022Z",
+      "uniqueFreeImages": 16,
+      "commands": [
+        {
+          "command": [
+            "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend\\node_modules\\tsx\\dist\\cli.mjs",
+            "C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\bingo-health-source-test-IwSj2i\\scripts\\health-sync.ts",
+            "--free"
+          ],
+          "exitCode": 0,
+          "stdout": "free: unchanged pinned commit f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5; verified local image hashes\nfree: success; count=8; new images=0; bytes=0\nEvidence: C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\bingo-health-source-test-IwSj2i\\data\\health\\runs\\2026-10-29T08-07-35-994Z-d3641f10.json; exit=0\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "C:\\QXZ5KB5\\CIH-Software\\Environment\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\QXZ5KB5\\CIH-Software\\Code\\Ai\\deep-lazy-bingo\\deep-lazy-bingo-frontend\\node_modules\\tsx\\dist\\cli.mjs",
+            "C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\bingo-health-source-test-IwSj2i\\scripts\\health-sync.ts",
+            "--free",
+            "--check"
+          ],
+          "exitCode": 0,
+          "stdout": "free: skipped; weekly checkpoint not due\nEvidence: C:\\Users\\qxz5kb5\\AppData\\Local\\Temp\\bingo-health-source-test-IwSj2i\\data\\health\\runs\\2026-10-29T08-07-37-913Z-92125d4a.json; exit=0\n",
+          "stderr": ""
+        }
+      ],
+      "allCommandsUsePrivateFixture": true,
+      "sourceFixtureCleanup": "Reviewed test context.after removes only its owned temporary fixture."
+    },
+    "noRestoreOrCatalogAuditRewritePerformed": true,
+    "independentFullHealthExecution": {
+      "tests": 136,
+      "pass": 136,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "parentFocused14Pass": "Developer self-test only, not counted as this independent run.",
+    "noNewHealthOrLiveCatalogExecutionInR5": true,
+    "protectedDataCurrentlyStable": [
+      {
+        "path": "deep-lazy-bingo-frontend/public/health/catalog.json",
+        "beforeSha256": "082e4a912285dab64118a45b29b30ced5e16da8dc2d0fa56e52b7c812a2366eb",
+        "afterSha256": "082e4a912285dab64118a45b29b30ced5e16da8dc2d0fa56e52b7c812a2366eb",
+        "beforeBytes": 29666,
+        "afterBytes": 29666,
+        "byteIdentityStable": true,
+        "currentSha256": "082e4a912285dab64118a45b29b30ced5e16da8dc2d0fa56e52b7c812a2366eb",
+        "matchesR4": true
+      },
+      {
+        "path": "deep-lazy-bingo-frontend/data/health/audit.jsonl",
+        "beforeSha256": "ae176091e2f0d34e81ced29fd491b49a4c89e97e3690cb98059e8eec9fe8d905",
+        "afterSha256": "ae176091e2f0d34e81ced29fd491b49a4c89e97e3690cb98059e8eec9fe8d905",
+        "beforeBytes": 16138,
+        "afterBytes": 16138,
+        "byteIdentityStable": true,
+        "currentSha256": "ae176091e2f0d34e81ced29fd491b49a4c89e97e3690cb98059e8eec9fe8d905",
+        "matchesR4": true
+      }
+    ]
+  },
+  "acceptanceCoverage": [
+    {
+      "id": "PT-01",
+      "status": "BLOCKED_POLICY_PROPERTIES_REMAIN",
+      "evidence": [
+        "deep-lazy-bingo-backend/src/main/resources/application.properties",
+        "deep-lazy-bingo-backend/src/main/resources/application-smoke.properties",
+        "deep-lazy-bingo-backend/src/test/resources/application-test.properties"
+      ],
+      "falsifiableGap": "Filename inspection confirms the three properties files remain. No YAML migration/equivalence test can pass against nonexistent replacement YAML. Prior policy refusal is parent-reported history, not a new refusal or a bypass attempt."
+    },
+    {
+      "id": "PT-02",
+      "status": "PARTIAL_UNIT_TESTED_BROWSER_UNVERIFIED",
+      "evidence": [
+        "deep-lazy-bingo-frontend/scripts/personal-tools.test.ts",
+        "target/verification/personal-tools-independent-r4-20261029-b62c91/priority.log"
+      ],
+      "observed": "Priority18 includes membership renewal/history/reminder preservation and atomic overlap rejection, calendar clamp and integer money. Parent partial membership browser observation is not independent evidence here.",
+      "falsifiableGap": "No independent create/edit/archive, expiry filter, reminder destination edge cases or refresh browser execution was run; browser session/viewport artifacts are absent."
+    },
+    {
+      "id": "PT-03",
+      "status": "UNMET_REAL_EMAIL_UNCONFIGURED",
+      "evidence": [
+        "deep-lazy-bingo-frontend/src/personal-tools/membership.ts"
+      ],
+      "observed": "saveMembership adds only period-keyed email state due-unsent/not-configured. Date tests do not establish sending.",
+      "falsifiableGap": "No provider receipt, SMTP credentials/policy or closed-browser persistent scheduler is configured/tested. No real email/WeChat send was authorized or performed; optional WeChat remains unavailable."
+    },
+    {
+      "id": "PT-04",
+      "status": "NOT_IMPLEMENTED_DISABLED",
+      "evidence": [
+        "deep-lazy-bingo-frontend/src/views/personal-tools/vault.vue",
+        "deep-lazy-bingo-frontend/scripts/personal-tools.test.ts"
+      ],
+      "falsifiableGap": "Vault view contains only ModuleShell plus warning ElResult, not an engine. The reviewed seven personal-tools tests contain no unlock/lock, encryption, safe reveal/copy, interoperable KDBX or backup/restore test. A disabled page does not meet the vault AC."
+    },
+    {
+      "id": "PT-05",
+      "status": "PARTIAL_SOURCE_ONLY_MARKDOWN_BROWSER_GAPS",
+      "evidence": [
+        "deep-lazy-bingo-frontend/src/views/personal-tools/notes.vue",
+        "deep-lazy-bingo-frontend/scripts/personal-tools.test.ts"
+      ],
+      "observed": "Priority tests cover note schema bounds, stale revisions, attachment ownership and transactional failure/unsafe attachment rejection.",
+      "falsifiableGap": "Markdown branch is ElInput textarea with no rendered Markdown preview. No independent real-browser richtext sanitizer/paste/image decoding, attachment refresh, search/archive/import/export or dirty/error navigation workflow artifacts exist."
+    },
+    {
+      "id": "PT-06",
+      "status": "PARTIAL_ROUTE_TESTS_NO_MOBILE_BROWSER",
+      "evidence": [
+        "deep-lazy-bingo-frontend/scripts/family-shell.test.ts",
+        "target/verification/personal-tools-independent-r4-20261029-b62c91/priority.log"
+      ],
+      "observed": "Eleven family-shell tests exercise 8 groups, 31 leaves, three personal routes, whitelist/ownership and preview/backend guard. Build outcome is only the actual frontend gate recorded above.",
+      "falsifiableGap": "No 390px/768px/1440px independent browser workflow, overlap, icon rendering or keyboard/layout evidence was collected. Route tests and build cannot establish mobile usability."
+    },
+    {
+      "id": "PT-07",
+      "status": "VERIFICATION_PORTION_PASS_BROWSER_ACCEPTANCE_INCOMPLETE",
+      "evidence": [
+        "target/verification/personal-tools-independent-r4-20261029-b62c91/priority.json",
+        "target/verification/personal-tools-independent-r4-20261029-b62c91/redis.json",
+        "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend.json",
+        "target/verification/personal-tools-independent-r5-20261029-91e7ad/backend.json",
+        "target/verification/personal-tools-independent-r5-20261029-91e7ad/jar.json",
+        "target/verification/personal-tools-independent-r5-20261029-91e7ad/equivalence.json"
+      ],
+      "observed": "R4 independent priority18, Redis12, frontend136 and the six original frontend gates are referenced at their ORIGINAL execution timestamps/commands. R5 only reconciles the five generated receipt outputs after input equivalence, then freshly executes original backend verify and inspects its new JAR. Developer self-tests remain separate.",
+      "falsifiableGap": "Independent desktop/mobile browser workflows were not executed. No browser artifacts establish all PT-02/PT-05/PT-06 behavior; full PT-07 is not PASS. R4 collector exit1/contract violation remains recorded; no retrospective rewrite."
+    },
+    {
+      "id": "PT-08",
+      "status": "PASS_BACKEND35_FRESH_JAR_PHYSICAL_PACKAGE_CONTRACT",
+      "evidence": [
+        "deep-lazy-bingo-backend/src/test/java/com/deeplazy/bingo/BingoBackendApplicationTests.java",
+        "target/verification/personal-tools-independent-r5-20261029-91e7ad/backend.json",
+        "target/verification/personal-tools-independent-r5-20261029-91e7ad/jar.json"
+      ],
+      "observed": "Fresh original verify passed35 with zero failures/errors/skips; rootPackagePathsAndInfrastructureScanningAreConsistent executed. Fresh JAR SHA256 b0f0aedeace3a7b3849b1f732d41b0b824ccf581e2e7b3a2c4e301853f03cf97, Start-Class exactly com.deeplazy.bingo.BingoBackendApplication, four layer package-info.class entries, all 12 application classes major65; no old or fake layer classes. All16 physical main/test Java files match com/deeplazy/bingo declarations. Empty legacy directories are not copied classes and were not deleted.",
+      "falsifiableGap": null
+    }
+  ],
+  "originalEvidenceAnchors": [
+    {
+      "path": "doc/analysis/2026-10-29-personal-tools-independent-verification-r4.json",
+      "bytes": 66356,
+      "sha256": "e155b8942c35b61f4373d1b906734a5063cc292c4f20988ec27cdc8247b1443d"
+    },
+    {
+      "path": "doc/analysis/2026-10-29-personal-tools-request.md",
+      "bytes": 5206,
+      "sha256": "4db661407f0b5025facce7364bdcb871a4e89725547a901f5e37ba99a18cee55"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/collect.mjs",
+      "bytes": 13750,
+      "sha256": "aaac60cbe30d577c204cc44a90d6b162670ff1e4a4a197556fe63fcd7b4d72e1"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/preflight.json",
+      "bytes": 2665,
+      "sha256": "492ec15398bf4f596e3376da889f9c0a560e2b0374e5423b569c130e21da412d"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend-original-results.json",
+      "bytes": 20125,
+      "sha256": "26bb44c0bd08d6ec2b7c8242b8e47262dfd99c02fdb3c1df8b34c5d3d2e6e86e"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/priority-before.json",
+      "bytes": 578971,
+      "sha256": "365cb8cc1280c9588b79e6242f9809c17e10e10a0dbe6af65a178aa2a6f51a98"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/priority-after.json",
+      "bytes": 578971,
+      "sha256": "365cb8cc1280c9588b79e6242f9809c17e10e10a0dbe6af65a178aa2a6f51a98"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/redis-before.json",
+      "bytes": 578971,
+      "sha256": "365cb8cc1280c9588b79e6242f9809c17e10e10a0dbe6af65a178aa2a6f51a98"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/redis-after.json",
+      "bytes": 578971,
+      "sha256": "365cb8cc1280c9588b79e6242f9809c17e10e10a0dbe6af65a178aa2a6f51a98"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend-before.json",
+      "bytes": 578971,
+      "sha256": "365cb8cc1280c9588b79e6242f9809c17e10e10a0dbe6af65a178aa2a6f51a98"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend-after.json",
+      "bytes": 579901,
+      "sha256": "16b80e90dfa24bae47c66c644fefdbfd6eb527fbf61be366fb25d67f1f915e3b"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/priority.log",
+      "bytes": 1699,
+      "sha256": "cac0b9a89b4bcc04e78e6f46d969b9eeaa2a4457d6bb98be5395d68bb5161b49"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/priority.json",
+      "bytes": 1337,
+      "sha256": "b8c02fa16820fc16d2011cd79979eb2d284e26fe14c5bc1a7c6a66f2f831e548"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/priority-dependencies-before.json",
+      "bytes": 373487,
+      "sha256": "bd45613592459e249e99581ceca968635eb841d6da442bec471053024a0800e2"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/priority-dependencies-after.json",
+      "bytes": 373487,
+      "sha256": "bd45613592459e249e99581ceca968635eb841d6da442bec471053024a0800e2"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/redis.log",
+      "bytes": 5708,
+      "sha256": "8968ba763b2e960fdb74f81254699686a6d0a215dfcf1d354454542f3e59dab6"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/redis.json",
+      "bytes": 1167,
+      "sha256": "5c54c790f160e7b2d6c6ca42a74e1d5b63b4f967dbad1f9267785121a1f46755"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/redis-dependencies-before.json",
+      "bytes": 373487,
+      "sha256": "bd45613592459e249e99581ceca968635eb841d6da442bec471053024a0800e2"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/redis-dependencies-after.json",
+      "bytes": 373487,
+      "sha256": "bd45613592459e249e99581ceca968635eb841d6da442bec471053024a0800e2"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend.log",
+      "bytes": 2945,
+      "sha256": "4fc63d4539537e535a0c11b6b9431e5a6863adfca58f11f6a7a16fc4dfa1e6ab"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend.json",
+      "bytes": 10566,
+      "sha256": "1b27922f62a8ff5c2ce525a9e44d6d9f90b63ce3d34089a8e616536518ca2871"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend-dependencies-before.json",
+      "bytes": 373487,
+      "sha256": "bd45613592459e249e99581ceca968635eb841d6da442bec471053024a0800e2"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend-dependencies-after.json",
+      "bytes": 373487,
+      "sha256": "bd45613592459e249e99581ceca968635eb841d6da442bec471053024a0800e2"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend-test.log",
+      "bytes": 12933,
+      "sha256": "c3d939e5e84a203e4f9682e987eedfe8c46bc3df76b1960c715fa9b7f16544f1"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend-typecheck.log",
+      "bytes": 14,
+      "sha256": "492278b283e4549f2f28c9144c2ac4f00a8588c66f3e3f9ccfcbab2d597e601b"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend-build.log",
+      "bytes": 19090,
+      "sha256": "6f6823c7df2515ea523424ea5ebdedb85ad618713e99fc396acbce08f4d10863"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend-lint.log",
+      "bytes": 14,
+      "sha256": "492278b283e4549f2f28c9144c2ac4f00a8588c66f3e3f9ccfcbab2d597e601b"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend-style.log",
+      "bytes": 14,
+      "sha256": "492278b283e4549f2f28c9144c2ac4f00a8588c66f3e3f9ccfcbab2d597e601b"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r4-20261029-b62c91/frontend-format.log",
+      "bytes": 80,
+      "sha256": "f7f3350bfda270022aa3de2345d3a2254876548c4edcf2d620925b1ffbd701c0"
+    }
+  ],
+  "r5EvidencePerFileHashes": [
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/backend-after.json",
+      "bytes": 579391,
+      "sha256": "8bf3ddaa640200cf9f9216bd5159ed03782fe4f3d4df0d6b42d004ba05184697"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/backend-before.json",
+      "bytes": 579391,
+      "sha256": "8bf3ddaa640200cf9f9216bd5159ed03782fe4f3d4df0d6b42d004ba05184697"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/backend-dependencies-after.json",
+      "bytes": 373487,
+      "sha256": "bd45613592459e249e99581ceca968635eb841d6da442bec471053024a0800e2"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/backend-dependencies-before.json",
+      "bytes": 373487,
+      "sha256": "bd45613592459e249e99581ceca968635eb841d6da442bec471053024a0800e2"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/backend-git-before.json",
+      "bytes": 474890,
+      "sha256": "1bfe76e6a2089d839f614255db75a34cd8a24fee9b0ff0b857de5ec6a779f680"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/backend.json",
+      "bytes": 3171,
+      "sha256": "7061cbf4618c199fdf82e7e5940df7eca5fa932baaa17e3f89be1dce3254621f"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/backend.log",
+      "bytes": 21892,
+      "sha256": "03f37981945b9eb1f1dab855e30921da6e7cf1eff9fbe634c7c29cfc3092eaac"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/backend.started",
+      "bytes": 24,
+      "sha256": "81c359301fca157e9037a4c36e0e479f68c2e4384d401da48b30a69b264f33cf"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/com.deeplazy.bingo.BingoBackendApplicationTests.txt",
+      "bytes": 348,
+      "sha256": "0dcd9d9b475a7f17b8007cd79f8566252ee068dfb53c4423006533556294a3a2"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/com.deeplazy.bingo.config.redis.RedisNamespaceTest.txt",
+      "bytes": 355,
+      "sha256": "60217cdccd7e81cd98f2f6b3a7ad9a140e489fefb16b8d5a1c0e804c022f252b"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/com.deeplazy.bingo.FrameworkSecurityTest.txt",
+      "bytes": 335,
+      "sha256": "c03111c6679c96518bc7b9b21d9488249fa1f1e3eca569420d1d58369d83e1a4"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/com.deeplazy.bingo.SmokeProfileTests.txt",
+      "bytes": 326,
+      "sha256": "935c315080a86c0d631debf82623ede6da6ca370424abb9f75bf34c2f7205f2b"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/dependencies-current.json",
+      "bytes": 373487,
+      "sha256": "bd45613592459e249e99581ceca968635eb841d6da442bec471053024a0800e2"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/dependencies-final.json",
+      "bytes": 373487,
+      "sha256": "bd45613592459e249e99581ceca968635eb841d6da442bec471053024a0800e2"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/environment.json",
+      "bytes": 610,
+      "sha256": "bb5a91c33b267fb410f21335a10dd75940ef3030aa2062994642006be01787eb"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/equivalence.json",
+      "bytes": 35741,
+      "sha256": "5f294c495fd7de5db64045e7376904f2f97fa86885a578be3747299bf159e299"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/git-final.json",
+      "bytes": 474890,
+      "sha256": "86098d3904396e2e02587e5f9a75212cb7eff99d1b8b4e3d8134b2bed64d705e"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/invocation.lock",
+      "bytes": 24,
+      "sha256": "a880ade516fae75068327d02f463efe20a2bccaee1d52101816f5bc867fe0384"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/jar-after.json",
+      "bytes": 579391,
+      "sha256": "8bf3ddaa640200cf9f9216bd5159ed03782fe4f3d4df0d6b42d004ba05184697"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/jar-initial-check.json",
+      "bytes": 19443,
+      "sha256": "95d7269b4424e501ecc469d3e37b8938bcbb34ead6cb15314dfec7f4de5a1fdc"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/jar-list.log",
+      "bytes": 14467,
+      "sha256": "f0e2451c5ad11e4aacf0e6f702b251e18fd78649bf9c81b7c12f3e177d1276f4"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/jar-reconcile.started",
+      "bytes": 24,
+      "sha256": "a1b20a72ca06c79cf3e1c8c53e16ace5e0b1a25ddaf7de21893448bec02784cb"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/jar-reconciliation.json",
+      "bytes": 1392,
+      "sha256": "b6569b6f686ddc7de8ae7b4443c6dd47d871cde53022229ed4ba197a9a275da5"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/jar.json",
+      "bytes": 20889,
+      "sha256": "1031af1d1234c33cc5d5eb78e638e1b1bd66c0e0f5f41cb76501e94328092a8f"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/jar.started",
+      "bytes": 24,
+      "sha256": "1176ecfdba061b880f687696caf8c2d7e6b418ec0e9b92ea55ff84ddce0c9033"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/maven-verify.json",
+      "bytes": 8153,
+      "sha256": "fbd1b535aa9e0fb238fb92c3d69b9a6ac44f1c1de89548333c48089143ea3486"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/product-input-current.json",
+      "bytes": 579391,
+      "sha256": "8bf3ddaa640200cf9f9216bd5159ed03782fe4f3d4df0d6b42d004ba05184697"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/product-input-final.json",
+      "bytes": 579391,
+      "sha256": "8bf3ddaa640200cf9f9216bd5159ed03782fe4f3d4df0d6b42d004ba05184697"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/report.started",
+      "bytes": 24,
+      "sha256": "cfe53a3f153d1430abe2704f2aedc2c40e3af84c5c84e386a8b4c54e3fd21aa1"
+    },
+    {
+      "path": "target/verification/personal-tools-independent-r5-20261029-91e7ad/verify.mjs",
+      "bytes": 35003,
+      "sha256": "cadfc30f8252034362a2a4390212bb2347e215524f860005e83d20a605543927"
+    }
+  ],
+  "executionChannelNotes": {
+    "tools": "Read/list/apply_patch and actual PowerShell terminal. No tool_search loader is exposed, so no unloaded deferred task/Git/browser/debugger/custom-agent selector was invoked.",
+    "emptyOutputHandling": "Sync terminal calls returned empty visible output; not counted as pass and never relaunched. Complete on-disk equivalence/backend/JAR receipts and actual child exit codes are required. Empty launcher output is not assigned a fabricated exit code.",
+    "actualPermissionLimits": "Permission scope is a behavior contract, not an OS/network sandbox. No custom role or nested agents. No Java app/debug/dev server launch; original isolated smoke test starts/closes ephemeral loopback HTTP."
+  },
+  "writes": {
+    "ordinaryReport": "doc/analysis/2026-10-29-personal-tools-independent-verification-r5.json",
+    "uniqueEvidencePrefix": "target/verification/personal-tools-independent-r5-20261029-91e7ad",
+    "scripts": [
+      "target/verification/personal-tools-independent-r5-20261029-91e7ad/verify.mjs"
+    ],
+    "approvedOutputs": [
+      "this unique root target/verification prefix",
+      "this R5 report",
+      "normal backend target Maven/classes/test-classes/Surefire/verification/JAR outputs"
+    ],
+    "nowExplicitlyPermittedOriginalTestGeneratedReceipts": [
+      "deep-lazy-bingo-frontend/data/english/verification/latest-tests.json",
+      "deep-lazy-bingo-frontend/data/modules/verification/administration-green-2026-10-29T08-06-54-821Z.json",
+      "deep-lazy-bingo-frontend/data/modules/verification/foundation-green-2026-10-29T08-07-49-887Z.json",
+      "deep-lazy-bingo-frontend/data/modules/verification/knowledge-green-2026-10-29T08-07-43-501Z.json",
+      "deep-lazy-bingo-frontend/data/modules/verification/workbench-green-2026-10-29T08-07-53-377Z.json"
+    ],
+    "generatedReceiptWritesActuallyPerformedInR5": false,
+    "productTestsConfigDependencyEdits": false,
+    "priorReportsRetained": true,
+    "directoriesDeleted": false,
+    "gitOrRuntimeWrites": false,
+    "realDatabaseRedisMailWechatOperations": false,
+    "installOrHeavyConcurrentTasks": false,
+    "writeContractCompliant": true
+  },
+  "handoff": {
+    "parentOwnsRegistrationBookingRepairsAndCompletion": true,
+    "taskCompleteCalled": false,
+    "stageCompletionClaimed": false,
+    "fullOriginalRequestFinished": false,
+    "futureReuseAllowedWithoutEquivalenceProof": false,
+    "action": "Parent reads/registers evidence and halts or closes according to unmet ACs. PT08 may pass. PT07 verification portion only; no all-browser or full-request acceptance. Do not repair product from this verifier.",
+    "stopWritesAfterFinalReportValidation": true
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "steps":[
+    "S1: TDD independent local module records, idempotent per-module seed markers, atomic record/audit transactions, input limits and explicit preview gate; add reusable native ModuleShell.",
+    "S2: workspace and learning management: overview/tasks/calendar/notifications plus plans/notes/practice/progress; actual local aggregations and related record workflows, preserve existing books/notes/English/health.",
+    "S3: knowledge and learning AI: spaces/sources/documents/ingestion plus questions/drafts/english paths; actual bounded local text parse/chunks/retrieval, explicit original examples and human decisions, no model claims.",
+    "S4: administration: services catalog/status/history and family members/preferences/audit; safe draft URLs, no links absent deployment allowlist, actual manual status and immutable-in-UI operation history.",
+    "S5: wire all28 existing routes to owning native views, preserve7 existing specialized entry surfaces, replace stale generic offline pages and include new files/tests in normal validators.",
+    "S6: narrow TDD self-tests, independent complete76+new regression/type/build/lint/style/format checks, all28 routes and representative CRUD/persistence/linked flows at desktop/390/768; L1 AC evidence ledger and local closure, no commits or external writes."
+  ],
+  "acMapping":{
+    "AC-MOD-01":["S2","S3","S4","S5","S6"],
+    "AC-MOD-02":["S1","S2","S6"],
+    "AC-MOD-03":["S1","S2","S6"],
+    "AC-MOD-04":["S1","S3","S6"],
+    "AC-MOD-05":["S1","S3","S6"],
+    "AC-MOD-06":["S1","S4","S6"],
+    "AC-MOD-07":["S1","S4","S6"],
+    "AC-MOD-08":["S1","S2","S3","S4","S6"],
+    "AC-MOD-09":["S5","S6"]
+  },
+  "source":"doc/requirements/12-module-functional-experience.md",
+  "constraints":{
+    "P1":"Reuse idb, explicit preview gate, existing learning/health/English/AI modules and checker. Never bypass unified HTTP/auth or fake backend calls.",
+    "P2":"Add one independent dlb-modules-local-v1 database with records/meta/audit. No migration of existing databases. Stable foreign IDs and type-specific validators owned by domain services.",
+    "P3":"Reuse native Art/Element Plus/ArtSvgIcon and existing theme; a shared unframed ModuleShell only removes layout/state duplication. Repository native icons take priority over conflicting generic corporate icon card.",
+    "loaded":"Repository AGENTS; existing requirements02/05/07; frontend card and security policy already consulted; no GPL/AGPL or new dependencies."
+  },
+  "contracts":{
+    "ModuleName":["workspace","learning","knowledge","learning-ai","services","family"],
+    "ModuleRecord":"id,module,kind,title,status,fields:Record<string,string|number|boolean|string[]>,sample?:boolean,revision:number,createdAt,updatedAt",
+    "RecordDraft":"id,module,kind,title,status,fields,sample?,revision?; runtime supplies timestamps and revision, returns full ModuleRecord",
+    "storageExports":"openModulesDB(preview:boolean,name?), listRecords(db,module?,kind?,includeArchived=false), getRecord(db,id), saveRecord(db,draft), saveRecords(db,drafts) atomic, archiveRecord(db,id), seedModule(db,module,drafts) idempotent marker, listAudit(db), adoptDraft(db,draftId)",
+    "learningNote":"Shared S1 exported LearningNoteFields extends the primitive fields map: body:string, sourceDraftId:string, sourceDocumentId:string, bookId:string, unitId:string. Note envelope module=learning, kind=note, status=active; body editable, provenance retained. Missing optional origin is empty string, never invented. S2 note editor/search consumes exactly these keys for both original local notes and adopted drafts.",
+    "draftAdoption":"S1 owns shared adoptDraft and typed contract before S2/S3 parallel work. S3 draft envelope module=learning-ai,kind=draft,fields.body/sourceDocumentId/bookId/unitId strings; pending draft only may adopt. Destination ID adopted-note:<draftId>; sourceDraftId=draftId. Validate both envelopes and existing note origin, commit note plus draft.status=adopted and fields.noteId atomically through saveRecords with optimistic revisions. Repeated adoption returns the same note unchanged, including later edits/archive; no extra audit and no resurrection. Rejected or archived drafts refuse adoption. S3 calls this helper, not its own incompatible writer.",
+    "audit":"append-only through storage helpers, action/module/id/time/title only, no field dumps; records and audit commit together. Seed is marked once and never recreates user-removed data.",
+    "ModuleShell":"props title:string, subtitle?:string; slots actions/default; existing isInterfacePreview decides formal-unconfigured vs actual local slot; data-testid=module-page, compact native theme/grid minmax0.",
+    "ownership":"S1 parent; S2 one developer src/modules/workbench.ts + src/views/workspace/functional.vue + src/views/learning/manage.vue + workbench.test.ts; S3 one developer src/modules/knowledge.ts + src/views/knowledge/index.vue + src/views/ai/workspace.vue + knowledge.test.ts; S4 one developer src/modules/administration.ts + src/views/services/index.vue + src/views/family/index.vue + administration.test.ts. Parent exclusively owns route/config/checker/package/tasks/integration."
+  },
+  "dataRules":[
+    "Archive is soft and idempotent. listRecords hides archived unless requested. Editing optimistic revision conflicts is surfaced, not silently overwritten. No-op save does not duplicate audit.",
+    "Parent foundation types/exports exist and pass tests before domain developers start; all children have disjoint writes and no nested agents. Shared DB only via exported helpers.",
+    "Seed records visibly identify original local examples, with current real initialization time; no fabricated past audit/events/monitoring. User records and old module databases are never cleared.",
+    "Calendar and statistics use actual persisted tasks; question attempts count once per explicit attempt; adoption creates linked note and draft state atomically/idempotently with stable IDs.",
+    "Knowledge documents are legal user-declared plain text <=200KB/100000 chars; chunks are actual bounded pure-text output, no HTML/SQL/vector execution; missing references refuse save, archived spaces/documents cannot be silently re-used.",
+    "Services store only credential-free private-network draft targets; approval policy defaults empty and cannot be changed by catalog forms. No network probe/proxy. Public, loopback, link-local, metadata and malformed hosts rejected. Missing approval means no active href.",
+    "Family examples are local member cards only, no real invite/login/authorization. Sensitive state changes require confirmation; audits are read-only and filterable. Preferences never silently enable AI or alter formal authorization."
+  ],
+  "design":"Preserve existing native typography/colors/themes. Quiet operational layouts: workspace task list+calendar, learning plan list/editor+answer panel, knowledge document browser+text/chunk detail, AI question/reference split and draft review, service individual tiles/manual timeline, family member table/settings form/read-only audit. No hero, nested decorative cards or second application shell.",
+  "testStrategy":[
+    "S1 tests: schema/preview guard, reopen persistence, idempotent seeds preserving edits/archive, atomic saves/audits, no-op/optimistic conflicts, malformed fields/IDs and audit minimization.",
+    "Domain tests: linked plan/task aggregations and actual attempts; knowledge real text chunks/references/failed input/draft adoption; service URL policy/status history and member/preferences/audit; SFC compilation and route/loader completeness.",
+    "Cross-domain integration test owned by parent S1/S5: create and edit a pending draft, adopt through shared helper, read/search/edit via S2 note consumer, close/reopen DB, verify retained sourceDraftId/document/book/unit references, then retry adoption after note edits and archive without duplicate note/audit or resurrection; concurrent adoption must not duplicate. This check is mandatory before final integration acceptance.",
+    "Run narrow checks immediately after first edits, then existing six-check entry after stable integration. Use direct Node VS Code tasks if terminal output absent; collect true status/logs/hash receipts, not task-start banners.",
+    "Browser verify all28 routes have owning content, representative create/edit/archive/cancel/search/error/reload, cross-page derived counts; desktop and390/768 long text/layout. Do not claim real-pointer, remote model/backend/auth, live service health or vector retrieval without actual execution."
+  ],
+  "risks":["No production backend or secret service: clearly bounded local workflows only","No service deployment allowlist: all draft links inactive","No git metadata: no HEAD/clean/diff stats invention","Full index includes generated local data but only bounded controlling files are read","Potential shared task/terminal execution instability: use actual status receipts and stop failed checks honestly"],
+  "codeUnderstanding":{"brief":"doc/analysis/2026-10-28-all-modules-code-understanding.md","sourceCommit":"NO_GIT_COMMIT"}
+}

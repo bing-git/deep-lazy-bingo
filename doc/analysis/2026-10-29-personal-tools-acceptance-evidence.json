@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "joycode.acceptance-evidence/v1",
+  "requirementRef": "doc/analysis/2026-10-29-personal-tools-request.md",
+  "criteria": [
+    {
+      "ac": "PT-01: Literal nonsecret YAML replaces properties and placeholders while preserving security, namespace, profile and fail-closed defaults.",
+      "evidence": [{ "kind": "log", "locator": "doc/analysis/2026-10-29-personal-tools-backend-implementation.json", "anchor": "run-2026-10-29T05-14-34-396Z-ecca203e", "result": "absent" }],
+      "conclusion": "pending",
+      "reason": "Host Copilot ignore policy refused the intended application.yml write; properties remain. No bypass or waiver."
+    },
+    {
+      "ac": "PT-02: Persistent annual membership CRUD, renewal history, amounts, destinations and expiry filtering.",
+      "evidence": [{ "kind": "case", "locator": "doc/analysis/2026-10-29-personal-tools-oom-recovery.md", "anchor": "run-2026-10-29T05-14-34-396Z-ecca203e", "result": "pass" }],
+      "conclusion": "pending",
+      "reason": "Create/reload/renewal/history/archive were exercised; full edit, destination and filter edge acceptance is not independently complete."
+    },
+    {
+      "ac": "PT-03: Calendar-month-before reminders with clamping and deduplication; real email remains required and unverified without a provider, WeChat optional.",
+      "evidence": [{ "kind": "static-check", "locator": "doc/analysis/2026-10-29-personal-tools-oom-recovery.md", "anchor": "run-2026-10-29T05-14-34-396Z-ecca203e", "result": "absent" }],
+      "conclusion": "pending",
+      "reason": "Date rules pass, but required real SMTP delivery and persistent scheduling are not implemented/configured; WeChat also remains unconfigured."
+    },
+    {
+      "ac": "PT-04: Proven-library encrypted personal vault with unlock/lock, safe reveal/copy, encrypted persistence/backup and failure-safe restore.",
+      "evidence": [{ "kind": "static-check", "locator": "deep-lazy-bingo-frontend/src/views/personal-tools/vault.vue", "anchor": "run-2026-10-29T05-14-34-396Z-ecca203e", "result": "absent" }],
+      "conclusion": "pending",
+      "reason": "Vault entry is disabled, not a functional encrypted vault. Dependency safety and interoperability enablement gates have not passed."
+    },
+    {
+      "ac": "PT-05: Persistent independent rich-text/Markdown notes with tags/search/archive, safe images/attachments and import/export.",
+      "evidence": [{ "kind": "case", "locator": "doc/analysis/2026-10-29-personal-tools-oom-recovery.md", "anchor": "run-2026-10-29T05-14-34-396Z-ecca203e", "result": "pass" }],
+      "conclusion": "pending",
+      "reason": "Source/tag/image persistence and archive/search pass in the browser; rendered Markdown preview and comprehensive rich-text/import/export/security-negative evidence are still missing."
+    },
+    {
+      "ac": "PT-06: Three native Art Design Pro menu/routes and usable desktop/mobile flows without resetting existing data or changing the backend-preview boundary.",
+      "evidence": [{ "kind": "case", "locator": "doc/analysis/2026-10-29-personal-tools-independent-verification-r5.json", "anchor": "run-2026-10-29T05-14-34-396Z-ecca203e", "result": "pass" }, { "kind": "case", "locator": "doc/analysis/2026-10-29-personal-tools-oom-recovery.md", "anchor": "run-2026-10-29T05-14-34-396Z-ecca203e", "result": "pass" }],
+      "conclusion": "pending",
+      "reason": "Route tests/build and three note viewports pass; disabled vault and incomplete comprehensive browser workflows preclude full three-module acceptance."
+    },
+    {
+      "ac": "PT-07: Real focused/full tests and independent/browser evidence; missing live notifications stay honestly degraded.",
+      "evidence": [{ "kind": "log", "locator": "doc/analysis/2026-10-29-personal-tools-independent-verification-r5.json", "anchor": "run-2026-10-29T05-14-34-396Z-ecca203e", "result": "pass" }],
+      "conclusion": "pending",
+      "reason": "Independent automatic gates pass and bounded parent browser checks pass; all acceptance edges and live integrations remain incomplete, without a waiver or delivery claim."
+    },
+    {
+      "ac": "PT-08: User addendum requires com.deeplazy.bingo root and controller/service/entity/mapper layers, matching current source/test directories, preserved framework scanning and no fake business classes.",
+      "evidence": [{ "kind": "log", "locator": "doc/analysis/2026-10-29-personal-tools-independent-verification-r5.json", "anchor": "run-2026-10-29T05-14-34-396Z-ecca203e", "result": "pass" }],
+      "conclusion": "verified"
+    }
+  ]
+}

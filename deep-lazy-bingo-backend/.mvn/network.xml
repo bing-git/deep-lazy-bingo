@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 https://maven.apache.org/xsd/settings-1.2.0.xsd">
+  <proxies>
+    <proxy>
+      <id>bingo-environment-proxy</id>
+      <active>true</active>
+      <protocol>http</protocol>
+      <host>${env.BINGO_MAVEN_PROXY_HOST}</host>
+      <port>${env.BINGO_MAVEN_PROXY_PORT}</port>
+      <username>${env.BINGO_MAVEN_PROXY_USER}</username>
+      <password>${env.BINGO_MAVEN_PROXY_PASSWORD}</password>
+      <nonProxyHosts>localhost|127.0.0.1|*.bmwgroup.net</nonProxyHosts>
+    </proxy>
+  </proxies>
+</settings>

@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "joycode.findings-batch/v1",
+  "stance": "plan",
+  "round": 1,
+  "findings": [
+    {
+      "phase": "plan",
+      "category": "security",
+      "severity": "blocking",
+      "claim": "The proposed header-only no-compression admission rule does not establish bounded KDBX import. In kdbxweb 2.1.1 an outer-uncompressed KDBX4 can still contain XML Binary/Value nodes marked Compressed=True; getProtectedBinary calls gunzipSync on them during full load, before the plan's post-load entry/field/history validation. The 10MiB ciphertext cap and 10s worker deadline do not bound this allocation. The library gate must explicitly cover this inner path and the XML parser's resource behavior before imports are enabled, rather than treating a passing outer-header check as sufficient. This is a defect in the proposed admission mechanism, not a claim that the currently unimplemented vault has already shipped unsafely.",
+      "evidence": [
+        "doc/analysis/2026-10-29-personal-tools-request.md:24 requires a proven-library vault with failure-safe import; doc/analysis/2026-10-29-personal-tools-understanding.json:42 retains failure-safe restore and doc/analysis/2026-10-29-personal-tools-understanding.json:160 leaves safe dependency/format choices to planning.",
+        "doc/analysis/2026-10-29-personal-tools-plan.json:110 sets input/output <=10MiB, accepts only outer-uncompressed KDBX4, proposes header validation before decompression, and correctly disclaims a hard worker heap sandbox. doc/analysis/2026-10-29-personal-tools-plan.json:200 nevertheless specifies fully loading incoming data before validation/replacement. No inner-compressed-binary rejection or parser-level admission hook is defined.",
+        "Read-only fixed-version source https://unpkg.com/kdbxweb@2.1.1/lib/utils/xml-utils.ts, getProtectedBinary: reads the Compressed attribute and executes bytes = gunzipSync(bytes), without an output limit. This path is independent of the outer header.compression flag.",
+        "Read-only fixed-version source https://unpkg.com/kdbxweb@2.1.1/dist/kdbxweb.js, KdbxEntry.readBinary and KdbxMeta.readBinary: both call XmlUtils.getProtectedBinary while loading XML; neither checks the outer KDBX version/compression before that call. The bundled gunzipSync constructs an output Uint8Array using the gzip trailer length before returning.",
+        "Read-only fixed-version source https://unpkg.com/kdbxweb@2.1.1/lib/format/kdbx-format.ts, loadV4: after authenticating/decrypting and conditionally expanding the outer payload, calls XmlUtils.parse and kdbx.loadFromXml before resolving Kdbx.load. Static evidence demonstrates the unguarded path; no malicious file or memory-exhaustion probe was executed."
+      ],
+      "affectedAc": ["PT-04", "PT-07"],
+      "round": 1
+    },
+    {
+      "phase": "plan",
+      "category": "logic-correctness",
+      "severity": "major",
+      "claim": "Epoch fencing and IndexedDB revision CAS do not serialize operations on the same live KDBX object. The plan makes one worker own a mutable database but does not specify a single in-flight command rule, queue, or independent immutable snapshot for save/export/edit. kdbxweb save mutates header salts and shared xml across promise boundaries, so save/save or save/backup overlap in the same epoch can mix a serialized header with another operation's salts/XML, produce an unreadable backup or even commit the first corrupt ciphertext through a successful CAS. Define the minimal per-session operation ordering and failure reset contract; rejecting overlapping commands is sufficient and does not require a new synchronization framework.",
+      "evidence": [
+        "doc/analysis/2026-10-29-personal-tools-request.md:24 and doc/analysis/2026-10-29-personal-tools-understanding.json:42 require refresh-safe encrypted persistence, encrypted backup and preservation on failure.",
+        "doc/analysis/2026-10-29-personal-tools-plan.json:111 describes worker ownership, session epochs, crypto outside IDB, transactional revision CAS and a separate restore worker, but no serialization of commands using the same live KDBX. doc/analysis/2026-10-29-personal-tools-plan.json:199 enumerates concurrency implementation without defining this same-session ordering.",
+        "Read-only fixed-version source https://unpkg.com/kdbxweb@2.1.1/lib/format/kdbx-format.ts, save/saveV4: generateSalts and header.write run first; saveV4 assigns shared kdbx.xml, awaits header hashing/key derivation, then reads shared header/xml again and eventually cleanXml clears it. KdbxHeader.generateSalts in https://unpkg.com/kdbxweb@2.1.1/lib/format/kdbx-header.ts changes masterSeed, protectedStreamKey, KDF salt and IV in place.",
+        "Read-only fixed-version source https://unpkg.com/kdbxweb@2.1.1/lib/format/kdbx.ts, save: each invocation constructs a new KdbxFormat(this), so separate format instances still share the same Kdbx object. One JavaScript worker is not implicit serialization across asynchronous message handlers. This is source-derived race analysis, not a reported executed corruption test."
+      ],
+      "affectedAc": ["PT-04", "PT-07"],
+      "round": 1
+    },
+    {
+      "phase": "plan",
+      "category": "context-integration",
+      "severity": "major",
+      "claim": "The immediate preview-to-backend lock requirement has no implementable notification path in the listed integration surface. isInterfacePreview is a module-load constant; the actual backend probe only writes same-tab sessionStorage, then main requests reload. A dirty-note beforeunload guard can cancel that reload, leaving the old true flag and existing DB handles alive. A storage-event-only watcher would not observe its own tab's write. The plan names the desired latch lock but omits the probe/main event owner and ordering: invalidation must become observable and cancel/clear local operations before any reload attempt, including a canceled reload. This must preserve the existing capability contract, not introduce new authentication.",
+      "evidence": [
+        "doc/analysis/2026-10-29-personal-tools-request.md:26 prohibits changing the preview/backend boundary; doc/analysis/2026-10-29-personal-tools-understanding.json:54 preserves that boundary and doc/analysis/2026-10-29-personal-tools-understanding.json:55 explicitly calls for preview/backend separation verification.",
+        "doc/analysis/2026-10-29-personal-tools-plan.json:101 requires current isInterfacePreview for DB access; doc/analysis/2026-10-29-personal-tools-plan.json:112 requires immediate latch lock; doc/analysis/2026-10-29-personal-tools-plan.json:226 adds dirty-draft beforeunload guards. The PT-S06 likelyFiles list at doc/analysis/2026-10-29-personal-tools-plan.json:236 omits src/main.ts, src/learning/core.ts and src/config/preview.ts even though its action at doc/analysis/2026-10-29-personal-tools-plan.json:248 promises latch-triggered locking/cancellation.",
+        "deep-lazy-bingo-frontend/src/config/preview.ts:4 exports isInterfacePreview as a one-time const using sessionStorage.getItem(BACKEND_LOCK); it is neither reactive nor a current-value accessor.",
+        "deep-lazy-bingo-frontend/src/learning/core.ts:44 sets BACKEND_LOCK in sessionStorage and only sets its private latched boolean next. There is no event or subscriber callback at this transition.",
+        "deep-lazy-bingo-frontend/src/main.ts:30 defines checkBackend; its next line requests location.reload after the awaited probe. There is no synchronous local-access invalidation notification before reload. deep-lazy-bingo-frontend/src/modules/local.ts:226 shows the reusable pattern gates DB opening, whereas listRecords/saveRecords operate on retained handles without rechecking preview. The new repository must not inherit that lifetime assumption after a canceled handoff."
+      ],
+      "affectedAc": ["PT-04", "PT-05", "PT-06", "PT-07"],
+      "round": 1
+    }
+  ],
+  "reviewContext": {
+    "runId": "run-2026-10-29T05-14-34-396Z-ecca203e",
+    "level": "L1",
+    "profile": "standard",
+    "worktree": "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo",
+    "roleSource": "C:/Users/qxz5kb5/.copilot/installed-plugins/joycode/joycode-2/skills/joycode/native-agents/agents/joycode-plan-reviewer.md",
+    "candidateCoordinate": "joycode-2 as supplied by dispatcher; no package semantic version independently established",
+    "independence": "Fresh built-in general-purpose native invocation as declared by dispatcher, with task-provided artifacts and own read-only investigation. No delegated subagents; no heterogeneous-model claim.",
+    "fullInputsRead": [
+      "doc/analysis/2026-10-29-personal-tools-request.md",
+      "doc/analysis/2026-10-29-personal-tools-understanding.json",
+      "doc/analysis/2026-10-29-personal-tools-plan.json",
+      "doc/analysis/2026-10-29-personal-tools-code-understanding.md",
+      "doc/analysis/2026-10-29-personal-tools-code-understanding.json"
+    ],
+    "evidenceBoundary": "Local evidence uses 1-based source lines. Remote evidence identifies the exact published package version, file URL and function; the webpage extractor does not provide authoritative remote line numbers, so none are invented. Fixed-version library source was read, not installed or executed."
+  },
+  "focusedDisconfirmingChecksForParent": [
+    {
+      "findingArrayIndex": 0,
+      "check": "With synthetic independently produced KDBX4 inputs only, distinguish outer GZip rejection from outer None plus an inline Compressed=True binary. Instrument the actual parser/decompression boundary and show bounded rejection before expansion, including malformed XML/DTD, excessive nesting and excessive groups/history. Do not run a large allocation attack in the user's browser. A public bounded hook or safe admission mechanism proven before full load would disconfirm this finding; post-load size rejection or a timeout alone would not."
+    },
+    {
+      "findingArrayIndex": 1,
+      "check": "Pause the first real library save after header serialization and attempt same-session edit/save and backup commands. Either overlapping commands are rejected/queued until completion or each uses a genuinely independent state snapshot. Independently reopen every successful ciphertext/backup and verify exact intended records. Also check that rejection/failure cannot leave an unsaved mutated worker state that a later save silently persists."
+    },
+    {
+      "findingArrayIndex": 2,
+      "check": "In an isolated preview browser context, keep a synthetic vault operation pending, latch backend capabilities in the same tab, and cancel reload through a dirty-note beforeunload guard. Before navigation, assert the epoch is invalidated, worker terminated, plaintext cleared and existing personal-tools handles reject further reads/writes. Repeat while an IDB request is pending; a periodic poll or successful later reload does not establish immediate invalidation."
+    }
+  ],
+  "reviewedWithoutAdditionalFindings": [
+    {
+      "surface": "Frozen-source fidelity and required email",
+      "assessment": "No supported semantic-drift finding. request.md:13-17 authorizes a conservative local first increment as an execution decision, not a user-selected waiver. request.md:23/27/31 and understanding acceptanceDetails PT-03 preserve actual required email and honest degraded acceptance. plan.json:8, PT-S03 and PT-S07 preserve that distinction; missing SMTP/WeChat inputs are not false completion. Actual email and unattended delivery remain unmet, not PASS."
+    },
+    {
+      "surface": "Public KDBX header and KDF APIs",
+      "assessment": "The fixed 2.1.1 package exports KdbxHeader, BinaryStream and KdbxContext from dist/types/index.d.ts; dist/types/format/kdbx-header.d.ts exposes static read(BinaryStream,KdbxContext). Header fields expose version/cipher/compression/KDF parameters before decryption. CryptoEngine.setArgon2Impl is public; KeyEncryptorKdf converts byte-valued memory M to KiB. Therefore inability to pre-read the outer header is NOT asserted. This does not resolve the inner XML expansion finding."
+    },
+    {
+      "surface": "Worker XML parser and dependency audit gate",
+      "assessment": "The published XML helper selects global DOMParser/XMLSerializer, otherwise @xmldom/xmldom; browser workers do not supply native DOMParser. Published dist/kdbxweb.js externalizes @xmldom/xmldom and embeds fflate code, while package.json declares @xmldom/xmldom ^0.7.4 and fflate ^0.7.1. PT-S04 already explicitly gates worker/XML/browser compatibility and exact dependency security/licensing; no clean audit or successful worker build is claimed. Gate evidence must cover the actually bundled code and chosen worker parser, including DTD/entity/resource handling, not only top-level semver metadata. No live advisory database query, dependency install or complete SCA audit was performed here; no unverified CVE assertion is made."
+    },
+    {
+      "surface": "Independent fixture condition",
+      "assessment": "plan.json:109, PT-S04 exit and testStrategy.vault require independently generated synthetic KDBX plus an independent reader, not merely kdbxweb self-roundtrip. This is a legitimate unsatisfied enablement condition, not evidence already obtained. Parent must record producer/reader versions, provenance/hash and KDBX4/outer-None/Argon2id-v0x13 parameters within the declared limits; unavailable fixtures or incompatible defaults must remain blocked, never skipped into PASS. No fixture was generated or consumed in this review."
+    },
+    {
+      "surface": "Notes upload, assets and atomicity",
+      "assessment": "plan.json:106-107 and PT-S05 require owned stable IDs, no persisted blob URLs, validation before atomic note-plus-asset commit, no partial import and no arbitrary remote/data/blob ingress. The existing editor at src/components/core/forms/art-wang-editor/index.vue:128 constructs a remote server and Authorization header; the plan explicitly requires a separate local branch that does not construct/use those defaults. These constraints address the inspected risk at plan level. Implementer still needs real editor save/reload/export/import and failed-write tests proving canonical ID-to-transient-URL resolution in BOTH formats, staged draft cleanup and no external requests; sanitizer-only string tests cannot substitute. No additional finding is invented merely because that implementation does not exist yet."
+    },
+    {
+      "surface": "Money, annual renewal and calendar dates",
+      "assessment": "plan.json:92 and :102-104 explicitly use safe integer minor units with currency-specific precision, strict real date-only values, clamped month arithmetic, immutable renewal identities, overlap rejection and period/channel dedup including overdue original periods. The declared test matrix includes leap/non-leap month ends, invalid dates, precision/overflow, duplicate renewal and stale edits. No demonstrated contradiction was found. Annual inclusive-end convention must remain consistent in implementation; no requirement-specific date convention is invented here."
+    },
+    {
+      "surface": "Small increment and secret handling",
+      "assessment": "A dedicated binary-capable local DB, existing editor reuse, proven KDBX/Argon2 libraries and conditional safe enablement are justified by PT-04/PT-05. No evidence supports requiring new authentication, live providers, cross-device synchronization, custom crypto or a broad framework in this L1 run. Literal nonsecret YAML and no hardcoded real credentials are explicit in source/understanding/plan; no secret files, prior chats or real configuration values were read to challenge that rule."
+    },
+    {
+      "surface": "Stale lock/write ordering",
+      "assessment": "plan.json:111-112 already requires epochs, transaction tracking/abort, ciphertext CAS, ignoring late completions and byte-identical persisted recovery. That addresses cross-session stale results at contract level; no extra duplicate finding is raised. Tests must register transactions before an awaited IDB read and exercise lock during that await, rather than only lock-before-start cases. Same-session mutable-library serialization remains the distinct finding above."
+    }
+  ],
+  "permissionScope": {
+    "hostSandboxClaimed": false,
+    "actualCapabilities": "Read/search/apply_patch and PowerShell tools are exposed beyond the declared report path. Behavioral limits, not an OS sandbox, constrain this review. No deferred tools were called because the required tool_search loader is absent.",
+    "allowedWrite": "doc/analysis/2026-10-29-personal-tools-findings-plan-r1.json",
+    "productAndTestsChanged": false,
+    "productTestsExecuted": false,
+    "dependenciesInstalled": false,
+    "runtimeCliMutations": false,
+    "commitsOrBranches": false,
+    "remoteDatabaseRedisOrMessages": false,
+    "secretFilesOrPriorChatsRead": false,
+    "networkReadLimitation": "A read-only PowerShell attempt to retrieve the public package was refused by the corporate proxy. No credential lookup, authentication retry or policy bypass was attempted. The available webpage fetch tool supplied the cited public fixed-version source."
+  },
+  "handoff": {
+    "reportPath": "doc/analysis/2026-10-29-personal-tools-findings-plan-r1.json",
+    "parentOwns": "Finding identifiers, registration, verdict, plan repair and any second-round dispatch. This report assigns no runtime IDs or overall plan verdict and repairs no source/understanding/plan.",
+    "writeStop": "Only this ordinary round-1 report was written with apply_patch. After read-only report/schema/reference checks, stop writes and return this exact path. No product tests, additional files, runtime booking or delegated subagents."
+  }
+}

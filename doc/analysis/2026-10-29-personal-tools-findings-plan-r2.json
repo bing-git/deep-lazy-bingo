@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "joycode.findings-batch/v1",
+  "stance": "plan",
+  "round": 2,
+  "findings": [],
+  "reviewContext": {
+    "runId": "run-2026-10-29T05-14-34-396Z-ecca203e",
+    "level": "L1",
+    "profile": "standard",
+    "worktree": "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo",
+    "roleSource": "C:/Users/qxz5kb5/.copilot/installed-plugins/joycode/joycode-2/skills/joycode/native-agents/agents/joycode-plan-reviewer.md",
+    "invocation": "Fresh built-in general-purpose child as declared by dispatcher, applying the full native reviewer persona; not a custom registered role. No nested children and no heterogeneous-model claim.",
+    "fullInputsRead": [
+      "doc/analysis/2026-10-29-personal-tools-request.md",
+      "doc/analysis/2026-10-29-personal-tools-understanding.json",
+      "doc/analysis/2026-10-29-personal-tools-plan.json",
+      "doc/analysis/2026-10-29-personal-tools-code-understanding.md",
+      "doc/analysis/2026-10-29-personal-tools-code-understanding.json",
+      "doc/analysis/2026-10-29-personal-tools-findings-plan-r1.json"
+    ],
+    "additionalEvidenceRead": [
+      ".github/AGENTS.md",
+      "deep-lazy-bingo-frontend/src/learning/core.ts:1-120",
+      "deep-lazy-bingo-frontend/src/config/preview.ts:1-8",
+      "deep-lazy-bingo-frontend/src/main.ts:1-43",
+      "https://unpkg.com/kdbxweb@2.1.1/lib/utils/xml-utils.ts",
+      "https://unpkg.com/kdbxweb@2.1.1/lib/format/kdbx-format.ts"
+    ],
+    "evidenceBoundary": "Frozen source and understanding were compared directly. Plan evidence below uses JSON property/step locators to avoid stale R1 line numbers. Local code references are 1-based. Public library evidence identifies fixed version, URL and symbol; authoritative remote line numbers are unavailable and not invented. Remote source was read, not installed or executed. Historical reports and memory are not current safety/test evidence."
+  },
+  "round2Assessment": {
+    "newFindingsCount": 0,
+    "planLevel": "All three supplied R1 root causes have explicit, falsifiable repair contracts in the updated plan. No genuinely new evidence-backed defect was identified in the bounded review. This is not an implementation safety verdict or overall acceptance PASS.",
+    "existingFindingsState": "Keep the three original IDs open pending parent readback and the appropriate verification contract. These supplemental rechecks do not register verdicts, rebuttals, acceptance or closure. An empty findings array does not prove a repair was executed.",
+    "roundLimit": "This is round 2 of at most 2. Parent owns existing-ID verdicts/registration/repairs and escalation of any contested item; no third round is proposed."
+  },
+  "oldFindingRechecks": {
+    "f-2026-10-29T05-41-48-838Z-f42214": {
+      "rootCause": "Outer-uncompressed KDBX can still expand inner compressed XML binary values before post-load validation.",
+      "planLevelAddressed": true,
+      "assessment": "The original omission is addressed at plan level, conditionally on proving the supported adapter works in the actual worker bundle. The repair adds pre-parse UTF-8 size and DTD/ENTITY rejection, post-parse tree bounds, and rejection of every true Compressed attribute before returning the DOM to kdbxweb. It preserves outer-header admission and explicitly disables import on an incompatible interception API. It does not claim that a timeout bounds heap or that these gates have passed.",
+      "evidence": [
+        "Frozen request Acceptance Targets PT-04/PT-07 and understanding acceptanceDetails PT-04 require proven-library, failure-safe encrypted restore and real verification, not a header-only safety claim.",
+        "plan.json#/dataContracts/reviewRepairR1/boundedXmlAdmission: XML <=2MiB before parsing, DTD/ENTITY rejection, depth<=32/nodes<=20000, all true Compressed attributes rejected before DOM return, actual bundled decompression instrumentation with small synthetic external files, no internal parser monkey patch, incompatible public injection blocks import.",
+        "plan.json#/dataContracts/vaultImportBounds and vaultEncryption retain public pre-load KDBX4/cipher/compression/KDF admission, bounded input/output and worker deadline without claiming a hard heap sandbox; PT-S04 retains dependency, worker/XML and independent interoperability gates.",
+        "Fixed kdbxweb@2.1.1 xml-utils.ts: createDOMParser selects global.DOMParser; parse invokes parseFromString before returning a Document; getProtectedBinary calls gunzipSync when strToBoolean(Compressed) is true. strToBoolean lowercases the value, so admission tests must include mixed-case true values.",
+        "Fixed kdbxweb@2.1.1 kdbx-format.ts loadV4: after bounded outer-header selection/authentication/decryption and inner-header reading, XmlUtils.parse precedes setProtectedValues/loadFromXml. A rejecting DOM adapter at this point can prevent the identified inner-binary consumer from running. Static reachability is not actual bundle instrumentation.",
+        "Both code-understanding twins describe pre-consumption XML rejection and explicitly leave parser/dependency/browser enablement evidence outstanding."
+      ],
+      "remaining": [
+        "No maintained parser version, advisory/license result, bundled global-binding behavior, parser resource test or successful worker build was established by this review. Select and verify the exact parser dependency before enablement.",
+        "Tree checks after DOM construction constrain what kdbxweb consumes, not a pre-allocation hard parser-memory limit. Pre-parse bytes/DTD/entity limits, parser safety evidence and honest worker limitations remain necessary.",
+        "The actual outer-header reader, adapter, bundled inner-decompression path and independent fixture compatibility remain unexecuted gates. No import safety or finding closure is inferred from this plan text."
+      ],
+      "laterRegressionGates": [
+        "Using only small independently produced synthetic fixtures, accept one supported outer-None KDBX4, reject outer-GZip before decrypt/decompression, and reject outer-None with inner Compressed=True in entry values, history and metadata binaries. Include mixed-case boolean true, matching the library predicate. Instrument the actual worker bundle so every rejected inner-compression case proves no inner gunzip invocation.",
+        "At the actual parser entry, exercise XML byte boundary 2MiB/2MiB+1, DTD and ENTITY rejection before parse, depth32/33 and nodes20000/20001 before DOM return. Check invalid XML is rejected without partial import, and demonstrate bounded failure using small fixtures, never a bomb-size probe.",
+        "For wrong password, malformed/unsupported/oversized/high-KDF payload, parser rejection, timeout and unavailable adapter, assert old ciphertext and revision remain byte-identical, no candidate data is installed, and import stays disabled if any mandatory capability is unproven.",
+        "Record exact library/parser/bundler versions and dependency closure, fixture producer/independent reader versions and hashes. An unavailable fixture, unsafe closure or incompatible adapter is a PT-04 blocker, not a skipped PASS."
+      ],
+      "affectedAc": ["PT-04", "PT-07"],
+      "parentDisposition": "Open; parent owns readback, existing-ID verdict/registration and verification-based closure."
+    },
+    "f-2026-10-29T05-41-48-886Z-f7489f": {
+      "rootCause": "Same-session asynchronous commands can concurrently mutate one KDBX object despite epoch fencing and IDB revision CAS.",
+      "planLevelAddressed": true,
+      "assessment": "The repair specifies a minimal synchronous single-flight busy flag before asynchronous dispatch, rejecting overlapping edit/save/export/reveal/delete/restore commands rather than building a queue. It prohibits concurrent save on one object and discards/relocks a worker after mutation/encryption/write failure, avoiding later accidental persistence of failed edits. Output reopening in a separate instance is a local corruption check, explicitly not a replacement for an independent external reader.",
+      "evidence": [
+        "Frozen request PT-04 and understanding acceptanceDetails PT-04 require refresh-safe ciphertext persistence/backup and preservation after failed operations.",
+        "plan.json#/dataContracts/reviewRepairR1/singleFlightWorker names the synchronous busy flag, command coverage, rejection policy, never-concurrent KDBX.save, session discard on mutation/encryption/write failure, and output reopening before commit/export. It preserves the separate external-reader gate.",
+        "plan.json#/dataContracts/vaultConcurrency retains crypto outside IDB, live epoch/revision checks, atomic ciphertext CAS, staged restore and byte-identical persisted recovery on failure; vaultLock separately invalidates late work.",
+        "Fixed kdbxweb@2.1.1 kdbx-format.ts save/saveV4 still generates salts/writes the header and builds shared XML across promise boundaries. The repair directly serializes the mutable-library surface responsible for R1; IDB CAS alone would not have done so.",
+        "Both code-understanding twins explicitly add one in-flight command per mutable worker and session discard on failure, rather than describing worker thread execution as implicit asynchronous serialization."
+      ],
+      "remaining": [
+        "No real command dispatcher, busy-flag timing, output reopen, failure discard, epoch fencing or transaction CAS was executed in this review.",
+        "The reopen check must compare the exact expected records/field changes and not mutate the still-live object. A successful self-library reopen alone cannot establish external KDBX compatibility.",
+        "Single-flight must span the whole command through verification and durable commit/export decision. Lock/termination must remain able to preempt a busy session and must never be rejected as an ordinary overlapping edit."
+      ],
+      "laterRegressionGates": [
+        "Pause an actual library save after header serialization and attempt same-session edit/save/delete/export/restore/reveal commands. Overlaps must reject before touching live KDBX or producing an output; the first command must remain valid. Repeat with export in flight and rapid duplicate actions, not just two IDB commits.",
+        "Inject mutation, crypto, output-reopen, quota/write and CAS-conflict failures. Verify worker termination/relock, unchanged persisted bytes/revision and reopening only from last committed ciphertext. A later successful command must not silently resurrect an uncommitted failed edit.",
+        "Lock or latch while busy, then resolve late promises. No save/export/reveal/copy result or post-lock mutation may escape. Successful ciphertext/backup must reopen and match exact expected synthetic entries in a separate instance and in the required independent external reader.",
+        "Retain cross-tab stale-revision tests independently of same-session serialization: only a valid live-epoch CAS may commit, and every reported failure preserves last committed ciphertext."
+      ],
+      "affectedAc": ["PT-04", "PT-07"],
+      "parentDisposition": "Open; parent owns readback, existing-ID verdict/registration and verification-based closure."
+    },
+    "f-2026-10-29T05-41-48-915Z-b0d638": {
+      "rootCause": "A same-tab backend latch followed by canceled reload leaves a stale preview constant and retained local handles unless invalidation is synchronous at the actual transition.",
+      "planLevelAddressed": true,
+      "assessment": "The repair now identifies the controlling transition in learning/core.ts, event timing after successful durable latch state and before probe resolution/reload, no secret payload, live guards for each read/write/commit, and synchronous subscriber cleanup. PT-S06 includes core.ts, preview.ts and main.ts for implementation/call-site tests. A main.ts edit is not necessary if owner ordering is proven. Storage events or eventual polling are explicitly insufficient.",
+      "evidence": [
+        "Frozen request PT-06 and understanding acceptanceDetails PT-06 prohibit changing the preview/backend boundary or equating navigation with authorization; PT-04/PT-05 retain safe lock and error-state requirements.",
+        "plan.json#/dataContracts/reviewRepairR1/latchInvalidation requires a same-tab synchronous event at the actual core transition, current latch plus preview checks on every operation, epoch invalidation/transaction abort/worker termination/draft cleanup before a potentially canceled reload, and same-tab pending-read regression tests.",
+        "plan.json#/steps PT-S06 likelyFiles now includes src/learning/core.ts, src/config/preview.ts and src/main.ts; actions preserve capability criteria, formal menu behavior and data-level guards. Both brief twins add the actual latch owner, retained handles and canceled-reload tests.",
+        "Current src/learning/core.ts:20-53 createBackendProbe writes sessionStorage at line44, then sets private latched=true at line45 and returns after finally; it currently emits no transition event. This is the existing implementation anchor, not evidence that the planned repair already exists.",
+        "Current src/config/preview.ts:4-8 computes isInterfacePreview once. Current src/main.ts:30-31 awaits backendProbe.check then calls location.reload. The planned owner event before probe resolution can invalidate personal-tools state before that reload attempt without changing validCapabilities."
+      ],
+      "remaining": [
+        "No event, current-value repository guard, subscriber cleanup or canceled-reload behavior has been implemented or executed by this review. Existing code remains only an anchor for the proposed change.",
+        "Every retained-handle operation needs both admission and completion/commit fencing around asynchronous work. Checking only DB open or starting a read does not prove that a pending result cannot escape after latch.",
+        "The notification must observe an already-set durable and private latch, fire before check resolves, preserve the original capability predicate, and not leak data. Prior learning/module behavior must not be silently broadened."
+      ],
+      "laterRegressionGates": [
+        "Use the real createBackendProbe success path with synthetic capabilities and isolated storage. Record durable/private latch then synchronous subscriber invalidation then check resolution then reload attempt; failed validation or storage failure must not emit a false successful transition. Existing identity/version/library/source/tts conditions must remain unchanged.",
+        "In the same tab, hold synthetic vault work and a tracked IDB read/write pending, trigger actual capability success, and cancel reload through a dirty-note beforeunload flow. Before any navigation, assert epoch change, worker termination, transaction abort and cleared decrypted/draft view state. Retained handles must reject all subsequent read/write/export/reveal/copy operations.",
+        "Resolve requests that began before the latch and verify no stale read result reaches UI and no stale transaction commits. Register transactions before their first awaited request. Repeat without any storage event or polling tick; later reload success does not satisfy this gate.",
+        "Verify startup already latched and formal mode cannot read local personal-tools data, old databases remain unchanged, no local data is uploaded and protected backend requests remain denied. Run scoped core/preview/main call-site tests plus existing family/learning/module regressions against the identified snapshot."
+      ],
+      "affectedAc": ["PT-04", "PT-05", "PT-06", "PT-07"],
+      "parentDisposition": "Open; parent owns readback, existing-ID verdict/registration and verification-based closure."
+    }
+  },
+  "otherSurfacesReviewed": [
+    {
+      "surface": "Source fidelity and AC coverage",
+      "assessment": "The frozen User Source, Execution Decisions, PT-01..07 and Open Integration Inputs align with understanding summary/acceptanceDetails and plan acMapping PT-S01..07. The conservative local increment is not represented as a user-selected waiver. Required real email remains degraded and unfulfilled; optional WeChat remains disabled. No evidence-backed new semantic drift or uncovered AC is identified."
+    },
+    {
+      "surface": "YAML, secrets and backend authorization",
+      "assessment": "PT-S02 retains literal nonsecret defaults, isolated profile equivalence, missing-credential pre-connection failure and existing deny-all/namespace/TLS defaults. A refused write stays a blocker with no alternate-API bypass. No secret-bearing configuration values were read in this round and no binding/startup result is claimed."
+    },
+    {
+      "surface": "Notes, membership and minimality",
+      "assessment": "Existing plan contracts cover calendar month clamping, immutable renewal identities, integer-currency amounts, overdue unsent reminders, atomic note/asset persistence, both editor formats, sanitization and upload/CDN suppression. Reusing the native shell/editor and a dedicated binary-capable local repository is justified by PT-04/PT-05; no new speculative framework is required. Actual editor/browser, import/rollback and old-data-preservation checks remain future gates, not inferred passes."
+    },
+    {
+      "surface": "Brief omissions and verification boundaries",
+      "assessment": "Updated PT-S06 and brief twins now include the previously missing core/preview/main integration boundary. Existing checker scope updates, full frontend/backend isolated commands, independent fixture/browser evidence and honest per-AC statuses remain required. No index refresh, Git commit identity, complete dependency audit or previous test receipt is treated as current evidence."
+    }
+  ],
+  "permissionScope": {
+    "hostSandboxClaimed": false,
+    "actualCapabilities": "Read/search/web-fetch/apply_patch and PowerShell tools are exposed beyond the single authorized report. Behavioral limits apply; no OS-enforced worktree/network sandbox is evidenced or probed. No native-child or tool_search loader is exposed in this invocation; no deferred tools or nested children were invoked.",
+    "allowedWrite": "doc/analysis/2026-10-29-personal-tools-findings-plan-r2.json",
+    "productOrTestsChanged": false,
+    "productTestsExecuted": false,
+    "dependenciesInstalled": false,
+    "runtimeMutations": false,
+    "remoteDatabaseRedisOrMessages": false,
+    "secretsOrPriorChatsRead": false,
+    "gitCommitBranchOrDelivery": false,
+    "networkActivity": "Read-only public fixed-version kdbxweb source fetch through the supplied webpage tool; no install, credential query, application request or external message.",
+    "validationBoundary": "Only read-only JSON/schema-content checks of this ordinary report are authorized after writing. They are not product tests or evidence that the plan's safety/acceptance gates passed."
+  },
+  "handoff": {
+    "reportPath": "doc/analysis/2026-10-29-personal-tools-findings-plan-r2.json",
+    "newFindingsCount": 0,
+    "oldIdsRechecked": [
+      "f-2026-10-29T05-41-48-838Z-f42214",
+      "f-2026-10-29T05-41-48-886Z-f7489f",
+      "f-2026-10-29T05-41-48-915Z-b0d638"
+    ],
+    "parentOwns": "Read back the ordinary report, register the round-2 batch, book existing-ID verdicts and any repairs under original IDs, and apply the appropriate verifier contract. No finding was self-closed and no synthetic product-test result was generated.",
+    "acceptancePassed": false,
+    "writeStop": "Only this declared report was written with apply_patch. After read-only report validation, STOP writes. No source/test/configuration/dependency/runtime changes, additional reports or nested dispatches."
+  }
+}

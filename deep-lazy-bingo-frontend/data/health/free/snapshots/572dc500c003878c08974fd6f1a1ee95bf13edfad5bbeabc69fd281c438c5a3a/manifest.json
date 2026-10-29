@@ -1,0 +1,124 @@
+{
+  "provider": "free-exercise-db",
+  "revision": "f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5",
+  "scope": "sample",
+  "jsonSha256": "4ccc87efb3925cc822d0ab9752ae99b418e8d0127cafda6ee6ac2c99805acd79",
+  "licensePath": "LICENSE.md",
+  "licenseSha256": "6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e",
+  "count": 8,
+  "imageReferences": 16,
+  "exercises": [
+    {
+      "id": "free:3_4_Sit-Up",
+      "contentHash": "9cf595ba94ed2d116f3aa2ad15f82777dea53744aa8ce65681e36f0f1707bcd5",
+      "media": [
+        {
+          "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/3_4_Sit-Up/0.jpg",
+          "sha256": "26e9975d65f43036864a55db2ad536d18d466c906501b57102a58319eb78e7be"
+        },
+        {
+          "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/3_4_Sit-Up/1.jpg",
+          "sha256": "ca79885d0ca86a84d98bc87f58fd42044c9b6d08771ea5f3241f3e148c4c601c"
+        }
+      ]
+    },
+    {
+      "id": "free:90_90_Hamstring",
+      "contentHash": "dc2773099215f92ef520b3221dc863f985952073d04db5c5f129ba6d65ccd9bc",
+      "media": [
+        {
+          "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/90_90_Hamstring/0.jpg",
+          "sha256": "ed2b93c092b79a0934fe9e4813d207e7f933a416a9c2c7de448021c0167d8afa"
+        },
+        {
+          "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/90_90_Hamstring/1.jpg",
+          "sha256": "ba6d23d002865c7a5b524f58abcd5e530aa6ac0b6de4bde5aafe2ac903c44575"
+        }
+      ]
+    },
+    {
+      "id": "free:Ab_Crunch_Machine",
+      "contentHash": "1ef45be06026a9b77bd539fde8ab2c99d6e904e1bd2a46e83ddd5e0abc6cb78f",
+      "media": [
+        {
+          "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Ab_Crunch_Machine/0.jpg",
+          "sha256": "5072e495268201939f171a0ea2a038f7bae5f3a75f9972397a99f9c8696c6b84"
+        },
+        {
+          "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Ab_Crunch_Machine/1.jpg",
+          "sha256": "fb435de8360740438f7097e29afe5329e2f5b2d3a8b73d14cea259583013fd58"
+        }
+      ]
+    },
+    {
+      "id": "free:Ab_Roller",
+      "contentHash": "8e1a2bc4cbea88a03f3c937416ddbe3902bd07f61c31055daf68379baa07004c",
+      "media": [
+        {
+          "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Ab_Roller/0.jpg",
+          "sha256": "ee135be474621be286a5d376b2f16cf5feda7ae50e919225b809eee1c5d8e597"
+        },
+        {
+          "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Ab_Roller/1.jpg",
+          "sha256": "f310ffb7672316ef29c1932ef8d530fb6e7615d6a04c2274a29fd276823c0a07"
+        }
+      ]
+    },
+    {
+      "id": "free:Adductor",
+      "contentHash": "b9a96c3ef1462694fd1083e13d845306e2915da59d3471ebcdf87a9565a151a1",
+      "media": [
+        {
+          "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Adductor/0.jpg",
+          "sha256": "361134e6fbcaafbdfb4adf9b48f2ce4aa49099cbc1061d21357e977d1b0f7db2"
+        },
+        {
+          "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Adductor/1.jpg",
+          "sha256": "82ba9054decea2eca2fa47f3f500391081c31a4044834343224b0069360907f9"
+        }
+      ]
+    },
+    {
+      "id": "free:Adductor_Groin",
+      "contentHash": "f570847d0767fa5df1d7cb59ccd5ff0c096f9a787b5e047c0ba8296378790880",
+      "media": [
+        {
+          "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Adductor_Groin/0.jpg",
+          "sha256": "806c937a98223d641734f39de04a869fb77691eaaa7752644a4019fb74be16c1"
+        },
+        {
+          "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Adductor_Groin/1.jpg",
+          "sha256": "0a0963d1bd76d5ca5bba724c15ea13415547a67b52b7eadf2bda051743f9948e"
+        }
+      ]
+    },
+    {
+      "id": "free:Advanced_Kettlebell_Windmill",
+      "contentHash": "d01ce2e95499603d0ba88a0e3d9e5dca29b97139477bdd1e15aacddbf7139667",
+      "media": [
+        {
+          "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Advanced_Kettlebell_Windmill/0.jpg",
+          "sha256": "b758e272b8efc42023caaf8bcf3f3b152959cd4f5cb8cfa1a7fe0f43c08af1f7"
+        },
+        {
+          "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Advanced_Kettlebell_Windmill/1.jpg",
+          "sha256": "d47c85720839098d247f1225ba77f4175ee43dd6e8a209a3d165129f8fe5982b"
+        }
+      ]
+    },
+    {
+      "id": "free:Air_Bike",
+      "contentHash": "1d7901b83e590c35f8eb01b40062b869e4221ce1c0592178d31242bba899b8d5",
+      "media": [
+        {
+          "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Air_Bike/0.jpg",
+          "sha256": "cb5b85122109ca335d96a0041864dab12afc260a6851591f92203409c13dd33f"
+        },
+        {
+          "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Air_Bike/1.jpg",
+          "sha256": "8a6f4a03370c60591236c404ca587cffcc99dc9043197efcb6ad13afe1ba75b5"
+        }
+      ]
+    }
+  ]
+}

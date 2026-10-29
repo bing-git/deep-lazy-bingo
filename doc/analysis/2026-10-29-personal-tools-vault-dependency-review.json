@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-29",
+  "kind": "bounded-read-only-dependency-research",
+  "status": "implementable-candidate-identified-not-approved-or-certified",
+  "scope": {
+    "worktree": "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo",
+    "onlyWrittenFile": "doc/analysis/2026-10-29-personal-tools-vault-dependency-review.json",
+    "localEvidenceRead": [
+      "deep-lazy-bingo-frontend/src/views/personal-tools/vault.vue",
+      "deep-lazy-bingo-frontend/package.json",
+      "doc/analysis/2026-10-29-personal-tools-plan.json:dependencies",
+      "doc/analysis/2026-10-29-personal-tools-plan.json:dataContracts.reviewRepairR1",
+      "doc/analysis/2026-10-29-personal-tools-plan.json:dataContracts.vault*"
+    ],
+    "actionsNotPerformed": [
+      "No terminal access or processes, package installation, builds, tests, browser runtime, subagents or security scans",
+      "No product, package manifest, lockfile, user configuration, history, Maven, private-key or environment-file changes or reads",
+      "No KDBX binary downloads, malicious samples or proof-of-concept execution",
+      "No claim about the parent's running frontend checks or live security-gate status"
+    ],
+    "method": "Local file reads and unauthenticated fetch_webpage retrieval of public registry metadata, version-pinned published text source, advisory records and public fixture metadata. Registry latest/search results are observations on this date, not immutable evidence."
+  },
+  "currentState": {
+    "vaultView": "Disabled ElResult placeholder; asserts that the encryption library XML dependency is unmaintained. No vault engine is imported there.",
+    "manifest": "No kdbxweb, @keenext/kdbxweb, hash-wasm or @xmldom/xmldom direct dependency in the actual frontend manifest. This is not a claim about a newly resolved transitive lockfile.",
+    "correction": "The old 0.7.x xmldom line is end-of-life; the scoped project itself is maintained on 0.8.x and 0.9.x. An old dependency range does not prove that the vault feature is impossible. Keep the placeholder until actual gates pass, but do not use its blanket explanation as a dependency conclusion."
+  },
+  "decision": {
+    "recommendation": "Request explicit parent approval to replace the planned kdbxweb@2.1.1 with @keenext/kdbxweb@2.2.0-keenext.2, keep hash-wasm@4.12.0, add @xmldom/xmldom@0.9.12 as the worker DOM implementation, and pin the fork's external fflate to 0.8.3. All four declare MIT. This is a source-supported implementation candidate, not an enablement approval.",
+    "whyForkWasInvestigated": "The original candidate can interpose a bounded DOM parser and replace external xmldom. However, its published entry embeds old fflate code, and its KDBX4 HMAC block reader skips authentication of the zero-length terminal block. Dependency overrides cannot repair that format implementation. A no-internal-parser-patching constraint makes a maintained release/fork the smallest defensible path.",
+    "notChosen": [
+      "Unmodified kdbxweb@2.1.1 plus an assertion that dependency overrides fixed all distributed code",
+      "A home-grown cipher, crypto-js passphrase container, plaintext vault fallback or custom KDBX binary decoder",
+      "Copying KeeNext application code or adopting its unrelated ciphers/features"
+    ],
+    "qualification": "The fork is recent, low-volume, prerelease-named and described by its README as used by alpha software and not independently audited. Recent publishing is maintenance evidence, not proof of cryptographic correctness. Parent must accept provenance and maintenance risk and verify the actual browser worker artifact before enabling real data."
+  },
+  "originalCandidate": {
+    "package": "kdbxweb",
+    "version": "2.1.1",
+    "license": "MIT (published metadata)",
+    "registryGitHead": "9b86a035a53f1827e427a0fc081bdcccc24f4f1b",
+    "registryIntegrity": "sha512-z+a2+BEzyK2kUh0xDekY7gwc9CkbzSetUyvc78NKVawxV06UG1KYbg9W9hZCJdQPYizIVePTvQsYUXIO1qtAhQ==",
+    "main": "dist/kdbxweb.js",
+    "dependencies": {
+      "@xmldom/xmldom": "^0.7.4",
+      "fflate": "^0.7.1"
+    },
+    "publishedSourceFindings": [
+      "dist/kdbxweb.js UMD factory requires @xmldom/xmldom as an external module. The XML parser implementation itself is not embedded there.",
+      "XmlUtils.createDOMParser first constructs globalThis.DOMParser with no options. Only when absent does it require xmldom and pass the old warning/error/fatalError errorHandler object. XMLSerializer has the analogous global-first fallback.",
+      "No dedicated setDOMParser/setEnv injection API was found in the published exports. The supported platform boundary is the globals consumed at parser construction time; do not describe an invented setter as public API.",
+      "The same distribution contains ../node_modules/fflate/lib/index.cjs, including z64e and unzipSync, with the old unbounded ZIP64-extra-field search. A package-manager override cannot rewrite these embedded functions.",
+      "KDBX format code calls gzipSync/gunzipSync; it does not call ZIP unzipSync. The ZIP64 advisory code is present, but that does not establish a reachable ZIP exploit through the KDBX API. Outer None and rejecting every true Compressed XML attribute prevent the separate GZIP expansion paths if correctly interposed.",
+      "HmacBlockTransform.decrypt authenticates positive-length blocks, but its zero-length branch allocates/returns the concatenation without getBlockHmac comparison. This source-level integrity defect is independent of xmldom/fflate versions; no reproduction or new CVE claim is made.",
+      "BinaryStream.readBytes silently slices short input and advances beyond it; malformed lengths and unknown header IDs do not receive the fork's improved checks.",
+      "The XML pre-filter also strips literal tabs from unprotected values. The fork changes this; an override does not."
+    ],
+    "targetedOverrideProposal": {
+      "approval": "Explicit parent approval required; research only, not applied.",
+      "minimumCompatibilityOption": {
+        "directDependency": { "@xmldom/xmldom": "0.8.15" },
+        "pnpmOverrides": { "kdbxweb@2.1.1>@xmldom/xmldom": "0.8.15" },
+        "rationale": "Maintained 0.8.x security patch; published parser still accepts the old errorHandler object. The public worker-global wrapper must nevertheless enforce admission and fail-closed errors. Serializer strict-option position differs from 0.9.x; verify its published implementation rather than reusing a 0.9 wrapper unchanged."
+      },
+      "preferredParserOption": {
+        "directDependency": { "@xmldom/xmldom": "0.9.12" },
+        "pnpmOverrides": { "kdbxweb@2.1.1>@xmldom/xmldom": "0.9.12" },
+        "rationale": "Technically plausible only with the global adapter installed before all KDBX work. The default fallback is NOT compatible: 0.9.12 throws TypeError for an errorHandler object. Construct the real parser with onError that throws a generic redacted error for every warning/error/fatalError. Use a serializer wrapper that explicitly passes requireWellFormed:true."
+      },
+      "fflate": "An exact kdbxweb@2.1.1>fflate override to patched 0.7.5 (same minor) or 0.8.3 only updates the resolved dependency tree, not the embedded dist code. Do not approve it as bundle remediation. 0.8 changed the second synchronous decompression argument from an output buffer to options; the one-argument calls used by KDBX are source-compatible, but that fact cannot replace the old embedded implementation.",
+      "outcome": "XML override is a concrete compatible proposal with the stated adapter conditions; the complete original candidate is not recommended because the terminal-HMAC defect remains and embedded vulnerable ZIP code remains present. Do not silently override, monkey-patch the HMAC reader, or rebuild/vend a private crypto fork under this plan."
+    }
+  },
+  "proposedClosure": {
+    "directExactDependencies": {
+      "@keenext/kdbxweb": "2.2.0-keenext.2",
+      "hash-wasm": "4.12.0",
+      "@xmldom/xmldom": "0.9.12"
+    },
+    "proposedPnpmOverrides": {
+      "@keenext/kdbxweb@2.2.0-keenext.2>fflate": "0.8.3"
+    },
+    "applyStatus": "PROPOSAL ONLY; parent owns shared package/lock changes and must approve the fork and override explicitly.",
+    "versionsAndLicenses": [
+      { "name": "@keenext/kdbxweb", "version": "2.2.0-keenext.2", "license": "MIT", "evidence": "Registry/package metadata and published LICENSE text read", "integrity": "sha512-sq1HFP1YrDL7kKW1rThDph50UGvRPWI466Yo5JpsEqLoIyu+f0NpAL3hUygldhXhUcC5t9aFaqMSPWcTHz/Dgg==" },
+      { "name": "@xmldom/xmldom", "version": "0.9.12", "license": "MIT", "evidence": "Published package metadata and LICENSE text read", "integrity": "sha512-5AXjrcMClTryPe9LgZrygpB1lj7s0S9E0+W+AHaVKAVyHanafK86iPSvG5xHVSp/jC+VH1UXu0TAEmY279xH7A==" },
+      { "name": "fflate", "version": "0.8.3", "license": "MIT", "evidence": "Registry license and fixed release changelog read; no local artifact/license extraction", "integrity": "sha512-tbZNuJrLwGUp3zshBtdy4W+ORxZuIh8a5ilyIEQDC5rY1f3U20JMry0Ll3WBzU58EZKsEuJFXhb5gwv8CsPvgA==" },
+      { "name": "hash-wasm", "version": "4.12.0", "license": "MIT", "evidence": "Published package metadata and Argon2 source read; full WASM/source notice closure not independently reviewed here" }
+    ],
+    "forkEvidence": [
+      "Published ESM dist/index.js imports gunzipSync/gzipSync from external fflate. Published package build uses --external:fflate, runtime dependencies contain only fflate:^0.8.3, and no built-in xmldom fallback remains.",
+      "Published HMAC decrypt computes/verifies the block HMAC before testing blockLength > 0, including the empty final block.",
+      "Published BinaryStream checks requested reads against input length; KdbxHeader.read, BinaryStream and KdbxContext are exported. The declaration exposes static KdbxHeader.read(stm, ctx) without internal method access.",
+      "Published globals-based DOMParser/XMLSerializer path still interposes before setProtectedValues, parseMeta, parseRoot and getProtectedBinary. Inner header reading occurs before the XML adapter; outer None plus the file cap must bound that earlier allocation surface.",
+      "FORK.md documents upstream base 7601e45d2a437f35a7fa3d767164eab60bc05d42 and behavioral changes, plus upstream-adjacent regression and KeePassXC interoperability tests. These are read source assertions, not tests run in this worktree.",
+      "Registry search dates the exact fork release to 2026-10-11. It is not selected merely because the version string is larger."
+    ],
+    "licenseCaveat": "Preserve all package and third-party notices when bundling. Package MIT labels are verified to the degree stated, not a legal certification of every historical snippet/WASM component. Upstream distribution contains a Salsa20 comment referring to a gist with no license declared; resolving that historical provenance is a parent license-review item, not something a fork version number cures. The selected AES/Argon2id/ChaCha20-inner profile does not need Salsa20, but check actual shipped code and notices."
+  },
+  "advisoryEvidence": {
+    "coverage": "Public GitHub Advisory Database package-filtered GET results and published security policy/changelogs, not a local audit or comprehensive future vulnerability assertion. No malicious examples were executed.",
+    "xmldom": [
+      { "id": "GHSA-crh6-fp67-6883 / CVE-2022-39353", "issue": "Multiple root nodes", "affected": "<0.7.7; >=0.8.0 <0.8.4; specified early 0.9 betas", "fixed": "0.7.7 / 0.8.4 / 0.9.0-beta.4", "interpretation": "The declared ^0.7.4 range alone does not establish the resolved installed version; later 0.7 security problems still matter." },
+      { "id": "GHSA-2v35-w6hq-6mfw / CVE-2026-41673", "issue": "Recursive DOM traversal denial of service", "affected": "<0.8.13 and >=0.9.0 <0.9.10", "fixed": "0.8.13 / 0.9.10" },
+      { "id": "GHSA-965w-775f-mr7g / CVE-2026-83615", "issue": "Quadratic namespace-map memory", "affected": ">=0.7.0 <=0.8.14 and >=0.9.0 <=0.9.11", "fixed": "0.8.15 / 0.9.12", "interpretation": "A post-DOM depth check alone would be too late to protect an affected parser." },
+      { "id": "GHSA-8344-3jmq-59r6 / CVE-2026-83613", "issue": "Quadratic attribute deduplication CPU", "affected": ">=0.7.0 <=0.8.14 and >=0.9.0 <=0.9.11", "fixed": "0.8.15 / 0.9.12" },
+      { "id": "GHSA-93r5-fhx6-vmg9 / CVE-2026-83614", "issue": "Malformed-input recovery and normalize quadratic CPU", "affected": ">=0.7.0 <=0.8.14 and >=0.9.0 <=0.9.11", "fixed": "0.8.15 / 0.9.12" },
+      { "id": "GHSA-6h8r-xr42-gp59 / CVE-2026-83611", "issue": "Malformed end-tag silently accepted", "fixed": "0.8.15 / 0.9.12", "interpretation": "Fix reports recoverable errors; strict caller error escalation is still required." },
+      { "id": "GHSA-c7q8-3ch8-vqpv; GHSA-27p8-2357-5qqv; GHSA-6gmq-8vp8-gcm6", "issue": "PI target, doctype name and entity-reference serialization injection", "fixed": "0.8.15 / 0.9.12", "interpretation": "Serializer fixes require explicit requireWellFormed:true; default serialization is not an adequate mitigation." },
+      { "id": "GHSA-jxjr-3g7g-3944; GHSA-3px3-54cx-rmw9; GHSA-vr34-hp96-76pp", "issue": "Name/doctype validation line-terminator bypasses", "fixed": "0.9.12", "interpretation": "Additional reason to pin 0.9.12, not an earlier 0.9 patch." },
+      { "id": "GHSA-9pgh-qqpf-7wqj / CVE-2022-37616", "issue": "Alleged prototype pollution", "status": "WITHDRAWN 2022-11-08; disputed and reproduction unsuccessful", "interpretation": "Do not count this as an active proven vulnerability." }
+    ],
+    "fflate": {
+      "id": "GHSA-px8p-9vwx-vf98 / CVE-2026-45820",
+      "issue": "Malformed ZIP64 extra field makes unzipSync/z64e loop indefinitely",
+      "affected": ">=0.4.5 <0.4.9; >=0.5.0 <0.5.4; >=0.6.0 <0.6.11; >=0.7.0 <0.7.5; >=0.8.0 <0.8.3",
+      "fixed": "0.4.9 / 0.5.4 / 0.6.11 / 0.7.5 / 0.8.3",
+      "relevance": "Original kdbxweb dist visibly contains the affected ZIP64 loop. Its KDBX code uses GZIP rather than unzipSync, so exploitability through the proposed limited API is not demonstrated. Nevertheless, a resolved-tree override does not remove that embedded vulnerable code. The fork externalizes fflate and permits an actual 0.8.3 artifact in the worker bundle.",
+      "sourceDisagreement": "fflate repository advisory page says no published maintainer advisories, while the global reviewed advisory exists. An empty repository advisory page is not evidence that the package has no advisories."
+    },
+    "emptyPackageQueries": [
+      { "package": "kdbxweb", "result": "[]", "meaning": "No matching result returned; does not negate the observed terminal-HMAC implementation defect." },
+      { "package": "@keenext/kdbxweb", "result": "[]", "meaning": "No matching result returned; not an audit or safety proof." },
+      { "package": "hash-wasm", "result": "[]", "meaning": "No matching result returned; WASM correctness and exact resolved closure remain unverified." }
+    ]
+  },
+  "implementableAdmissionDesign": {
+    "publicApiOnly": "Use KdbxHeader.read(new BinaryStream(boundedHeaderPrefix), new KdbxContext({kdbx:new Kdbx()})) for unauthenticated admission before Kdbx.load. No manual KDBX byte-layout parser, private-method patch or cipher implementation. The prefix cap is an intentional supported-subset policy, not a universal KDBX limit.",
+    "outerHeader": [
+      "Reject input outside 1..10 MiB. Copy/transfer to one worker-owned immutable ArrayBuffer; preflight and load the same bytes, never a mutable cross-command alias.",
+      "Preflight at most the first 64 KiB with the exported header reader. A header extending past that cap, malformed/truncated read or thrown parser error is rejected. This bounds parsing/copies before KDF; do not claim the library has built-in application resource quotas.",
+      "Accept only KDBX major 4, explicit supported minor 0 or 1, AES-256 UUID and compression===Consts.CompressionAlgorithm.None. Validate 32-byte master seed, 16-byte IV, required dictionary and sane endPos with enough remaining bytes for header hash/HMAC and a block envelope.",
+      "Require KDF UUID Argon2id, V===0x13, 32-byte salt, integer P in 1..2, I in 1..6, M divisible by 1024 and memory in 32768..65536 KiB, also memory>=8*P. Reject K/A optional keyed or associated-data parameters and unsupported parameter keys/types. The 32768 KiB minimum is a proposed strength policy; parent must explicitly approve any weaker compatibility profile.",
+      "Safely unwrap library Int64 values, reject overflow/non-integer/negative/wrong-type values before conversion or WASM allocation. Recheck bounds in the public Argon2 callback so another load path cannot bypass them.",
+      "New vault: setVersion(4), setKdf(Argon2id), header.compression=None, M=Int64.from(33554432) bytes, I=Int64.from(3), P=1, V=19 using public VarDictionary.ValueType; retain library-generated salt/IV. Defaults are GZIP/Argon2d with weaker memory, so accepting defaults would violate the plan.",
+      "Header preflight is not authentication. Let the library verify header hash, header HMAC and all payload block HMACs including terminator before treating decrypted data as trusted. Do not repair or normalize hostile file bytes to make admission pass."
+    ],
+    "argon2Adapter": "CryptoEngine.setArgon2Impl receives password/salt buffers, memory already in KiB, iterations, length, parallelism, type, version and optionally signal in the fork. Require type===2, version===19, length===32 and bounded parameters. Call hash-wasm argon2id with Uint8Array password/salt, memorySize:memory, iterations, parallelism, hashLength:32, outputType:'binary'; return an exact-length ArrayBuffer slice. hash-wasm 4.12.0 source hardcodes version 0x13; never reinterpret an accepted 0x10 file as 0x13. It has no equivalent abort option: worker termination remains the hard cancellation mechanism, not a promised cancellable WASM call.",
+    "xmlAdapter": [
+      "Install only in the disposable worker realm, never global window. The library public platform seam is globalThis.DOMParser/XMLSerializer, looked up when used. Assert those globals are the intended wrapper before each command. No mutation of XmlUtils.parse or internal format methods.",
+      "DOMParser wrapper accepts only application/xml and string input. Before the real parse, bound string length and TextEncoder UTF-8 bytes to 2 MiB and reject case-insensitive <!DOCTYPE and <!ENTITY declaration tokens, including conservative whitespace variants. This is a conservative reject gate, not a new XML parser; false-positive rejection inside comments/CDATA is acceptable for this limited profile. Built-in numeric/predefined references remain allowed.",
+      "Construct @xmldom/xmldom@0.9.12 DOMParser with onError that throws a fixed nonsecret error for ALL levels. Do not log XML, parser messages, line text, passwords or protected values. No lenient recovery or fallback to another parser.",
+      "Before returning the DOM to kdbxweb, iteratively traverse from Document, counting all child nodes and attributes toward <=20000, element depth<=32. Require one KeePassFile document element, no doctype/entity nodes and valid XML-only tree. Cap attributes/field sizes and entries/history before recursive library traversal. Attribute value entity decoding must occur before checking Compressed.",
+      "Inspect every element, not just Meta/Binaries: reject any Compressed attribute whose decoded value is case-insensitively true, including entry Value nodes, History and metadata binaries. Prefer allowing only explicit False if an attribute exists; reject unknown boolean spellings. This prevents XmlUtils.getProtectedBinary from reaching gunzipSync even when the outer header is None.",
+      "XMLSerializer wrapper revalidates the bounded tree, omits the XML-declaration PI node from a serialization-only clone if the strict serializer rejects target xml, then calls the maintained serializer with requireWellFormed:true and bounds output bytes. Normal save builds an XML-declared skeleton through XmlUtils.create; an unqualified strict-wrapper proposal could otherwise break every save. Removing only that declaration from the serialized copy is valid UTF-8 XML, must not mutate library-owned nodes or invoke plaintext export APIs, and requires independent-reader verification.",
+      "The adapter is after decrypted inner-header parsing and after the library's control-character pre-filter, not before decryption/string decoding. With outer None, total earlier bytes remain bounded by the 10 MiB input. Post-parse limits do not by themselves bound peak parser heap; fixed parser security patches, byte cap and worker deadline are separate controls."
+    ],
+    "sessionAndPersistence": [
+      "Preserve reviewRepairR1 single-flight: synchronous busy latch before async dispatch, reject overlap for CRUD/save/export/restore/reveal/copy; never concurrent save on one object.",
+      "Use worker-owned credentials, monotonically increasing epoch and captured ciphertext revision. Crypto outside IDB transaction; compare-and-swap expected revision in one readwrite transaction before committing the complete KDBX ciphertext.",
+      "Stage restore separately, validate completely before explicit replacement confirmation, and never delete old ciphertext first. Failed mutation/encryption/write discards worker and relocks; preserve last committed bytes on all failures/conflicts.",
+      "Lock on hidden/pagehide/route/unmount/preview-disable/backend latch/2-minute idle: bump epoch, abort pending transaction, terminate worker, clear decrypted/draft/reveal/master state and ignore late completions. Same-tab latch event ordering remains required; no reliance on cross-tab storage events alone.",
+      "Reopen bounded generated output in a fresh library object in the same serialized command before commit/export. This is consistency validation, not independent interoperability. Keep <=1000 entries and explicit field/history/binary limits inside the same XML/node/file ceilings.",
+      "10-second deadline and worker termination protect responsiveness, not a hard browser memory sandbox or forensic zeroization guarantee. Same-origin XSS and device compromise remain risks; keep all plaintext out of persistence/routes/logs."
+    ]
+  },
+  "independentInterop": {
+    "strictFixtureStatus": "BLOCKED: No existing public fixture was confirmed in this bounded text/metadata research to satisfy all of KDBX4 + AES-256 + Argon2id v19 + outer None + KDF caps + bounded XML. Do not label any file below as that confirmed fixture. A reproducible independent generation route is identified; it was not run and creates no file in this dispatch.",
+    "independentTool": {
+      "package": "pykeepass",
+      "version": "4.2.0",
+      "license": "GPL-3.0 per PyPI (external interoperability tool only, not a browser/product dependency)",
+      "sourceCommit": "aec256659e7b2b497a37891476241b720f60c84e",
+      "sdistSha256FromRegistry": "0e40eabdac19a511a2be4e55094cbf01f1fd8ec9d9055456136fab266e5cc66",
+      "independence": "Python construct parser, argon2-cffi and PyCryptodome implementation, not kdbxweb/fork. Published PyKeePass supports read/write; no install or runtime check performed. GPL tool/fixture redistribution must be reviewed separately from permissive runtime dependencies."
+    },
+    "publicFixtures": [
+      {
+        "repository": "libkeepass/pykeepass",
+        "commit": "aec256659e7b2b497a37891476241b720f60c84e",
+        "path": "tests/test4_argon2id.kdbx",
+        "gitBlobSha": "a92d98e46ef871baff6322bcb7b5a55d97b17ecf",
+        "sizeBytes": 1365,
+        "publicSyntheticPassword": "password",
+        "keyfile": null,
+        "provenByPublicTestSource": "tests/tests.py KDBXTests.test_open_save associates this file with AES256, Argon2id and version (4,0), password password and no keyfile.",
+        "unverified": "Outer compression, memory/iterations/parallelism/version details, producer application, decrypted XML and hash of raw bytes were not independently inspected. This is a candidate seed, not proof of a None fixture."
+      },
+      {
+        "repository": "libkeepass/pykeepass",
+        "commit": "aec256659e7b2b497a37891476241b720f60c84e",
+        "path": "tests/test4_aes_uncompressed.kdbx",
+        "gitBlobSha": "da6d364aca75a12a997f524e2edfac600bc518b5",
+        "sizeBytes": 3909,
+        "publicSyntheticPassword": "password",
+        "keyfile": null,
+        "provenByPublicTestSource": "Same public test maps this to KDBX4 AES256, uncompressed filename/comment and argon2, not argon2id. Do not use it as an Argon2id acceptance fixture."
+      }
+    ],
+    "reproducibleFixtureProposal": {
+      "status": "NOT GENERATED; steps are for a separately authorized implementation/verification phase",
+      "proposedLocalPath": "deep-lazy-bingo-frontend/scripts/fixtures/personal-tools-vault/pykeepass-4.2.0-aes-argon2id-none.kdbx",
+      "publicSourcePath": "https://github.com/libkeepass/pykeepass/blob/aec256659e7b2b497a37891476241b720f60c84e/tests/test4_argon2id.kdbx",
+      "publicSyntheticPassword": "password",
+      "steps": [
+        "Use independently obtained pinned PyKeePass 4.2.0 in an isolated verification environment, never the product worker or a kdbxweb-produced seed. Verify the seed git blob identity and record a raw-file SHA256 before processing.",
+        "Open the public synthetic Argon2id seed with PyKeePass(password='password', keyfile=None). Confirm version==(4,0), encryption_algorithm=='aes256' and kdf_algorithm=='argon2id'.",
+        "Using PyKeePass's parsed object, set kp.kdbx.header.value.dynamic_header.compression_flags.data.compression=False; set the KDF dictionary M.value=33554432, I.value=3, P.value=1, V.value=19; retain library-managed UUID/salt/keys. Keep only a tiny synthetic entry set and reject DTD/ENTITY/Compressed=True in the seed XML. This edits the independent library model, not hand-encoded crypto/header bytes.",
+        "Save to the proposed new fixture path with PyKeePass.save, reopen with PyKeePass, assert the same header profile, exact field values and entry/history counts, then record raw SHA256, tool/closure versions, generator source and provenance manifest. Seeds/IVs rotate, so reproducibility is semantic, not byte-identical across generation runs.",
+        "Have the browser library import this independent output, modify/export a synthetic entry, and have PyKeePass read that export and assert all fields, protection flags and history. Reopen using a second independent desktop reader where available. Do not accept only kdbxweb self-roundtrip."
+      ],
+      "caveat": "Source supports the model fields and save path, but no generated public URL, raw SHA256 or runtime success can be supplied without separate generation and publication. If the requirement literally needs an already-hosted exact-profile fixture, this remains a blocking deliverable rather than a fabricated link."
+    },
+    "additionalIndependentProducerReader": {
+      "tool": "KeePassXC 2.7.11 and its keepassxc-cli, external verification application only",
+      "license": "GPL family; fetched 2.7.11 TestKdbx4.cpp declares GPL v2 or v3. Not an MIT/Apache browser-library alternative.",
+      "route": "In desktop database settings choose KDBX4/AES-256, Argon2id v19 with explicit 32 MiB/3/1 and no compression, add synthetic fields and save. Use CLI db-info/show or desktop inspection to independently read browser exports. Confirm options/version on the actual separately approved tool; do not assume CLI exposes compression or all KDF settings.",
+      "publicProvenanceReferences": [
+        "keenext/keenext at 0101870d61bdc36d04bf4307bb8be85b3327f197:tests/fixtures/generate.sh",
+        "keenext/keenext at the same commit:tests/fixtures/make-base.mjs",
+        "keenext/keenext at the same commit:tests/compat/keepassxc.spec.ts"
+      ],
+      "warning": "Those public KeeNext fixtures use password test, but its Argon2id ChaCha20/Twofish fixtures begin with a kdbxweb-written base and then are merged/rewritten by KeePassXC; compression is not set to None. Do not treat them as independent-from-scratch AES/None acceptance fixtures or copy their app code. They substantiate a public reader/writer comparison technique only."
+    }
+  },
+  "blockersAndDisconfirmingChecks": [
+    { "id": "B1", "status": "parent-approval-required", "blocker": "Fork adoption, exact external fflate pin and parser addition exceed the reviewed package choice.", "disconfirmOrResolve": "Parent explicitly approves the exact proposal and records dependency/notice provenance. No silent override." },
+    { "id": "B2", "status": "unverified", "blocker": "No installed/built worker artifact was inspected or executed.", "disconfirmOrResolve": "Separately run focused worker/build checks and inspect the actual emitted import graph for the exact external parser/fflate versions, no old embedded ZIP loop, no Node crypto fallback and no alternate XML parse entry. Fail closed if the build resolves differently." },
+    { "id": "B3", "status": "unverified", "blocker": "Parser and serializer wrappers are source-compatible designs, not demonstrated runtime integration.", "disconfirmOrResolve": "Small benign probes: valid XML/save skeleton succeeds, DTD/ENTITY rejects before the real parser is invoked, 2 MiB/depth32/nodes20000 limits reject at boundary, decoded Compressed='TrUe' or character-reference spelling rejects before DOM return. Add entry/history/meta cases and assert no GZIP invocation through public module instrumentation; do not execute compression bombs or patch internal library code." },
+    { "id": "B4", "status": "unverified", "blocker": "Safe pre-load outer-header and KDF enforcement is not implemented.", "disconfirmOrResolve": "Small synthetic files with GZIP, KDBX3, wrong cipher/KDF/version, oversized Int64 memory/iterations/parallelism and short/overlong headers must reject with Argon2 callback invocation count zero. Valid independent fixture must pass. A timeout alone does not satisfy this gate." },
+    { "id": "B5", "status": "blocking-fixture-gap", "blocker": "No already-public exact-profile acceptance fixture confirmed.", "disconfirmOrResolve": "Obtain a public independently generated matching fixture with source/producer/profile/password and raw digest, or separately generate and publish the pinned PyKeePass fixture described above. Read browser exports with the independent tool; preserve semantic assertions and provenance." },
+    { "id": "B6", "status": "unverified", "blocker": "KDBX4 terminal block authenticity and error-path storage preservation need implementation evidence.", "disconfirmOrResolve": "A small synthetic file with only final HMAC bytes changed must reject in the fork; wrong password, corruption, failed save/quota/abort/stale CAS must preserve committed ciphertext byte-for-byte. This is not a request to execute such probes in this dispatch." },
+    { "id": "B7", "status": "unverified", "blocker": "singleFlightWorker, epoch fencing, CAS and immediate lock/latch behavior are only plan contracts.", "disconfirmOrResolve": "Separately race unlock/save/export/restore/reveal, cross-tab stale revision and pending IDB commit versus lock/latch. Reject overlap, terminate/discard failed workers and prove no late result revives UI or writes old ciphertext." },
+    { "id": "B8", "status": "unverified", "blocker": "Full exact closure advisory/license review, historical source attribution and WASM/browser-CSP compatibility remain outside this research evidence.", "disconfirmOrResolve": "Review the approved locked artifacts and notices, advisories including withdrawn status and bundled code, and run independent Argon2 vectors/browser compatibility later. Empty advisory results and MIT metadata alone cannot close this gate." }
+  ],
+  "references": {
+    "originalRegistry": "https://registry.npmjs.org/kdbxweb/2.1.1",
+    "originalPublishedSource": "https://unpkg.com/kdbxweb@2.1.1/dist/kdbxweb.js",
+    "originalPublishedTypes": "https://unpkg.com/kdbxweb@2.1.1/dist/types/index.d.ts",
+    "forkRegistry": "https://registry.npmjs.org/@keenext/kdbxweb/2.2.0-keenext.2",
+    "forkPublishedPackage": "https://unpkg.com/@keenext/kdbxweb@2.2.0-keenext.2/package.json",
+    "forkPublishedSource": "https://unpkg.com/@keenext/kdbxweb@2.2.0-keenext.2/dist/index.js",
+    "forkPublishedHeaderTypes": "https://unpkg.com/@keenext/kdbxweb@2.2.0-keenext.2/dist/types/format/kdbx-header.d.ts",
+    "forkChanges": "https://unpkg.com/@keenext/kdbxweb@2.2.0-keenext.2/FORK.md",
+    "forkLicense": "https://unpkg.com/@keenext/kdbxweb@2.2.0-keenext.2/LICENSE",
+    "parserRegistry": "https://registry.npmjs.org/@xmldom/xmldom/latest",
+    "parserPublishedMetadata": "https://unpkg.com/@xmldom/xmldom@0.9.12/package.json",
+    "parserPublishedSource": "https://unpkg.com/@xmldom/xmldom@0.9.12/lib/dom-parser.js",
+    "parserPublicTypes": "https://unpkg.com/@xmldom/xmldom@0.9.12/index.d.ts",
+    "parserLicense": "https://unpkg.com/@xmldom/xmldom@0.9.12/LICENSE",
+    "parserSupportPolicy": "https://unpkg.com/@xmldom/xmldom@0.9.12/SECURITY.md",
+    "parserCompatibilityPatchRegistry": "https://registry.npmjs.org/@xmldom/xmldom/0.8.15",
+    "parserCompatibilityPatchSource": "https://unpkg.com/@xmldom/xmldom@0.8.15/lib/dom-parser.js",
+    "parserAdvisories": "https://api.github.com/advisories?ecosystem=npm&affects=%40xmldom%2Fxmldom&per_page=30",
+    "fflateRegistry": "https://registry.npmjs.org/fflate/latest",
+    "fflateChangelog": "https://unpkg.com/fflate@0.8.3/CHANGELOG.md",
+    "fflateAdvisory": "https://github.com/advisories/GHSA-px8p-9vwx-vf98",
+    "fflateAdvisoryQuery": "https://api.github.com/advisories?ecosystem=npm&affects=fflate&per_page=20",
+    "fflateMaintainerAdvisories": "https://github.com/101arrowz/fflate/security/advisories",
+    "hashWasmPackage": "https://unpkg.com/hash-wasm@4.12.0/package.json",
+    "hashWasmArgon2Source": "https://unpkg.com/hash-wasm@4.12.0/lib/argon2.ts",
+    "hashWasmArgon2Types": "https://unpkg.com/hash-wasm@4.12.0/dist/lib/argon2.d.ts",
+    "pykeepassRelease": "https://pypi.org/pypi/pykeepass/4.2.0/json",
+    "pykeepassCommit": "https://api.github.com/repos/libkeepass/pykeepass/commits/master",
+    "pykeepassFixtureMetadata": "https://api.github.com/repos/libkeepass/pykeepass/contents/tests",
+    "pykeepassPublicFixtureTests": "https://raw.githubusercontent.com/libkeepass/pykeepass/master/tests/tests.py",
+    "pykeepassModelSource": "https://raw.githubusercontent.com/libkeepass/pykeepass/master/pykeepass/pykeepass.py",
+    "pykeepassKdbx4Source": "https://raw.githubusercontent.com/libkeepass/pykeepass/master/pykeepass/kdbx_parsing/kdbx4.py",
+    "pykeepassCompressionSource": "https://raw.githubusercontent.com/libkeepass/pykeepass/aec256659e7b2b497a37891476241b720f60c84e/pykeepass/kdbx_parsing/common.py",
+    "keepassxcTestSource": "https://raw.githubusercontent.com/keepassxreboot/keepassxc/2.7.11/tests/TestKdbx4.cpp",
+    "keenextFixtureMetadata": "https://api.github.com/repos/keenext/keenext/contents/tests/fixtures",
+    "keenextFixtureGenerator": "https://raw.githubusercontent.com/keenext/keenext/main/tests/fixtures/generate.sh",
+    "keenextFixtureBaseGenerator": "https://raw.githubusercontent.com/keenext/keenext/main/tests/fixtures/make-base.mjs",
+    "keenextInteropTest": "https://raw.githubusercontent.com/keenext/keenext/main/tests/compat/keepassxc.spec.ts",
+    "keenextObservedCommit": "https://api.github.com/repos/keenext/keenext/commits/main"
+  },
+  "retrievalLimits": [
+    "Some fetches return extracted/truncated text, not a byte-verified package archive. Recorded registry integrity values were read, not locally verified.",
+    "Original kdbxweb commit README extraction failed and test/resources lookup returned 404; conclusions use version-pinned published distribution, not those failed links.",
+    "Repository advisory page extraction was incomplete for xmldom; the global package-filtered advisory API supplied the actual evidence.",
+    "No complete current vulnerability-free status, security certification, interoperability pass or implemented safe vault is claimed."
+  ]
+}

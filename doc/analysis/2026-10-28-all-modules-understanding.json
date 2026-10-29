@@ -1,0 +1,91 @@
+{
+  "summary": "run-2026-10-28T07-28-19-126Z-59d5d2b3 的 UNDERSTAND 产物。需求正文仅读取一次。父编排器明确选择 L1 standard、本地限定，并非用户手选等级。本任务仅理解、不实现、不验证验收完成。familySections 共 7 组 28 个叶子入口；路由保留 7 个专用能力入口，20 个指向通用空页，另有工作概览独立占位，共 21 个需补齐。目标是在 Art 原生壳内形成可持久化、可追溯的本地业务体验，不将本机样例宣称为真实后端、模型调用或授权。",
+  "acceptanceCriteria": [
+    "AC-MOD-01: 全部 28 个现有路由可到达有业务内容的页面，替换统一离线图标和空表，不改变原生菜单、顶栏、面包屑、标签、主题和响应式壳。",
+    "AC-MOD-02: 工作台提供来源可追溯的任务统计、今日待办、可操作日历和通知已读；创建、编辑、完成后刷新保持一致，统计由真实本地记录推导。",
+    "AC-MOD-03: 学习计划有目标、日期、任务状态；笔记可编辑检索；题库实际作答并记录结果；进度关联本地学习记录，缺失时长或成绩不得伪造。",
+    "AC-MOD-04: 知识空间、来源、文档和摄取任务通过稳定标识关联；支持自有纯文本导入、查看和解析预览，任务产生实际本地结果或错误，不宣称向量化或联网全文采集。",
+    "AC-MOD-05: 学习 AI 有问答工作区、草稿编辑及采纳/拒绝、英语路径；未连接模型时仅提供明确标记的原创示例或本地文本检索摘录，不冒充模型生成。",
+    "AC-MOD-06: 服务目录可维护条目、分类和启停，状态人工记录、历史可查询；地址按批准范围校验，禁止凭据、任意请求代理和伪造实时探测。",
+    "AC-MOD-07: 家庭成员和偏好有完整管理表单与状态，敏感变更确认；审计只读可筛选、记录实际本机变更，不含凭据或完整敏感正文；角色样例不是服务端授权事实。",
+    "AC-MOD-08: 持久化错误、输入错误、删除确认、搜索无结果和重复操作有正确反馈；跨页数据关系明确，不使用不可追溯的随机指标。",
+    "AC-MOD-09: 后续实现需通过标准测试、类型检查、生产构建及限定 lint/style/format，并检查桌面、390px、768px 的主要流程、长文字和横向溢出；本理解任务未执行这些检查。"
+  ],
+  "readReferences": [
+    "doc/requirements/12-module-functional-experience.md：一次读取全文；本次请求、基线与范围、AC-MOD-01..09、边界及上位规则。",
+    "deep-lazy-bingo-frontend/src/config/family.ts：familySections，7 组 28 个叶子路径；现有预览与请求边界。",
+    "deep-lazy-bingo-frontend/src/router/modules/index.ts：28 个入口组件分派，7 个专用能力入口、20 个通用 domain 入口、1 个独立概览入口。",
+    "deep-lazy-bingo-frontend/src/views/workspace/domain.vue：统一后端警告、离线状态、空数据表；日历仅选日期，学习 AI 仅附场景状态。",
+    "deep-lazy-bingo-frontend/src/views/workspace/index.vue：空待办、未加载日程和未知未读数；快捷入口与日期跳转尚非业务闭环。",
+    "doc/requirements/05-family-services.md：FR-SVC-001..024、关键业务规则及 AC-SVC-001..006；受控白名单、拒绝公开/环回/链路本地/元数据目标、前端不替代服务端校验。",
+    "deep-lazy-bingo-frontend/src/learning/english.ts:2：定向文本检索确认实际导入 ts-fsrs；未读取或执行完整英语实现。",
+    "/memories/repo/frontend.md：既有 Art/idb/学习能力及本地模式记录，仅作历史保留线索，本轮未重验。",
+    "/memories/repo/ai-english.md：既有模型配置和教材内英语练习、ts-fsrs、独立数据保留线索，本轮未重验。",
+    "/memories/repo/health.md：既有运动/餐食本地能力与每提供方最多 8 条的小批量约束，仅作历史保留线索，本轮未重验。",
+    "C:/Users/qxz5kb5/.copilot/installed-plugins/joycode/joycode-2/skills/joycode/native-agents/agents/joycode-developer.md：原生 understand 角色约束。",
+    "C:/Users/qxz5kb5/.copilot/installed-plugins/joycode/joycode-2/skills/joycode/SKILL.md：等级及编排职责；本任务不执行运行时记账。",
+    "C:/Users/qxz5kb5/.copilot/installed-plugins/joycode/joycode-2/skills/joycode-prd-understanding/SKILL.md：一次读取及理解产物要求。",
+    "C:/Users/qxz5kb5/.copilot/installed-plugins/joycode/joycode-2/skills/joycode-prd-understanding/references/stage-contract.md：developer 返回产物，编排器记账。",
+    "C:/Users/qxz5kb5/.copilot/installed-plugins/joycode/joycode-2/skills/joycode-prd-understanding/references/quality-checklist.md：真实未知与可推导假设的区分。"
+  ],
+  "assumptions": [
+    "用户不可用并已委托自主判断；只在需求可推导的本地体验内决策，不扩大到后端、生产权限或外部系统。",
+    "专用能力入口共 7 个仅表示应保留的既有实现面，不代表本次验证其功能、质量或生产验收完成。",
+    "21 个待补齐入口 = 工作台 4 + 学习管理 4 + 知识库 4 + 学习 AI 3 + 家庭服务 3 + 家庭管理 3；英语路径仍属占位，既有英语练习嵌在自学教材中。",
+    "本机样例显式标记为原创/本地，不含真实身份、儿童或健康信息；样例角色切换和管理动作仅演示本机状态，不产生真实权限。",
+    "使用既有 Vue、Element Plus、idb 和测试工具；保持已有数据库、覆盖项、删除状态、学习记录及模型配置，不清库、不随机重建样例。",
+    "种子使用稳定标识和持久化初始化标记，重复打开或刷新不覆盖用户更改、不复活用户删除的记录；无样例、无匹配均提供可行动空状态。",
+    "任务、日程、通知、学习记录、答题尝试与审计建立稳定引用；聚合统计从关联记录计算，分母为零或缺失数据按未知/无记录处理，不生成随机成绩或时长。"
+  ],
+  "openQuestions": [
+    "唯一控制性未决项：实际批准的服务私网地址/受控域名、端口与路径白名单未由所读材料提供，不能把任意私网或 DNS 名称自动当作已批准。建议本轮自主采用拒绝优先：可维护明确未批准的本地目录草稿和人工状态，但不激活链接；仅编排器提供受控静态批准项后启用对应入口。若必须验收真实直达链接，这是该子能力的阻塞项；不阻塞其他本地体验，也不能以浏览器校验声称完成服务端 SSRF/DNS 安全验收。"
+  ],
+  "pageMatrix": [
+    {"path":"/workspace/overview","current":"独立 index 页，但待办、日程和通知均未加载；计入占位 21。","needed":"关联记录驱动的统计、今日事项、日期导航及通知入口。"},
+    {"path":"/workspace/tasks","current":"通用 domain 空页。","needed":"本机任务创建、编辑、完成、日期与来源关联，刷新保留。"},
+    {"path":"/workspace/calendar","current":"domain 日期选择，无关联日程操作。","needed":"按日期显示关联任务与日程，支持创建/编辑及状态联动。"},
+    {"path":"/workspace/notifications","current":"通用 domain 空页。","needed":"实际本地事件产生的通知、已读与未读筛选及持久化。"},
+    {"path":"/learning/students","current":"专用 library 教育教材入口，保留既有能力；本轮未重验。","needed":"保留封面、详情、获取/删除/换封面及用户数据；与新增学习对象安全关联。"},
+    {"path":"/learning/adults","current":"专用 library 自学教材入口；历史记录含内嵌英语练习。","needed":"保留教材阅读、笔记及 ts-fsrs 英语尝试/复习记录，不复制或替换调度器。"},
+    {"path":"/learning/sources","current":"专用 library 资料采集入口，保留既有能力。","needed":"保留批准来源与小批量采集，不增加网络代理或无界采集。"},
+    {"path":"/learning/speech","current":"专用 library 朗读入口，保留既有能力。","needed":"保留浏览器朗读及配置状态，不宣称后端语音模型或音频生成成功。"},
+    {"path":"/learning/plans","current":"通用 domain 空页。","needed":"目标、日期范围、关联任务和状态编辑；计算实际任务完成进度。"},
+    {"path":"/learning/notes","current":"通用 domain 空页；不表示教材内无笔记能力。","needed":"复用或安全关联既有笔记，可编辑与检索，保留教材来源。"},
+    {"path":"/learning/practice","current":"通用 domain 空页；不等于已有英语练习入口。","needed":"明确原创题目、实际作答、结果与防重复尝试处理。"},
+    {"path":"/learning/progress","current":"通用 domain 空页。","needed":"根据任务、阅读和作答记录展示来源可追溯的进展，不补造时长成绩。"},
+    {"path":"/knowledge/spaces","current":"通用 domain 空页。","needed":"本地空间管理及关联来源/文档数量和空状态。"},
+    {"path":"/knowledge/sources","current":"通用 domain 空页。","needed":"本地来源与许可元数据管理，关联空间和自有文本，不联网全文抓取。"},
+    {"path":"/knowledge/documents","current":"通用 domain 空页。","needed":"自有纯文本导入、查看、版本及来源关联，输入和大小边界有反馈。"},
+    {"path":"/knowledge/ingestion","current":"通用 domain 空页。","needed":"实际本地解析/分块预览任务，记录结果和错误，不虚报向量索引。"},
+    {"path":"/learning-ai/questions","current":"通用 domain 空页附场景配置状态。","needed":"选择本地空间、问题和引用摘录；原创示例/文本检索显式标记，非模型回答。"},
+    {"path":"/learning-ai/drafts","current":"通用 domain 空页附场景配置状态。","needed":"草稿编辑、采纳/拒绝、关联原始材料和实际操作审计。"},
+    {"path":"/learning-ai/english","current":"通用 domain 空页附场景配置状态；并未挂载既有教材英语练习。","needed":"可维护英语目标与路径，关联原教材/练习及已有复习能力，避免重造 FSRS。"},
+    {"path":"/learning-ai/models","current":"专用 models 页面；已有配置能力，不等于模型已连接。","needed":"保留默认关闭、场景分配和非秘密配置引用，不存密钥、不发起真实模型调用。"},
+    {"path":"/health/exercise","current":"专用 health 页面，已有本地运动能力的历史记录。","needed":"保留计划、打卡、用户覆盖与数据引用；每提供方上限 8，不恢复全量抓取。"},
+    {"path":"/health/meals","current":"专用 health 页面，已有本地人工餐食能力的历史记录。","needed":"保留人工记录、明确营养来源与未知值，不伪造识别、热量或上传结果。"},
+    {"path":"/services/catalog","current":"通用 domain 空页。","needed":"名称、描述、分类、可信图标、可见范围、排序和启停；白名单控制链接，停用后全部入口不可打开。"},
+    {"path":"/services/status","current":"通用 domain 空页。","needed":"人工记录未知/正常/异常/维护中/未配置，显示来源和更新时间；过期不冒充正常。"},
+    {"path":"/services/history","current":"通用 domain 空页。","needed":"只读筛选实际目录/人工状态变更，软删除或停用保留历史。"},
+    {"path":"/family/members","current":"通用 domain 空页。","needed":"明确样例成员的管理表单、状态与敏感变更确认；不宣称真实登录、隔离或角色授权。"},
+    {"path":"/family/preferences","current":"通用 domain 空页。","needed":"本地偏好编辑与持久化，复用原生主题，不改变正式认证或静默开启 AI。"},
+    {"path":"/family/audit","current":"通用 domain 空页。","needed":"实际本机操作产生的只读可筛选审计，不提供篡改操作，不记录秘密或完整敏感正文。"}
+  ],
+  "implementationSafeBounds": [
+    "只在明确启用的既有本地体验模式使用本机存储；正式模式不得无声降级。本机模式不能满足真实会话、家庭隔离、对象授权、生产持久化或多设备同步验收。",
+    "保留 Art 原生应用壳、现有 idb 数据与 ts-fsrs；不引入第二个壳、装饰营销页、未经许可资产或新的网络/凭据代理。",
+    "服务地址不是 URL 收藏夹：协议、主机、端口、路径逐项受控；拒绝公开互联网、环回、链路本地、云元数据、策略外目标与任何凭据；远程图标也不能成为请求入口。",
+    "服务允许范围只能来自部署配置或管理员受控白名单，不能由普通样例表单任意扩大；受控域名的 DNS 实际地址校验属于后端，缺失时拒绝激活，不用浏览器代做或伪报。",
+    "服务仅批准链接直接打开，不转发页面/文件/认证流量；不增加探测器、任意 URL/方法/头/体、Webhook 或命令入口；状态仅人工记录。",
+    "样例儿童默认不可见服务，显式可见也只展示最少字段；这只是界面行为示例，不是可信的服务端访问控制。",
+    "AI 默认关闭，密钥不进入浏览器，复用场景配置；原创示例、本地检索、人工审核及浏览器朗读不能伪装成模型生成、真实 TTS 或自动执行服务操作。",
+    "采集保留每提供方最多 8 条的现有上限及更严格子上限，不做全量动作库恢复、不推断局部导入即删除既有记录。",
+    "实际本地变更与审计应在持久化成功后保持一致；失败不显示成功，重复提交不得重复计数；删除确认和被引用对象处理必须明确。",
+    "本轮未运行 CLI、测试、构建、浏览器或网络请求；未读取 git 元数据，未写产品/测试、.git 或 .joycode；只写本理解 JSON。阶段、来源读取及决策登记由编排器负责。"
+  ],
+  "scopedDecompositionRecommendation": [
+    {"task":"1. 本地记录基础与学习/工作台闭环","scope":"限定本地数据模型、幂等初始化和必要审计写入接口；实现工作台 4 页与学习管理 4 页，关联现有教材/笔记/尝试记录。","acceptanceCriteria":["AC-MOD-01","AC-MOD-02","AC-MOD-03","AC-MOD-08","AC-MOD-09"]},
+    {"task":"2. 本地知识链与学习 AI 工作区","scope":"知识库 4 页及问答/草稿/英语路径 3 页；依赖任务 1 的最小记录接口，纯文本实际解析、引用检索、人工审核；保留既有模型与 FSRS。","acceptanceCriteria":["AC-MOD-01","AC-MOD-04","AC-MOD-05","AC-MOD-08","AC-MOD-09"]},
+    {"task":"3. 受控服务目录与人工状态","scope":"家庭服务 3 页；稳定关联目录、状态和历史，拒绝优先白名单、无网络探测与代理；未提供批准项时仅草稿且禁止打开。","acceptanceCriteria":["AC-MOD-01","AC-MOD-06","AC-MOD-08","AC-MOD-09"]},
+    {"task":"4. 样例家庭管理与只读审计","scope":"家庭管理 3 页；样例成员/偏好管理、敏感操作确认和任务 1 以来实际本机变更审计，限定 28 路由集成及现有 7 入口不回退检查。","acceptanceCriteria":["AC-MOD-01","AC-MOD-07","AC-MOD-08","AC-MOD-09"]}
+  ]
+}

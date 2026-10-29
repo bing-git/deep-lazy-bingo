@@ -1,0 +1,346 @@
+{
+  "schemaVersion": "personal-tools.plan/v1",
+  "runId": "run-2026-10-29T05-14-34-396Z-ecca203e",
+  "stage": "plan",
+  "level": "L1",
+  "profile": "standard",
+  "worktree": "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo",
+  "status": "draft_for_parent_independent_plan_review",
+  "summary": "Implement a literal-nonsecret YAML migration and three refresh-persistent native local modules, with a KDBX vault and safe dual-format notes. Required real email remains degraded, not delivered. This dispatch writes reports only; no implementation or product verification has occurred.",
+  "inputs": {
+    "frozenSource": "doc/analysis/2026-10-29-personal-tools-request.md",
+    "understanding": "doc/analysis/2026-10-29-personal-tools-understanding.json",
+    "repositoryRules": ".github/AGENTS.md",
+    "codeUnderstanding": [
+      "doc/analysis/2026-10-29-personal-tools-code-understanding.md",
+      "doc/analysis/2026-10-29-personal-tools-code-understanding.json"
+    ],
+    "sourceComparison": {
+      "finding": "No semantic contradiction found between the frozen request and understanding. Local-only is a parent execution decision, not a user-selected waiver of email. Understanding U-04/U-05 were unresolved inputs, not verified claims; this plan resolves design choices but not implementation evidence.",
+      "historicalScopeNote": "Understanding A-05 described that earlier dispatch's single-file write scope. The current dispatch authorizes exactly three different planning files; it does not authorize implementation.",
+      "mismatchHandling": "Any later source/understanding inconsistency must be returned as an explicit finding and re-reviewed; never silently edit either input."
+    }
+  },
+  "decisiveAnchor": {
+    "path": "deep-lazy-bingo-frontend/src/modules/local.ts:103",
+    "observation": "Generic records reject credential-like keys, permit only bounded primitive fields and use revision-checked atomic writes. They are not a vault or a binary attachment repository.",
+    "hypothesis": "A small dedicated idb repository can preserve old databases and the existing explicit-preview gate while supporting atomic note attachments, immutable membership periods and ciphertext-only vault CAS writes.",
+    "cheapDisconfirmingCheck": "In a focused fake-indexeddb test, reopen the new DB with an old-db sentinel present; abort a note-plus-asset transaction and race two vault revisions. Any old-db change, dangling committed reference or accepted stale write falsifies the design.",
+    "nearbyBoundaryCheck": "At 390px and 1440px, block all outbound requests, mount the actual routed views, reload saved records and trigger visibility lock while unlock/save is pending. No new request, decrypted resurrection or post-lock write is allowed."
+  },
+  "scope": {
+    "currentDispatchWrites": [
+      "doc/analysis/2026-10-29-personal-tools-plan.json",
+      "doc/analysis/2026-10-29-personal-tools-code-understanding.md",
+      "doc/analysis/2026-10-29-personal-tools-code-understanding.json"
+    ],
+    "implementationBoundary": "First increment remains explicit DEV local preview only. Production/formal mode shows unconfigured state and must not read local personal data. No authenticated personal-tools API exists.",
+    "neverInThisRun": [
+      "Commit, push, branch, PR, deploy, runtime register/decide/complete-stage or semantic-cache writes",
+      "Remote DB/Redis access, migrations, live mail, WeChat, webhook or message sends",
+      "Real credentials in source, YAML, logs, model-visible tools, fixtures or reports",
+      "Inventing authentication, promoting preview to server authorization or resetting existing databases",
+      "Speculative upgrades of existing dependencies or adoption of foreign-project versions/icons/layout"
+    ],
+    "dirtyWorkProtection": "Treat existing backend/frontend content as user-owned. git status fails because this directory has no Git repository; do not infer cleanliness or revert anything. Main Java sources are com/bingo; current test files are still under com/deeplazybingo but declare package com.bingo.backend. Do not relocate tests as incidental cleanup."
+  },
+  "designConstraints": {
+    "loaded": [
+      "public joycode-compliance-review/constraints/INDEX.md",
+      "public constraints/arch/arch-cards.md: CARD-ARCH-LAYER, CARD-ARCH-FRONTEND, CARD-ARCH-DATA-TYPES",
+      "public constraints/front/frontend-card.md: CARD-FRONT-CRUD",
+      "public constraints/security/policy.md: CWE-79/434/798/400, BD-LIC-01..04, BD-VULN-01..04",
+      "public constraints/nfr/nfr-rules.md: transaction, idempotency, bounded work and redacted errors",
+      "doc/architecture/README.md",
+      "doc/architecture/03-frontend-architecture.md",
+      "doc/architecture/09-local-module-workflows.md",
+      "doc/requirements/08-non-functional-quality.md"
+    ],
+    "precedence": "No .joycode/constraints directory exists. Repository rules and observed package.json win over foreign com.cih packages, Boot 3/Java17, Vue3.2/Vite4, Ant icons and foreign theme tokens in public cards. Keep current Java21/Boot4, Vue3.5/Vite7/TS5.6, ArtSvgIcon ri:* and Element Plus conventions; no toolchain upgrade.",
+    "P1": "Reuse isInterfacePreview, ModuleShell, native routes/ComponentLoader, Element Plus, ArtWangEditor, idb transaction/error/revision patterns and existing check runners. Preserve assertClientRequest and backend deny-all. Do not use the generic user screen-lock password as vault credentials.",
+    "P2": "Partition under src/personal-tools and views/personal-tools. Existing primitive/audited records cannot safely hold KDBX bytes or atomic attachment content; add only the domain-specific local stores, no SQL tables/API/scheduler.",
+    "P3": "Reuse native shell, theme vars, ArtSvgIcon, dialogs/drawers/tables/form controls and the installed WangEditor wrapper. Add only a local upload/paste adapter and the missing Markdown editor.",
+    "nfrApplicability": "Apply repository SEC-002/004/006/008, DATA-004/005, REL-001/002, UX-001..006 and TEST-001/003 to local boundaries. Server isolation/API/migrations remain target architecture, not claims of this increment. Shared SQL transaction examples do not override existing atomic IndexedDB audit semantics.",
+    "rationaleTable": [
+      { "surface": "Existing relational bingo_* tables", "decision": "reuse_unchanged", "rationale": "No backend personal-tools domain or safe auth exists; no DDL or shared DB operation is justified." },
+      { "surface": "dlb-modules-local-v1 records/meta/audit", "decision": "reuse_patterns_not_schema", "rationale": "Preserve secret rejection, v1 stores and all existing data. Do not add binary exceptions or alter existing seeds." },
+      { "surface": "dlb-personal-tools-local-v1", "decision": "add", "rationale": "One dedicated idb database for domain contracts and atomic note/asset writes; vault stores one complete encrypted KDBX image plus nonsecret revision." },
+      { "surface": "Existing learning/english/health/ai databases", "decision": "reuse_unchanged", "rationale": "Never migrate, clear, reseed or import them into personal-tools." }
+    ],
+    "componentReuse": [
+      { "component": "ModuleShell", "decision": "reuse unchanged", "path": "deep-lazy-bingo-frontend/src/components/business/ModuleShell.vue", "reason": "Existing preview/formal boundary and responsive content frame." },
+      { "component": "ArtWangEditor", "decision": "minimal backward-compatible extension", "path": "deep-lazy-bingo-frontend/src/components/core/forms/art-wang-editor/index.vue", "reason": "Add local upload and sanitizing paste callbacks; local mode must never construct/use a remote upload or token header." },
+      { "component": "ArtSvgIcon and Element Plus", "decision": "reuse", "reason": "ri:vip-card-line, ri:lock-password-line and ri:sticky-note-line; actual icon resolution must pass browser checks. No replacement design system." },
+      { "component": "MdEditor from md-editor-v3", "decision": "add narrowly", "reason": "No installed independent Markdown editor found; disable CDN-dependent extras and feed an explicit sanitizer." }
+    ]
+  },
+  "dependencies": {
+    "reuse": [
+      { "name": "@wangeditor/editor", "declared": "^5.1.23", "use": "Existing ArtWangEditor rich-text workflow; retain resolved lockfile version." },
+      { "name": "@wangeditor/editor-for-vue", "declared": "next", "use": "Keep current resolved package, do not refresh this floating tag." },
+      { "name": "idb", "declared": "^8.0.4", "use": "Typed local transaction and ciphertext persistence." },
+      { "name": "file-saver", "declared": "^2.0.5", "use": "Explicit bounded downloads with fixed safe extensions." },
+      { "name": "Element Plus / Iconify / Vue", "use": "Existing versions, locale, accessibility and native layout." }
+    ],
+    "addExact": [
+      { "name": "kdbxweb", "version": "2.1.1", "license": "MIT", "role": "KeePass KDBX4 read/write, AES-256 encryption and authenticated KDBX block format; never invent a cipher/container.", "evidence": "https://registry.npmjs.org/kdbxweb/2.1.1", "gate": "Published latest is 2.1.1 with old fflate and @xmldom/xmldom ranges. This is a chosen candidate, NOT a clean-bill-of-health. Resolve/scan exact transitive closure and browser/XML interoperability before enabling real vault use. A failing security gate blocks the vault slice and returns to parent review; no silent override or crypto-js fallback." },
+      { "name": "hash-wasm", "version": "4.12.0", "license": "MIT", "role": "Argon2id v0x13 through kdbxweb CryptoEngine.setArgon2Impl; map KiB and binary output correctly.", "evidence": "https://registry.npmjs.org/hash-wasm/4.12.0" },
+      { "name": "md-editor-v3", "version": "5.3.2", "license": "MIT, package/LICENSE confirmation required before install", "role": "Meaningful Markdown editing/preview and local upload callback; peer Vue ^3.5.3 matches existing ^3.5.21.", "evidence": "https://registry.npmjs.org/md-editor-v3/5.3.2" },
+      { "name": "dompurify", "version": "3.3.0", "license": "Apache-2.0 option of MPL-2.0 OR Apache-2.0", "role": "Explicit common allowlist for rich-text ingress, paste, imports, saves and both preview renderers.", "evidence": "https://registry.npmjs.org/dompurify/3.3.0" }
+    ],
+    "notChosen": ["crypto-js passphrase AES", "custom encrypted JSON format", "new date library", "new state framework", "new backend auth/mail dependency", "Joplin/other AGPL application source"],
+    "dateAndMoney": "No direct dayjs/date-fns dependency exists. Use strict Gregorian YYYY-MM-DD values and small UTC-parts calendar helpers, not elapsed 30-day arithmetic; Intl only for display. Parse amount strings to safe integer minor units with an explicit CNY/USD/EUR/GBP(2)/JPY(0) whitelist, never binary fractional money.",
+    "licenseReferences": [
+      { "url": "https://github.com/laurent22/joplin", "use": "UX-only reference for searchable/tagged offline notes and attachments; no code/assets/packages copied, no claim of Joplin compatibility or encryption." },
+      { "url": "https://github.com/keeweb/kdbxweb", "use": "MIT library documentation, KDBX/Argon2 API reference; preserve library notice." },
+      { "url": "https://github.com/imzbf/md-editor-v3", "use": "Markdown component provenance; verify release package license and preserve notice." }
+    ],
+    "installPolicy": "Implementation only, after parent plan review: add the four exact packages and lockfile delta, retain notices, run license/SCA review on direct and transitive dependencies. No existing-package upgrades. No installs occurred in this research dispatch."
+  },
+  "dataContracts": {
+    "userPackageAddendum": "PT-08: Root package com.deeplazy.bingo, standard controller/service/entity/mapper subpackages. Existing config/config.redis/web framework remains under that root; main/test paths and reflective string/package scans move consistently from current com/bingo/backend. User just moved all four tests to com/bingo/backend; re-read actual files and preserve edits. Add only package-info declarations for unused business layers, not synthetic beans/APIs. Package/scan regression first, then mechanical migration and isolated framework tests/full verify. Use clean compile outputs to avoid duplicate old Boot main classes; preserve historical reports where possible. No business or auth behavior changes.",
+    "reviewRepairR1": {
+      "boundedXmlAdmission": "Before kdbxweb can consume decrypted XML, install its supported DOMParser/XMLSerializer adapter in the disposable worker using an independently version-checked maintained @xmldom/xmldom parser. Cap XML UTF-8 bytes at 2MiB before parsing, reject DTD/ENTITY declarations, then bound depth<=32 and total nodes<=20000. Reject every element carrying a true Compressed attribute before returning a DOM to kdbxweb, including inline entry/history/metadata binary nodes regardless of outer compression. KDBX4 outer compression must also be None. The actual adapter and bundled decompression paths must be instrumented with SMALL synthetic external files; library must not reach gunzip for inner binaries. If the public parser injection cannot interpose before any expansion, disable import and report PT-04 blocked; no monkey patch of internal crypto/format parser. Add the parser as one exact dependency only after registry/license/advisory verification. Never run a bomb-size probe.",
+      "singleFlightWorker": "Each live KDBX worker/session has a synchronous busy flag set before any asynchronous dispatch; reject overlapping commands rather than queueing mutable references. This covers edit/save/export/reveal/delete/restore, not just IDB writes. Never concurrently call KDBX.save on one object. If a mutating command or encryption/write fails, terminate/discard that worker and relock; only the last committed ciphertext may seed another session. Before committing/exporting, reopen the bounded output with an independent library instance in the same serialized command and verify expected synthetic contract; independent external-reader fixtures remain a separate gate.",
+      "latchInvalidation": "Add a single no-payload same-tab backend-latched event at the actual successful capability transition in src/learning/core.ts, after durable latch state is written but synchronously before probe resolution/main.ts reload. A current-value guard checks both the preview constant and present latch state before every personal-tools read/write/commit. Subscribers invalidate epochs, abort active IDB transactions, terminate workers and clear decrypted/draft view state synchronously before any dirty-note beforeunload could cancel reload. Do not rely on storage events or polling. Preserve existing capability response criteria and original route/API authorization. Include core.ts, preview.ts/main.ts call-site tests in the touched slice; main.ts need not change if event owner ordering is sufficient. Test same-tab latch with canceled reload and a pending IDB read."
+    },
+    "database": "dlb-personal-tools-local-v1 version 1; open requires current isInterfacePreview===true. No seed data or secrets. Stores: memberships, periods, reminders, notes, attachments, vault. UTC createdAt/updatedAt and monotonically increasing revision on owned records.",
+    "membership": "Membership(id, service<=120, accountLabel<=120, archived, revision); Period(id, membershipId, previousPeriodId?, startDate, endDate, amountMinor, currency, reminderEmail<=254, optionalWeChatDestination, archived, revision). End is inclusive. Keep original expired period immutable on renewal: append successor atomically with unique previousPeriodId; do not advance the old expiry/cost/destination. Corrective edits have explicit confirmation/history, never masquerade as renewal.",
+    "membershipValidation": "Strict real dates, start<=end, supported currency, finite nonnegative bounded minor units, trimmed nonempty service, bounded destination with CR/LF rejection. Annual default end uses clamped calendar-year increment; explicit edited dates are validated, not silently rewritten. Prevent overlapping active periods for one membership; retries reuse the same successor identity. Group costs by currency and period, no FX fiction. Archive never deletes history.",
+    "reminder": "Key=(periodId, channel=email|wechat). Unique IDB key and transaction for upsert/dedup. dueDate=subtract one calendar month from inclusive endDate with target-month-end clamp; dates are date-only browser local calendar for this increment. Recompute pending due state after open/focus/day change, preserve prior attempts. State=not-configured|due-unsent|failed|delivered; delivered requires providerReceiptId+deliveredAt from an actual future provider, no UI toggle. This increment cannot produce delivered. Late/expired unsent periods remain visible; renewing must not erase the old unsent period.",
+    "notes": "Note(id, title<=150, format=markdown|richtext, body<=100KB UTF-8, tags<=20 each<=32, archived, attachmentIds, revision, createdAt, updatedAt). Separate source format; switching editor modes creates an explicitly confirmed conversion/copy, never silently overwrites source. Independent of learning/book-linked notes. Search own title/body plaintext projection/tags; do not index the vault.",
+    "attachments": "Owned local blobs with random stable IDs, noteId, validated MIME, safe name, size and digest. Allow only decoded PNG/JPEG/WebP <=2MiB and <=16 megapixels, and UTF-8 TXT/MD <=1MiB. Reject HTML, SVG, XML, scripts, executables, PDF, archives, data URLs and remote image fetches. Total <=10MiB per note and <=50MiB assets per DB; all count/byte limits checked before transaction commit. Note+blob changes atomic in the same DB; failed writes retain prior body and assets. Revoke created blob URLs on replacement/unmount and never persist blob: URLs.",
+    "noteInterchange": "Import raw .md as text or versioned .notes.json with validated note metadata and bounded base64 assets, <=20MiB input and <=100 notes. Stage validation/sanitization/type sniffing before commit; reject unsafe schemas/prototype keys/duplicates with no partial writes. Export .md text or sanitized .notes.json, not executable .html; no CDN/URL imports or ZIP extractor. Use fixed extensions, strip paths/control chars, Windows reserved names and leading dots, truncate safe basename<=80 chars. Notes export is explicitly readable personal content, not the vault backup route.",
+    "vault": "One vault row(id=primary, kdbx:ArrayBuffer, revision, updatedAt), no entry metadata/password/key/audit body in any other store. All platform/account/password/URL/notes and KDBX entry history are inside authenticated encrypted KDBX. Backups and restores are .kdbx only; never saveXml/loadXml or plaintext JSON/CSV fallback.",
+    "vaultEncryption": "Use KDBX4 AES-256 plus standard KDBX HMAC and Argon2id v0x13. New-file KDF: 32768KiB, 3 iterations, parallelism1, 32-byte output, library-generated salts/IV; set KDBX header memory in its documented byte units. Adapter accepts only validated bounded parameters (<=65536KiB, <=6 iterations, parallelism<=2, expected output length/version/type), otherwise reject. No password normalization that breaks KeePass interoperability. Roundtrip against an independently generated synthetic KDBX fixture, not merely self-roundtrip.",
+    "vaultImportBounds": "KDBX input/output <=10MiB, <=1000 entries and bounded fields/history. First increment writes and accepts only uncompressed KDBX4 with the supported KDF/cipher: use the library header reader to validate before decrypt/decompression, reject unsupported/compressed files without touching old data. No custom binary parser; if the chosen release cannot expose safe pre-load bounds, stop and return a library capability blocker before enabling imports. Run crypto/XML work in a disposable worker with a bounded 10s operation deadline; termination is responsiveness protection, not a claimed hard JS heap sandbox.",
+    "vaultConcurrency": "Worker owns KDBX and credentials in memory only. Unlock input cleared immediately after handoff. A monotonic session epoch fences every unlock/read/save/import/export/reveal/copy result; capture epoch and ciphertext revision. Crypto completes outside an IDB transaction; before writing, require live epoch and transactionally compare expected revision, then commit whole ciphertext. Failed crypto/import/quota/abort/conflict keeps last committed ciphertext byte-identical. Stage restore in a separate worker/session, validate before explicit replace confirmation and atomic CAS; do not delete the live row first. Conflicts require reload/unlock, never last-writer-wins.",
+    "vaultLock": "Lock immediately on hidden, pagehide, route leave/unmount, preview-disable/backend latch, or 2 minutes idle. Visibility resume also compares real elapsed activity time. Increment epoch, terminate worker, abort tracked pending write transactions, clear decrypted rows, search state, editor fields, reveal/copy state, master input, credentials and key references. Ignore all late completions; cross-tab lock notification contains no secret. JS cannot guarantee forensic zeroization; clear mutable byte buffers best-effort and discard references. User/device compromise and same-origin XSS remain explicit risks.",
+    "vaultInteractions": "Reveal only by explicit control for <=15s; hide on blur/lock. Clipboard write only on user gesture and show permission failure, never success on rejection. No plaintext fallback when clipboard unavailable and no clipboard-read permission. Clearing OS clipboard is best-effort only and cannot be guaranteed or safely overwrite later user copies. URLs allow only credential-free http(s) links, no embedded auto-fetch and noopener/noreferrer. Never include decrypted fields in route params, worktab titles, analytics, screenshots or logs."
+  },
+  "steps": [
+    {
+      "id": "PT-S01",
+      "title": "Freeze contracts and add red tests before product edits",
+      "dependsOn": [],
+      "slice": "shared_contracts_parent_owned",
+      "likelyFiles": [
+        "deep-lazy-bingo-frontend/scripts/personal-tools.test.ts",
+        "deep-lazy-bingo-frontend/scripts/family-shell.test.ts",
+        "deep-lazy-bingo-backend/src/test/java/com/deeplazybingo/backend/BingoBackendApplicationTests.java",
+        "deep-lazy-bingo-backend/src/test/java/com/deeplazybingo/backend/SmokeProfileTests.java"
+      ],
+      "actions": [
+        "Re-read frozen source before implementation; protect current user content. Add one bounded new frontend test file using node:test/fake-indexeddb and existing SFC compile patterns; do not scaffold another framework.",
+        "Add initially failing tests for date clamp/period preservation/money/dedup, persistence/CAS/failure rollback, vault wrong-password/import/lock fencing and sanitizer boundary expectations.",
+        "Extend existing backend classes with YAML property binding and credential-absent pre-connection failure tests using isolated loaders/context runners, never remote services. Record meaningful red assertion failures, not just missing imports.",
+        "Extend native menu expectation to 8 groups/31 leaves only when PT-S06 adds exactly three entries; retain assertions for all 28 old paths."
+      ],
+      "checks": ["CMD-PT-FOCUSED", "CMD-BACKEND-FRAMEWORK"],
+      "exit": "Red evidence names exact missing behavior; no sensitive test input or remote connection."
+    },
+    {
+      "id": "PT-S02",
+      "title": "Migrate three configuration resources through the permitted YAML API",
+      "dependsOn": ["PT-S01"],
+      "slice": "backend_yaml_independent",
+      "likelyFiles": [
+        "deep-lazy-bingo-backend/src/main/resources/application.properties",
+        "deep-lazy-bingo-backend/src/main/resources/application.yml",
+        "deep-lazy-bingo-backend/src/main/resources/application-smoke.properties",
+        "deep-lazy-bingo-backend/src/main/resources/application-smoke.yml",
+        "deep-lazy-bingo-backend/src/test/resources/application-test.properties",
+        "deep-lazy-bingo-backend/src/test/resources/application-test.yml",
+        "deep-lazy-bingo-backend/src/main/java/com/bingo/backend/config/InfrastructureCredentialGuard.java",
+        "deep-lazy-bingo-backend/src/test/java/com/deeplazybingo/backend/BingoBackendApplicationTests.java",
+        "deep-lazy-bingo-backend/src/test/java/com/deeplazybingo/backend/SmokeProfileTests.java"
+      ],
+      "actions": [
+        "Policy gate: submit exactly one initial apply_patch call adding application.yml with intended literal NONSECRET values. This research dispatch does not attempt it. If the policy refuses, do not use terminal/fs/create_file/alternate API or extension tricks; keep properties, mark PT-01 blocked, report exact refusal and continue frontend slices. Do not delete the old file before a successful YAML write.",
+        "If allowed, migrate all three files via apply_patch; structurally compare flattened effective property maps with explicitly reviewed differences: replace env expressions by their current nonsecret defaults, omit production credential keys and preserve isolated empty H2 credentials. Delete replaced properties only after YAML validity/equivalence checks pass.",
+        "Use literal loopback bind and port8080, current nonsecret JDBC/default settings with PostgreSQL TLS preserved, Redis port6300/DB3/TLS true, bingo_ table/cache/key namespace, bingo_flyway_schema_history, Flyway false/clean-disabled true, SQL init never, AI false, docs disabled and no generated account. Do not expose private connection values in reports.",
+        "No ${...} expressions or real passwords in YAML. Leave required production credentials absent; support existing controlled deployment configuration via Spring's standard external property binding without versioned placeholders. Add a minimal pre-singleton infrastructure credential guard, with no connection attempt, that fails redacted before datasource/Redis initialization when required credentials are blank or absent. smoke has no infrastructure; test remains isolated H2/mock Redis and cannot claim real connectivity.",
+        "Preserve exact Boot4 smoke exclusions, cache/health overrides, Redis namespace serializers and test no-network substitutions. Do not modify SecurityConfiguration, RestExceptionHandler, POM, migrations, authentication or transport dependencies."
+      ],
+      "checks": ["CMD-BACKEND-FRAMEWORK", "CMD-BACKEND-REDIS", "CMD-BACKEND-VERIFY"],
+      "exit": "Equivalent safe bindings, no duplicate properties/YAML precedence, no placeholders/active credential literals and pre-connection fail-closed test, or a recorded PT-01 policy blocker."
+    },
+    {
+      "id": "PT-S03",
+      "title": "Add bounded local repository and membership renewal workflow",
+      "dependsOn": ["PT-S01"],
+      "slice": "frontend_membership",
+      "likelyFiles": [
+        "deep-lazy-bingo-frontend/src/personal-tools/local.ts",
+        "deep-lazy-bingo-frontend/src/personal-tools/membership.ts",
+        "deep-lazy-bingo-frontend/src/views/personal-tools/memberships.vue",
+        "deep-lazy-bingo-frontend/scripts/personal-tools.test.ts"
+      ],
+      "actions": [
+        "Create the one dedicated DB/repository with bounded validation, revision checks and atomic writes, following existing idb conventions without changing src/modules/local.ts or old DB schemas.",
+        "Implement create/edit/archive, annual defaults, period history, linked append-only renewal, date/currency/amount validation, active/expiring/expired/archive filters and grouped currency cost summaries.",
+        "Compute month-before due dates with month-end/leap-year clamp and visible overdue-unsent state. Deduplicate by period/channel in persistence, including repeated opens/two tabs/renewals.",
+        "Show email required/not configured and optional WeChat unavailable. Do not add Send success controls, mailto delivery substitutes, queued/draft delivery claims, browser-notification-as-email, backend scheduler skeletons or live network sends."
+      ],
+      "checks": ["CMD-PT-FOCUSED", "CMD-MODULES-REGRESSION"],
+      "exit": "Usable refresh-persistent memberships, original expired periods unchanged, honest unmet delivery state; PT-03 remains degraded."
+    },
+    {
+      "id": "PT-S04",
+      "title": "Integrate proven KDBX vault with fenced sessions and ciphertext-only recovery",
+      "dependsOn": ["PT-S03"],
+      "slice": "frontend_vault",
+      "likelyFiles": [
+        "deep-lazy-bingo-frontend/src/personal-tools/vault.ts",
+        "deep-lazy-bingo-frontend/src/personal-tools/vault.worker.ts",
+        "deep-lazy-bingo-frontend/src/personal-tools/local.ts",
+        "deep-lazy-bingo-frontend/src/views/personal-tools/vault.vue",
+        "deep-lazy-bingo-frontend/scripts/personal-tools.test.ts",
+        "deep-lazy-bingo-frontend/package.json",
+        "deep-lazy-bingo-frontend/pnpm-lock.yaml"
+      ],
+      "actions": [
+        "Before enabling the vault, verify selected kdbxweb/hash-wasm releases, exact transitive licenses/advisories, worker/WebCrypto/XML/browser build and bounded header import support. Record a blocker if any gate fails; do not substitute a home-grown cipher or silently upgrade/override dependencies.",
+        "Use the documented KDBX/Argon2 configuration and disposable worker; provide actual platform/account/password/URL/notes CRUD, explicit master unlock, manual lock and safe reveal/copy.",
+        "Implement epoch fencing, tracked transaction abort, ciphertext CAS, cross-tab conflicts and 2-minute idle/visibility/pagehide/route/latch lock; no persisted Pinia/user lock password or key material.",
+        "Encrypted .kdbx backup/restore only. Fully load/validate incoming data before confirmation and replacement; preserve old ciphertext byte-for-byte on wrong unlock, malformed file, incompatible KDF, oversized payload, timeout, conflict, failed encryption or failed IDB write.",
+        "Use disposable synthetic fixture passwords only; no real user credential in tools or evidence. Browser tests inspect storage and logs without capturing decrypted secrets."
+      ],
+      "checks": ["CMD-PT-FOCUSED", "CMD-FRONTEND-CHECKS", "BROWSER-VAULT"],
+      "exit": "Independent KDBX interoperability and all failure/session tests pass, or vault capability explicitly blocked; no plaintext fallback."
+    },
+    {
+      "id": "PT-S05",
+      "title": "Add independent safe rich-text and Markdown notes",
+      "dependsOn": ["PT-S03"],
+      "slice": "frontend_notes",
+      "likelyFiles": [
+        "deep-lazy-bingo-frontend/src/personal-tools/notes.ts",
+        "deep-lazy-bingo-frontend/src/personal-tools/content.ts",
+        "deep-lazy-bingo-frontend/src/personal-tools/local.ts",
+        "deep-lazy-bingo-frontend/src/views/personal-tools/notes.vue",
+        "deep-lazy-bingo-frontend/src/components/core/forms/art-wang-editor/index.vue",
+        "deep-lazy-bingo-frontend/scripts/personal-tools.test.ts",
+        "deep-lazy-bingo-frontend/package.json",
+        "deep-lazy-bingo-frontend/pnpm-lock.yaml"
+      ],
+      "actions": [
+        "Reuse ArtWangEditor and install only the selected Markdown/sanitizer packages after license/advisory verification. Use Joplin as UX reference only; retain Art and dependency notices.",
+        "Add local-upload and sanitized-paste props to ArtWangEditor without changing existing callers. The local branch disables remote servers/auth headers, paste URL fetches and default upload handlers, including drag/drop. Add a no-network regression test.",
+        "Provide create/edit, persistent format, source/preview, tags, own-notes search, archive/unarchive, safe local images/text attachments and bounded imports/exports. Body/attachment updates are one transaction; failed saves retain unsaved in-memory draft and show retry/discard choices.",
+        "Sanitize rich-text before editor ingestion/paste/import/persistence and final rendering; sanitize Markdown preview via documented sanitize hook. Allow simple text/list/table/link/raster-image markup only; strip style/event handlers, SVG/MathML, script, iframe/object/embed/form and dangerous URIs. Images resolve only validated owned asset IDs to transient blob URLs, not arbitrary supplied blob/data/http URLs. Ordinary links require approved http(s)/anchor handling and noopener.",
+        "Turn off Markdown Mermaid/KaTeX/CDN loads, remote preview assets and unsafe HTML input. Keep source formats separate; explicit conversion/copy warns before replacing a body. Route leave, worktab close and beforeunload guard dirty drafts; no silent data loss on quota/conflict/import failure."
+      ],
+      "checks": ["CMD-PT-FOCUSED", "CMD-FRONTEND-CHECKS", "BROWSER-NOTES"],
+      "exit": "Both formats, malicious input/attachment cases, dirty-navigation/error recovery and refresh workflows pass without external requests."
+    },
+    {
+      "id": "PT-S06",
+      "title": "Wire native routes and include all new code in existing checks",
+      "dependsOn": ["PT-S03", "PT-S04", "PT-S05"],
+      "slice": "frontend_integration_parent_owned",
+      "likelyFiles": [
+        "deep-lazy-bingo-frontend/src/learning/core.ts",
+        "deep-lazy-bingo-frontend/src/config/preview.ts",
+        "deep-lazy-bingo-frontend/src/main.ts",
+        "deep-lazy-bingo-frontend/src/config/family.ts",
+        "deep-lazy-bingo-frontend/src/router/modules/index.ts",
+        "deep-lazy-bingo-frontend/src/router/core/ComponentLoader.ts",
+        "deep-lazy-bingo-frontend/scripts/family-shell.test.ts",
+        "deep-lazy-bingo-frontend/scripts/personal-tools.test.ts",
+        "deep-lazy-bingo-frontend/scripts/learning-check.ts",
+        "deep-lazy-bingo-frontend/package.json",
+        "doc/architecture/09-local-module-workflows.md"
+      ],
+      "actions": [
+        "Add one personal-tools group with /personal-tools/memberships, /personal-tools/vault and /personal-tools/notes, exact view mapping and explicit ComponentLoader glob entries. Existing 28 paths stay unchanged. No generic domain fallback or root auth menu widening.",
+        "Preserve isInterfacePreview, BACKEND_LOCK and formal menu failure behavior. Gate data access itself, not just ModuleShell visibility; preview-to-backend latch also locks the vault and cancels pending operations. Do not advertise new backend capabilities.",
+        "Add the new test file to package test and learning-check.ts commands; extend its source snapshot, lint/style/format scopes to every new source/test/view and the minimally extended editor. Reuse root task definitions; no new parallel verification runner.",
+        "Use native responsive drawers/stacked controls at 390px/768px/1440px, accessible tooltips/focus/error states, theme vars and existing icons. Update the local workflow boundary/backup/limitation documentation, not frozen source or long-term requirements."
+      ],
+      "checks": ["CMD-PT-FOCUSED", "CMD-MODULES-REGRESSION", "CMD-FRONTEND-CHECKS", "BROWSER-ALL"],
+      "exit": "All three real routes load in production build, no overlap, old paths/data preserved, no preview bypass."
+    },
+    {
+      "id": "PT-S07",
+      "title": "Independent standard verification and truthful acceptance handoff",
+      "dependsOn": ["PT-S02", "PT-S06"],
+      "slice": "parent_independent_verification",
+      "likelyFiles": [],
+      "actions": [
+        "Parent dispatches a fresh independent reviewer against frozen source, understanding, this plan and both brief twins. Standard plan review is mandatory before implementation; this child has neither a native dispatch tool nor a tool_search loader and cannot claim it happened.",
+        "After implementation, independent verifier records exact commands/exit codes, source/dependency hashes before/after, browser viewports and workflow evidence. With no Git metadata, identify the tested snapshot by hashes, not a fabricated commit.",
+        "Run all listed existing/new focused tests, existing full frontend check/build and backend verify only after confirming tests remain isolated. Never run live source/catalog, shared DB/Redis or notification tasks. Use only synthetic local browser data and isolated browser storage, never clean user databases.",
+        "Report PT-03 required real-email delivery as degraded, PT-01 blocked if policy refused, PT-04 blocked if library safety/interoperability failed, and every unexecuted check explicitly. No overall PASS for seven acceptance targets until real required gaps are resolved by separately authorized work. Parent alone owns runtime registration/bookkeeping."
+      ],
+      "checks": ["CMD-BACKEND-VERIFY", "CMD-FRONTEND-CHECKS", "BROWSER-ALL"],
+      "exit": "Independent evidence and honest per-AC statuses, not a fictional live-delivery or security acceptance."
+    }
+  ],
+  "acMapping": {
+    "PT-01": ["PT-S01", "PT-S02", "PT-S07"],
+    "PT-02": ["PT-S01", "PT-S03", "PT-S06", "PT-S07"],
+    "PT-03": ["PT-S01", "PT-S03", "PT-S07"],
+    "PT-04": ["PT-S01", "PT-S04", "PT-S06", "PT-S07"],
+    "PT-05": ["PT-S01", "PT-S05", "PT-S06", "PT-S07"],
+    "PT-06": ["PT-S01", "PT-S06", "PT-S07"],
+    "PT-07": ["PT-S01", "PT-S02", "PT-S03", "PT-S04", "PT-S05", "PT-S06", "PT-S07"],
+    "PT-08": ["PT-S01", "PT-S02", "PT-S07"]
+  },
+  "acceptanceDisposition": {
+    "PT-01": "planned_with_policy_gate_not_attempted",
+    "PT-02": "planned_not_implemented",
+    "PT-03": "degraded_required_real_email_unmet; local date/dedup work is partial only",
+    "PT-04": "planned_subject_to_dependency_and_interoperability_gates",
+    "PT-05": "planned_not_implemented",
+    "PT-06": "planned_not_implemented",
+    "PT-07": "planned_not_executed; parent independent plan review and verification still required"
+  },
+  "workSlices": [
+    { "id": "backend_yaml", "steps": ["PT-S02"], "mayRunAfter": "PT-S01", "independentFrom": ["frontend_membership", "frontend_vault", "frontend_notes"], "boundary": "Only three resource pairs, minimal credential guard and existing backend tests; blocked YAML does not block unrelated frontend work." },
+    { "id": "frontend_membership", "steps": ["PT-S03"], "boundary": "Own common personal-tools DB schema and membership engine/view; freeze repository contracts for later slices." },
+    { "id": "frontend_vault", "steps": ["PT-S04"], "boundary": "Own vault engine/worker/view; never generic user lock or metadata/audit fields. Security gate may independently block this slice." },
+    { "id": "frontend_notes", "steps": ["PT-S05"], "boundary": "Own notes/content/view and backward-compatible WangEditor callbacks; no application-source copying." },
+    { "id": "integration", "steps": ["PT-S06", "PT-S07"], "boundary": "One parent owner serializes package/lock/test-file/local.ts/menu/checker changes. Vault and notes may research independently but must not concurrently edit shared files." }
+  ],
+  "testStrategy": {
+    "executionInThisDispatch": "Read-only index searches/explanations, file/manifest checks and report validation only; no product tests, builds, dependency install, server, YAML policy probe, runtime mutation or outbound message.",
+    "commands": [
+      { "id": "CMD-PT-FOCUSED", "cwd": "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo/deep-lazy-bingo-frontend", "executable": "C:/QXZ5KB5/CIH-Software/Environment/node-v24.21.0-win-x64/node.exe", "args": ["node_modules/tsx/dist/cli.mjs", "--test", "scripts/personal-tools.test.ts", "scripts/family-shell.test.ts"], "when": "After tests are added, before and after each owning implementation slice; never executed in this dispatch." },
+      { "id": "CMD-MODULES-REGRESSION", "rootTask": "Modules: integration tests", "cwd": "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo/deep-lazy-bingo-frontend", "executable": "C:/QXZ5KB5/CIH-Software/Environment/node-v24.21.0-win-x64/node.exe", "args": ["node_modules/tsx/dist/cli.mjs", "--test", "scripts/family-shell.test.ts", "scripts/modules.test.ts", "scripts/workbench.test.ts", "scripts/knowledge.test.ts", "scripts/administration.test.ts", "scripts/modules-integration.test.ts"] },
+      { "id": "CMD-FRONTEND-CHECKS", "rootTask": "Learning: complete evidence", "cwd": "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo/deep-lazy-bingo-frontend", "executable": "C:/QXZ5KB5/CIH-Software/Environment/node-v24.21.0-win-x64/node.exe", "args": ["node_modules/tsx/dist/cli.mjs", "scripts/learning-check.ts"], "scope": "After explicit new-file scope updates: all existing and new tests, vue-tsc, Vite production build, scoped ESLint/stylelint/Prettier, actual exit codes/hashes. No sources/textbooks/server mode flags." },
+      { "id": "CMD-BACKEND-FRAMEWORK", "rootTask": "Backend: framework tests", "cwd": "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo/deep-lazy-bingo-backend", "executable": "C:/QXZ5KB5/CIH-Software/Environment/node-v24.21.0-win-x64/node.exe", "args": ["../.vscode/backend-maven.mjs", "framework"], "env": { "JAVA_HOME": "C:/Users/qxz5kb5/.vscode/extensions/redhat.java-1.58.0-win32-x64/jre/25.0.4.1-win32-x86_64" }, "tests": "FrameworkSecurityTest,BingoBackendApplicationTests,SmokeProfileTests, including new cases in existing classes" },
+      { "id": "CMD-BACKEND-REDIS", "rootTask": "Backend: redis tests", "cwd": "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo/deep-lazy-bingo-backend", "executable": "C:/QXZ5KB5/CIH-Software/Environment/node-v24.21.0-win-x64/node.exe", "args": ["../.vscode/backend-maven.mjs", "redis"], "env": { "JAVA_HOME": "C:/Users/qxz5kb5/.vscode/extensions/redhat.java-1.58.0-win32-x64/jre/25.0.4.1-win32-x86_64" }, "scope": "Existing mock/context RedisNamespaceTest only, no real Redis client calls." },
+      { "id": "CMD-BACKEND-VERIFY", "rootTask": "Backend: verify", "cwd": "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo/deep-lazy-bingo-backend", "executable": "C:/QXZ5KB5/CIH-Software/Environment/node-v24.21.0-win-x64/node.exe", "args": ["../.vscode/backend-maven.mjs", "verify"], "env": { "JAVA_HOME": "C:/Users/qxz5kb5/.vscode/extensions/redhat.java-1.58.0-win32-x64/jre/25.0.4.1-win32-x86_64" }, "scope": "Exact root task environment; isolated verification only, no external application start." }
+    ],
+    "cases": {
+      "yaml": ["Flatten/bind all three YAML profiles with equivalent nonsecret defaults and intentional omitted credentials", "No remaining replaced properties, no ${...}, no active passwords", "Missing/blank credentials fails before any mock connection is requested", "Smoke excludes DB/Redis, H2 test independent, prefixes/DB3/TLS/default deny unchanged"],
+      "membership": ["2027-03-31 -> 2027-02-28; 2028-03-31 -> 2028-02-29; January rollover and DST-independent date-only cases", "Due-today, overdue, expired-unsent and reopen/two-tab dedup", "Renewal appends successor preserving original expired period/cost/destination/reminders; overlap/retry/stale-edit rejection", "Invalid dates, reversed range, NaN/negative/excess precision/overflow/unsupported currency, no mixed-currency totals"],
+      "vault": ["KDBX external-fixture unlock and independent reader opens exported synthetic backup", "Wrong unlock, corrupt/oversize/compressed/high-KDF import, cancellation and quota failure preserve original ciphertext", "Idle/hidden/route/pagehide/latch lock clears UI/worker and late unlock/save/import/copy results cannot revive or overwrite", "Concurrent tabs/stale revision, worker timeout, aborted writes; refresh locked but data intact", "Storage/backups/logs/routes contain no master/decrypted entry/key; clipboard permission failure; field/URL validation"],
+      "notes": ["Richtext and Markdown independent editing, search/tags/archive, refresh and selected-format persistence", "XSS in paste/import/preview, event/URI/style/SVG/MathML/remote-image payloads never execute or request network", "Magic/MIME/extension mismatch, raster decode/dimensions, oversize/count quota and unsafe names rejected", "Atomic attachment/body rollback, no dangling references; object URL cleanup", "Dirty route/worktab/reload protection; quota/conflict save failure retains draft; import/export roundtrip with exact safe names"]
+    },
+    "browser": [
+      { "id": "BROWSER-ALL", "viewports": ["1440x1000", "768x1024", "390x844"], "checks": "Actual menu navigation and mounted router, three new modules plus prior learning/workspace sentinel records across reload; empty/error/loading/keyboard/focus/theme/narrow-screen fit; formal/latched mode denies local access. Isolated browser profile, no user DB reset." },
+      { "id": "BROWSER-VAULT", "checks": "Use synthetic records; verify hide/unlock/CRUD/reveal/copy/encrypted restore/cancel, idle and document-hidden lock, interleaved async operations and cross-tab conflicts. Do not attach plaintext screenshots/logs." },
+      { "id": "BROWSER-NOTES", "checks": "Both editor modes, safe raster/TXT attach, save/reload/search/archive/import/export and dirty navigation failure recovery; intercept requests and assert no upload/CDN/remote-image/SMTP/WeChat requests. Execute sanitizer probes in a real browser, not a non-DOM Node imitation." }
+    ],
+    "evidenceRule": "No started-task banner, empty output, self-roundtrip or compiled SFC alone proves behavioral/security acceptance. Record real completion exit codes and independently tested snapshot. Report dependency scan/browser/provider gaps without converting them to PASS."
+  },
+  "risks": [
+    { "id": "R-EMAIL", "severity": "acceptance_blocker", "ac": ["PT-03", "PT-07"], "risk": "No provider/approved sender/recipient policy, safe credentials, authorized live test or persistent scheduler. Browser closure stops due-state recomputation; local records are not a backend source.", "mitigation": "Leave both transports disabled, no sends/no receipts/no PASS; separately authorize eventual authenticated data flow, persistent timezone-aware scheduler/retry/delivery evidence. Do not invent it now." },
+    { "id": "R-YAML", "severity": "possible_blocker", "ac": ["PT-01"], "risk": "Prior host policy refused YAML writes.", "mitigation": "One initial intended YAML apply_patch probe in implementation only; refusal is final for that API scope, never bypass it. Keep properties safe/intact and continue unrelated modules." },
+    { "id": "R-CRYPTO", "severity": "enablement_gate", "ac": ["PT-04"], "risk": "Mature KDBX format does not prove old published package/transitive closure safe; unbounded import/KDF or worker/API incompatibility may block.", "mitigation": "Exact dependency/SCA/license/header-bound/fixture/browser gates; if unresolved report blocked vault, no home-grown fallback or unchecked overrides." },
+    { "id": "R-XSS", "severity": "high", "ac": ["PT-04", "PT-05"], "risk": "Same-origin unsafe notes/editor/plugins can steal an unlocked vault.", "mitigation": "Common sanitizer at all entry/render boundaries, disabled HTML/SVG/remote assets/CDN, bounded raster/text attachments, disposable vault worker, immediate hidden/route locks. Browser XSS negative tests are mandatory; worker is not an origin security sandbox." },
+    { "id": "R-LOSS", "severity": "high", "ac": ["PT-02", "PT-04", "PT-05"], "risk": "Quota/import failure, renewal mutation or stale async/tab saves can destroy data.", "mitigation": "Atomic transactions, ciphertext CAS/session epochs, immutable successor periods, staged import and dirty-state recovery; old DBs untouched." },
+    { "id": "R-PREVIEW", "severity": "high", "ac": ["PT-06"], "risk": "UI navigation could be mistaken for real authentication or stale previews could access data after backend latch.", "mitigation": "Preserve deny-all backend and exact preview helpers; data access checks plus latch-triggered vault lock/cancel; no advertised personal-tools backend capability." },
+    { "id": "R-INDEX", "severity": "evidence_gap", "ac": ["PT-07"], "risk": "Index exists but properties missing, search relevance weak, tested_by empty and sourceCommit NO_GIT_COMMIT.", "mitigation": "Targeted reads/test imports and four verified source fingerprints supplement index. No Git revision claims, no L3 semantic merge, no broad graph rebuild." },
+    { "id": "R-HOST", "severity": "capability_gap", "ac": ["PT-07"], "risk": "Host has broad unsandboxed tools; no native child-review dispatch or tool_search loader in this invocation.", "mitigation": "Behaviorally restrict writes to the three reports, no deferred-tool calls or runtime mutations. Return plan draft to parent for mandatory independent standard review/registration; do not self-certify it." }
+  ],
+  "handoff": {
+    "productFilesChanged": [],
+    "productTestsRun": false,
+    "independentPlanReviewCompleted": false,
+    "parentActions": "Review these ordinary artifacts against the frozen source, run fresh mandatory standard plan review, correct findings, and own all artifact/decision/stage booking. Resolve explicit blockers without laundering partial acceptance.",
+    "writeStop": "After the three report files are written and read-only report checks finish, stop writes. No source/test/config/dependency/runtime changes are authorized by this dispatch."
+  }
+}

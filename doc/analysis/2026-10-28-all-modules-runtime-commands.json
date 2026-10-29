@@ -1,0 +1,5 @@
+[
+  {"entry":"joycode","args":["register-artifact","--root","C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo","--stage","deliver","--name","delivery.json","--file","doc/analysis/2026-10-28-all-modules-delivery.json"]},
+  {"entry":"joycode","args":["complete-stage","--root","C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo","--stage","deliver"]},
+  {"entry":"joycode","args":["status","--root","C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo"]}
+]

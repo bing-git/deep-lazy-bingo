@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "joycode.findings-batch/v1",
+  "stance": "plan",
+  "round": 1,
+  "findings": [
+    {
+      "phase": "plan",
+      "category": "context-integration",
+      "severity": "major",
+      "claim": "Freeze the shared draft-to-learning-note contract before the parallel domain work starts. The plan assigns draft adoption and the destination note editor/search to different owners, but the foundation contract defines only an unrestricted fields map, not the note kind, body field, source references or adoption identity. Atomic persistence alone does not ensure that an adopted draft is readable and editable as a note by the other domain.",
+      "evidence": [
+        "doc/requirements/12-module-functional-experience.md AC-MOD-03/05/08: 笔记支持编辑与检索、草稿编辑采纳拒绝、跨页数据关系明确；采纳目标必须可被笔记使用。",
+        "doc/analysis/2026-10-28-all-modules-understanding.json pageMatrix /learning/notes and /learning-ai/drafts: editable/searchable notes retain material provenance and actual adoption audit.",
+        "doc/analysis/2026-10-28-all-modules-plan.json original contracts.ModuleRecord/ownership and dataRules[1]/[3]: primitive fields map and separate S2/S3 owners with atomic adoption, but no shared note kind/body/reference/destination-ID contract.",
+        "doc/analysis/2026-10-28-all-modules-plan.json original testStrategy[1]: adoption tests confined to knowledge could pass while learning note reader/editor/search fails; no cross-consumer acceptance was specified."
+      ],
+      "affectedAc": ["AC-MOD-03", "AC-MOD-05", "AC-MOD-08"],
+      "round": 1,
+      "minimalPlanRepair": "Before S2/S3 parallel work, declare one shared typed note/adoption contract in the S1 handoff: module/kind, editable body, origin draft/material IDs, stable destination note ID, and revision expectations. Name the owner of the adoption operation and require it to validate both records and commit through the existing atomic helper. Add one cross-domain acceptance check: edit a draft, adopt it, open/search/edit the resulting note through the S2 consumer after reopen, verify provenance, then retry adoption without a duplicate note or audit. No additional database, dependency or generic form engine is needed."
+    }
+  ],
+  "reviewContext": {
+    "run": "run-2026-10-28T07-28-19-126Z-59d5d2b3",
+    "level": "L1",
+    "profile": "standard",
+    "independence": "Fresh dedicated native same-model plan review; not heterogeneous.",
+    "scope": "Full supplied requirement, understanding, plan and both code-brief files read. No product/test edits, commands, tests, nested agents, runtime bookkeeping, git or external operations.",
+    "coverageAssessment": "All 28 routes and the 21 targeted pages are represented at domain-group level. No supported blocking finding. Existing seven capabilities, independent storage, idempotent seeds, soft archive, optimistic conflicts, minimal atomic audit, actual local aggregations, bounded text extraction rather than vectorization, and deny-by-default service activation are explicitly planned. These are plan statements, not implementation or verification results.",
+    "result": "repair-required",
+    "counts": { "blocking": 0, "major": 1, "minor": 0, "total": 1 }
+  }
+}

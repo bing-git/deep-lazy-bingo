@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "joycode.findings-batch/v1",
+  "stance": "plan",
+  "round": 2,
+  "findings": [],
+  "rechecks": {
+    "f-2026-10-28T07-48-06-362Z-db0bac": {
+      "status": "verified-repaired",
+      "evidence": [
+        "doc/requirements/12-module-functional-experience.md AC-MOD-03, AC-MOD-05 and AC-MOD-08 require editable/searchable notes, draft edit/adopt/reject and explicit cross-page relationships. doc/analysis/2026-10-28-all-modules-understanding.json pageMatrix entries /learning/notes and /learning-ai/drafts retain material provenance and actual adoption audit. These are the source obligations for the original finding, not additional requirements.",
+        "doc/analysis/2026-10-28-all-modules-plan.json contracts.learningNote now declares the shared S1-exported LearningNoteFields with body, sourceDraftId, sourceDocumentId, bookId and unitId; module=learning, kind=note, status=active; optional missing origins use empty strings. It explicitly requires the S2 editor/search consumer to use the same keys for original notes and adopted drafts.",
+        "doc/analysis/2026-10-28-all-modules-plan.json contracts.draftAdoption assigns adoptDraft and the typed handoff to S1 before S2/S3 parallel work; declares the learning-ai/draft input envelope and body/provenance keys; fixes the destination ID to adopted-note:<draftId>; and requires validation of both envelopes and existing note origin before note creation and draft status/noteId are committed atomically through saveRecords with optimistic revisions. S3 must call that shared helper.",
+        "doc/analysis/2026-10-28-all-modules-plan.json contracts.draftAdoption explicitly preserves the same destination note on repeated adoption, including subsequent edits/archive, without extra audit or resurrection; rejected/archived drafts refuse adoption. dataRules[0] additionally makes archive idempotent and revision conflicts visible. These statements repair the original identity/retry contract at plan level.",
+        "doc/analysis/2026-10-28-all-modules-plan.json testStrategy[2] assigns the cross-domain integration check to parent S1/S5: create/edit pending draft, adopt through shared helper, read/search/edit through S2, close/reopen the database, verify draft/document/book/unit provenance, and retry after edits/archive without duplicate note/audit or resurrection; concurrent adoption must not duplicate. It is mandatory before final integration acceptance, addressing the previously missing cross-consumer check.",
+        "doc/analysis/2026-10-28-all-modules-code-understanding.md sections 4, 5, 6 and 8 identify independent storage, reuse of existing data APIs, standard validators and duplicate-adoption/audit risks; the companion code-understanding.json identifies route dispatch, component whitelist and local-storage preservation. Revised plan contracts, dataRules and testStrategy retain these boundaries without adding a database migration, dependency or generic form engine.",
+        "doc/requirements/12-module-functional-experience.md baseline and boundaries retain 7 groups/28 entries and existing local data, prohibit false backend/model/auth/probe claims, and require controlled service addresses. understanding.json summary/assumptions identifies 21 placeholder targets and 7 preserved entries; plan steps S2-S5 cover all 21 targets and preserve the 7 entries, constraints.P1/P2 and dataRules preserve existing databases and explicit local-mode gating, while dataRules[5] and risks keep a missing deployment allowlist fail-closed with no active href or network probe/proxy. The repaired adoption contract does not relax these obligations."
+      ],
+      "reason": "Verified repaired only at plan level: the revised shared contract, ownership and mandatory cross-consumer acceptance check address the original context-integration root cause for AC-MOD-03/05/08. No genuinely new supported finding was identified in the supplied full requirement, understanding, revised plan and both bounded code briefs. No product implementation or passing code-test evidence exists for this repair; this report does not verify implementation, close the runtime finding, or book a verdict. Runtime disposition remains with the parent orchestrator."
+    }
+  },
+  "result": "pass"
+}

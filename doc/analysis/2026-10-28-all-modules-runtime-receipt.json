@@ -1,0 +1,46 @@
+{
+  "checkedAt": "2026-10-28T09:08:44.976Z",
+  "results": [
+    {
+      "entry": "joycode",
+      "args": [
+        "register-artifact",
+        "--root",
+        "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo",
+        "--stage",
+        "deliver",
+        "--name",
+        "delivery.json",
+        "--file",
+        "doc/analysis/2026-10-28-all-modules-delivery.json"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"ok\": true,\n  \"artifact\": \".joycode/runs/run-2026-10-28T07-28-19-126Z-59d5d2b3/delivery.json\",\n  \"kind\": \"primary\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "entry": "joycode",
+      "args": [
+        "complete-stage",
+        "--root",
+        "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo",
+        "--stage",
+        "deliver"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"ok\": true,\n  \"stage\": \"deliver\",\n  \"diffStats\": null,\n  \"codeUnderstanding\": null,\n  \"semanticMerge\": \"skipped\",\n  \"commitIdentity\": null,\n  \"continuePrompt\": \"本地改动已完成并通过验证。告诉我「继续」就升到 L2 做代码对抗评审（开始时我会先说明）；到此为止则本次交付已完成。 / Local changes passed verification. Say \\\"continue\\\" to move up to L2 for the code adversarial review (I say so first); otherwise this delivery is complete.\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "entry": "joycode",
+      "args": [
+        "status",
+        "--root",
+        "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"ok\": true,\n  \"runtime\": {\n    \"layoutVersion\": \"2.0\",\n    \"level\": \"L1\",\n    \"currentRunId\": null,\n    \"connectors\": [],\n    \"homeMigratedAt\": null\n  },\n  \"home\": {\n    \"root\": \"C:\\\\Users\\\\qxz5kb5\\\\.joycode\",\n    \"source\": \"home\",\n    \"fallback\": false\n  },\n  \"summary\": {\n    \"runId\": null,\n    \"state\": \"no-run\",\n    \"stage\": null,\n    \"outcome\": null,\n    \"unresolvedQuestions\": [],\n    \"unresolvedFindings\": [],\n    \"pendingConfirmations\": [],\n    \"stopReason\": null,\n    \"nextAction\": \"start a run\",\n    \"completedStages\": [],\n    \"registeredArtifacts\": [],\n    \"artifactVerification\": \"registration-is-not-verification\",\n    \"acceptanceEvidence\": {\n      \"status\": \"unknown\",\n      \"recordedConclusions\": []\n    },\n    \"verifiedExternalWrites\": [],\n    \"observations\": {\n      \"source\": \"run-log.telemetry_fact(run)\",\n      \"tokensIn\": null,\n      \"tokensOut\": null,\n      \"tokenAttribution\": null,\n      \"reviewTimeMs\": null,\n      \"blockingAttribution\": null\n    }\n  },\n  \"run\": {\n    \"runId\": null,\n    \"level\": null,\n    \"deliveryMode\": null,\n    \"runConfig\": {\n      \"profile\": \"standard\",\n      \"confirmStages\": []\n    },\n    \"effectiveProfile\": \"standard\",\n    \"repoSelection\": null,\n    \"pendingConfirmations\": [],\n    \"currentStage\": null,\n    \"completedStages\": [],\n    \"openQuestions\": [],\n    \"findings\": [],\n    \"reviewRounds\": {},\n    \"artifacts\": [],\n    \"halted\": false,\n    \"completed\": false\n  },\n  \"killSwitch\": false\n}\n",
+      "stderr": ""
+    }
+  ]
+}

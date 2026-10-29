@@ -1,0 +1,39 @@
+# Java / Maven
+**/target/
+
+# Node / frontend
+**/node_modules/
+**/dist/
+**/.vite/
+**/*.tsbuildinfo
+
+# Local configuration and secrets
+/environment.json
+.env
+.env.*
+!.env.example
+**/application-local-secrets.yml
+**/*_local.ini
+**/*_local.yml
+**/*_local.yaml
+
+# IDE / operating system
+.idea/
+.vscode/
+.joycode/
+*.iml
+.DS_Store
+Thumbs.db
+/data/
+*.log
+
+# Generated local evidence and downloaded archives
+**/data/**/verification/
+/deep-lazy-bingo-frontend/data/health/runs/
+/deep-lazy-bingo-frontend/data/health/audit.jsonl
+/deep-lazy-bingo-frontend/data/health/free/*.tar.gz
+**/coverage/
+**/playwright-report/
+**/test-results/
+*.tmp
+*.bak

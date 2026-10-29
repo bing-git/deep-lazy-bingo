@@ -1,0 +1,188 @@
+{
+  "schemaVersion": "personal-tools.independent-verification/v1",
+  "runId": "run-2026-10-29T05-14-34-396Z-ecca203e",
+  "level": "L1",
+  "profile": "standard",
+  "role": "fresh_native_independent_test_verifier",
+  "status": "FAILED_STOPPED_AT_BACKEND_PRIORITY_COMPILATION",
+  "overallAcceptancePassed": false,
+  "summary": "Independent frontend priority tests passed 18/18. The next required Redis priority execution exited 1 during main-source compilation, before any Redis test ran. Both old and new source directories contain identical classes declaring the new package. All later suites and JAR verification were stopped as instructed. No product repair was attempted.",
+  "inputs": {
+    "persona": "C:/Users/qxz5kb5/.copilot/installed-plugins/joycode/joycode-2/skills/joycode/native-agents/agents/joycode-test-verifier.md",
+    "frozen": [
+      "doc/analysis/2026-10-29-personal-tools-request.md",
+      "doc/analysis/2026-10-29-personal-tools-understanding.json",
+      "doc/analysis/2026-10-29-personal-tools-plan.json",
+      "doc/analysis/2026-10-29-personal-tools-code-understanding.md",
+      "doc/analysis/2026-10-29-personal-tools-code-understanding.json"
+    ],
+    "developerBackendReport": "doc/analysis/2026-10-29-personal-tools-backend-implementation.json",
+    "developerEvidenceReusedAsIndependent": false,
+    "historicalFrontendReport": "Not used as acceptance or execution evidence; only included as an opaque hashed input in the inventory.",
+    "testData": "Existing reviewed node:test tests use synthetic random fake-indexeddb databases and EventTarget/fetch stubs. Maven failed before test execution. No live catalog/source/sync flags, browser, real DB/Redis or notification operations were invoked."
+  },
+  "findings": [
+    {
+      "id": "IV-01",
+      "severity": "P1",
+      "ac": ["PT-08", "PT-07"],
+      "title": "Duplicate new-package main classes remain in old and new source directories",
+      "observed": "Maven compiled 20 main Java source files and reported 8 compilation errors for BingoBackendApplication, PersistenceConfiguration, SecurityConfiguration, BingoRedisKeySerializer, RedisInfrastructureConfiguration, RedisKeyNames, RequestIdFilter and RestExceptionHandler. The console localized error text is mojibake (???); duplicate-class cause is independently established from equal file hashes and package declarations, not from translating corrupted text.",
+      "anchor": "deep-lazy-bingo-backend/src/main/java/com/bingo/backend/BingoBackendApplication.java:1",
+      "counterpart": "deep-lazy-bingo-backend/src/main/java/com/deeplazy/bingo/BingoBackendApplication.java:1",
+      "falsifiableEvidence": "Both files declare package com.deeplazy.bingo and public class BingoBackendApplication; both SHA256 d871005d7f3b17260d7df5dff4d3a1eaac860ef1d2abb7a5cada8bc21752e336. The preserved Maven source manifest shows the same duplicated old/new paths and equal hashes for all eight main classes. It also shows four tests in each old/new directory; those were not reached by compilation.",
+      "log": "deep-lazy-bingo-backend/target/verification/personal-tools-independent-20261029/redis.log",
+      "sourceManifest": "deep-lazy-bingo-backend/target/verification/personal-tools-independent-20261029/maven-redis.json",
+      "developerReportMismatch": "Developer report described 16 Java files fully moved, 21 hashed backend inputs and backend source identity cca5f345af8c6e10bfe4e93a1dda9401ecdfa2a24f32a648207b1c044626ab13. This actual run contains duplicated paths and backend identity 659bf37d14326a395e00899cb86c12a848059d5e50054641eeba929ae2027000. Historical 35/35 cannot be reused for these inputs.",
+      "ownership": "Parent owns reconciliation/repair. Verifier did not remove, move or edit any source. A repaired or otherwise changed snapshot requires a fresh priority and full-suite independent run."
+    }
+  ],
+  "executions": [
+    {
+      "id": "priority",
+      "order": 1,
+      "startedAt": "2026-10-29T07:09:13.211Z",
+      "finishedAt": "2026-10-29T07:09:15.346Z",
+      "command": ["C:/QXZ5KB5/CIH-Software/Environment/node-v24.21.0-win-x64/node.exe", "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo/deep-lazy-bingo-frontend/node_modules/tsx/dist/cli.mjs", "--test", "scripts/personal-tools.test.ts", "scripts/family-shell.test.ts"],
+      "cwd": "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo/deep-lazy-bingo-frontend",
+      "exitCode": 0,
+      "tests": {"total": 18, "passed": 18, "failed": 0, "skipped": 0, "newPersonalTools": 7, "familyShell": 11},
+      "receipt": "deep-lazy-bingo-backend/target/verification/personal-tools-independent-20261029/priority.json",
+      "output": "deep-lazy-bingo-backend/target/verification/personal-tools-independent-20261029/priority.log",
+      "sourceConfigInputsStable": true,
+      "dependencyManifestStable": true
+    },
+    {
+      "id": "redis",
+      "order": 2,
+      "startedAt": "2026-10-29T07:09:52.116Z",
+      "finishedAt": "2026-10-29T07:10:51.201Z",
+      "command": ["C:/QXZ5KB5/CIH-Software/Environment/node-v24.21.0-win-x64/node.exe", "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo/.vscode/backend-maven.mjs", "redis"],
+      "expandedChildCommand": ["cmd.exe", "/d", "/c", "C:/Users/qxz5kb5/AppData/Local/deep-lazy-bingo/tools/apache-maven-3.10.0/bin/mvn.cmd", "--batch-mode", "--no-transfer-progress", "--settings", ".mvn/network.xml", "-Dtest=RedisNamespaceTest", "test"],
+      "cwd": "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo/deep-lazy-bingo-backend",
+      "exitCode": 1,
+      "mavenExitCode": 1,
+      "failurePhase": "maven-compiler-plugin:3.15.0:compile, before testCompile/Surefire",
+      "expectedPriorityTests": 12,
+      "testsExecuted": 0,
+      "compilationErrors": 8,
+      "receipt": "deep-lazy-bingo-backend/target/verification/personal-tools-independent-20261029/redis.json",
+      "output": "deep-lazy-bingo-backend/target/verification/personal-tools-independent-20261029/redis.log",
+      "helperReceipt": "deep-lazy-bingo-backend/target/verification/personal-tools-independent-20261029/maven-redis.json",
+      "helperOutput": "deep-lazy-bingo-backend/target/verification/personal-tools-independent-20261029/maven-redis.log",
+      "sourceConfigInputsStable": true,
+      "dependencyManifestStable": true,
+      "nonfatalWarnings": "Existing artifact metadata HTTP 401 warnings preceded compilation. They are not the recorded fatal compile failure and were not repaired."
+    },
+    {
+      "id": "frontend-full",
+      "order": 3,
+      "status": "NOT_EXECUTED_STOP_ON_PRIOR_FAILURE",
+      "command": ["C:/QXZ5KB5/CIH-Software/Environment/node-v24.21.0-win-x64/node.exe", "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo/deep-lazy-bingo-frontend/node_modules/tsx/dist/cli.mjs", "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo/deep-lazy-bingo-frontend/scripts/learning-check.ts"],
+      "cwd": "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo/deep-lazy-bingo-frontend",
+      "exitCode": null,
+      "unverified": ["136 full tests", "typecheck", "Vite production build", "lint", "style", "format"]
+    },
+    {
+      "id": "backend-full",
+      "order": 4,
+      "status": "NOT_EXECUTED_STOP_ON_PRIOR_FAILURE",
+      "command": ["C:/QXZ5KB5/CIH-Software/Environment/node-v24.21.0-win-x64/node.exe", "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo/.vscode/backend-maven.mjs", "verify"],
+      "cwd": "C:/QXZ5KB5/CIH-Software/Code/Ai/deep-lazy-bingo/deep-lazy-bingo-backend",
+      "exitCode": null,
+      "expectedTests": 35
+    },
+    {
+      "id": "packaged-jar",
+      "status": "NOT_EXECUTED_NO_FRESH_SUCCESSFUL_PACKAGE",
+      "exitCode": null,
+      "requiredButUnverified": ["Single Start-Class com.deeplazy.bingo.BingoBackendApplication", "No old application package classes", "Four package-info.class entries and no business classes"],
+      "historicalJarAccepted": false
+    }
+  ],
+  "snapshot": {
+    "algorithm": "SHA256(JSON.stringify(sorted array of path/sha256 rows)); actual bytes hashed without printing configuration values",
+    "fileCount": 2276,
+    "beforePriority": "efc87cbf3a41fe893165d48f384eaff2051dce548129ece6633bb8fc5e43f319",
+    "afterPriority": "efc87cbf3a41fe893165d48f384eaff2051dce548129ece6633bb8fc5e43f319",
+    "beforeRedis": "efc87cbf3a41fe893165d48f384eaff2051dce548129ece6633bb8fc5e43f319",
+    "afterRedis": "efc87cbf3a41fe893165d48f384eaff2051dce548129ece6633bb8fc5e43f319",
+    "afterReadOnlyAudit": "efc87cbf3a41fe893165d48f384eaff2051dce548129ece6633bb8fc5e43f319",
+    "actualAddedModifiedDeletedDuringSuites": [],
+    "scope": "Frontend src/scripts/data/public, frontend root JSON/YAML/JS/TS/HTML configuration and lockfile, backend pom/src/.mvn/wrappers, root task/helper/rules and personal-tools frozen/review reports. Includes on-disk files irrespective of tracked status.",
+    "exclusions": [".env* never read or hashed", "node_modules source bodies", "dist", "target", ".git content", ".joycode", "verification data", "generated auto-imports.d.ts and components.d.ts"],
+    "perFileManifests": [
+      "deep-lazy-bingo-backend/target/verification/personal-tools-independent-20261029/priority-before.json",
+      "deep-lazy-bingo-backend/target/verification/personal-tools-independent-20261029/priority-after.json",
+      "deep-lazy-bingo-backend/target/verification/personal-tools-independent-20261029/redis-before.json",
+      "deep-lazy-bingo-backend/target/verification/personal-tools-independent-20261029/redis-after.json",
+      "deep-lazy-bingo-backend/target/verification/personal-tools-independent-20261029/audit-snapshot.json"
+    ],
+    "backendHelperSourceIdentityBeforeAndAfter": "659bf37d14326a395e00899cb86c12a848059d5e50054641eeba929ae2027000",
+    "git": {
+      "metadataExists": true,
+      "commit": null,
+      "revParseHeadExitCode": 128,
+      "statusExitCode": 0,
+      "unstagedNameStatusExitCode": 0,
+      "unstagedNumstatExitCode": 0,
+      "stagedNameStatusExitCode": 0,
+      "untrackedListExitCode": 0,
+      "actualDiff": "No staged/unstaged tracked changes reported; status contains untracked files. This is an unborn/no-valid-HEAD repository, not a clean committed baseline.",
+      "rawStatusDiffUntrackedCommandsAndOutputs": "deep-lazy-bingo-backend/target/verification/personal-tools-independent-20261029/audit.json",
+      "correction": "Historical no-Git statements are not current. Suite receipts intentionally do not invent a commit or tracked baseline; the later actual Git audit supersedes their classification-unavailable note."
+    }
+  },
+  "environmentAndDependencies": {
+    "node": "24.21.0",
+    "nodeExecutable": "C:/QXZ5KB5/CIH-Software/Environment/node-v24.21.0-win-x64/node.exe",
+    "platform": "win32 x64, Windows 10.0.26200",
+    "JAVA_HOME": "C:/Users/qxz5kb5/.vscode/extensions/redhat.java-1.58.0-win32-x64/jre/25.0.4.1-win32-x86_64",
+    "javaVersionObserved": "Temurin 25.0.4.1+1-LTS; javac target release 21",
+    "mavenExecutable": "C:/Users/qxz5kb5/AppData/Local/deep-lazy-bingo/tools/apache-maven-3.10.0/bin/mvn.cmd",
+    "mavenVersionLimitation": "Pinned installed directory/helper target observed; separate mvn --version not run after stop.",
+    "backendDeclaredVersions": {"springBoot": "4.1.2", "mybatisPlus": "3.5.18", "springdoc": "3.2.0", "springAiBom": "2.0.0"},
+    "frontendDependencyIdentityBeforeAndAfter": "a5a30ff5f55dca57c363b1da443e3d901c477175f559c265b46a08dc557cf835",
+    "resolvedFrontendVersionsAndHashes": "deep-lazy-bingo-backend/target/verification/personal-tools-independent-20261029/priority-dependencies-before.json",
+    "resolvedFrontendPostRunVersionsAndHashes": "deep-lazy-bingo-backend/target/verification/personal-tools-independent-20261029/redis-dependencies-after.json",
+    "dependencyCaptureLimit": "Installed .pnpm package manifest versions/hashes plus lockfile, not every installed executable or Maven cache byte. No complete future-reuse equivalence claimed.",
+    "environment": "Inherited environment with only JAVA_HOME overridden; PATH SHA256 and safe NODE_ENV/CI/TZ fields are in each execution receipt. Proxy configured=true; no proxy credential values recorded. No .env/user Maven settings/chat/secret file was read. Maven helper uses its existing .mvn/network.xml and redacts inherited proxy credentials.",
+    "permissionBoundary": "Host tools are not a sandbox. Deferred tools require tool_search, which is not exposed here; no unloaded deferred task/browser/Git tool was invoked."
+  },
+  "acceptanceCoverage": [
+    {"id": "PT-01", "status": "BLOCKED_POLICY_NOT_ACCEPTED", "evidence": "Backend developer report records the sole YAML apply_patch ignore-policy refusal. Actual current snapshot still contains all three .properties targets. No YAML write was retried and no configuration migration/equivalence test was executed."},
+    {"id": "PT-02", "status": "PARTIAL_BOUNDED_UNIT_COVERAGE", "evidence": "Passing new tests cover calendar clamp, integer money, append renewal preserving old period/reminder and atomic overlap rejection. Source implements local membership writes. Full CRUD/refresh/filter UI and all period/destination edge cases are not independently exercised."},
+    {"id": "PT-03", "status": "UNMET_REAL_EMAIL_UNCONFIGURED", "evidence": "src/personal-tools/local.ts Reminder allows only email and not-configured/due-unsent; membership.ts adds local reminder rows, not provider receipts. No SMTP/WeChat provider or persistent scheduler is configured/tested. Passing date/renewal tests cannot establish actual delivery or closed-browser scheduling."},
+    {"id": "PT-04", "status": "BLOCKED_DISABLED_NOT_IMPLEMENTED", "evidence": "src/views/personal-tools/vault.vue contains only warning ElResult, imports ModuleShell and no vault engine. local.ts reserves a kdbx row schema only. Actual package.json contains no chosen vault/KDF library. No unlock/lock/reveal/copy/crypto/interoperability/restore acceptance test exists in the seven-test file. Dependency research is proposal-only, not enablement proof."},
+    {"id": "PT-05", "status": "PARTIAL_NOTES_RAW_MARKDOWN_NO_PREVIEW", "evidence": "Passing tests verify note schema bounds, stale revision rejection, attachment ownership, rollback and rejection of four unsafe attachment inputs. Actual notes.vue uses ElInput textarea for Markdown and ArtWangEditor for rich text, has tags/search/archive/import/export code but no rendered Markdown preview. No browser sanitizer/paste/upload/no-network, real image decode, refresh, import/export or dirty-navigation workflow was executed. These remain falsifiable untested boundaries, not passing coverage."},
+    {"id": "PT-06", "status": "PARTIAL_ROUTING_POLICY_TESTED_BROWSER_PENDING", "evidence": "Eleven family-shell tests passed, including 8 groups/31 leaves, three personal-tools route mappings and explicit preview/backend precedence. New tests also verify worktab cancellation and latch invalidation. The exact ComponentLoader whitelist for every new view, production packaging and 390/768/1440px workflow usability still need parent browser/build evidence."},
+    {"id": "PT-07", "status": "FAILED_FULL_INDEPENDENT_GATES_INCOMPLETE", "evidence": "18 priority frontend tests pass independently. Backend priority fails compilation with exit 1; Redis tests, full 136 frontend suite/six checks, full 35 backend tests and fresh JAR checks were not completed. Developer self-tests remain separate historical statements. Browser checks are parent-owned and not claimed."},
+    {"id": "PT-08", "status": "FAILED_DUPLICATED_OLD_PATH_SOURCES", "evidence": "IV-01 directly contradicts moved-only package/path compliance and blocks compile. Current rootPackagePathsAndInfrastructureScanningAreConsistent test under new path would inspect path/package consistency and four package-info.java declarations, but was not reached. Four source package declarations exist; four packaged package-info classes and single boot Start-Class are not independently verified."}
+  ],
+  "executionChannelNotes": {
+    "launchFailures": "Initial slash-form absolute cmd path was rejected; backslash/short cmd attempts sometimes returned empty output. A later Get-Location probe was also rejected. Empty output and task banners were never counted as pass; only actual timestamped collector receipts and logs establish the two executed suites. Read-only audit short cmd was rejected; absolute backslash cmd succeeded.",
+    "audit": "Read-only git --no-optional-locks commands plus pinned java -version; exact commands/true exits/output in audit.json. rev-parse HEAD exit 128 is retained rather than hidden.",
+    "stopRule": "No suites, JAR execution, fixes, cleanup or dependency installation after observed Redis failure. Only failure-log/source reads, read-only worktree/runtime audit and report validation/handoff."
+  },
+  "outputsAndWriteScope": {
+    "ordinaryReport": "doc/analysis/2026-10-29-personal-tools-independent-verification.json",
+    "temporaryCollector": "deep-lazy-bingo-backend/target/verification/personal-tools-independent-collector.mjs",
+    "temporaryEvidenceDirectory": "deep-lazy-bingo-backend/target/verification/personal-tools-independent-20261029",
+    "temporaryReportValidator": "deep-lazy-bingo-backend/target/verification/personal-tools-independent-report-check.mjs",
+    "runnerManagedOutputs": ["deep-lazy-bingo-backend/target/classes", "deep-lazy-bingo-backend/target/maven-status", "deep-lazy-bingo-backend/target/verification/maven-redis.json", "deep-lazy-bingo-backend/target/verification/maven-redis.log"],
+    "scopeCaveat": "The explicitly requested existing Maven helper/Maven compile produced normal target outputs, including non-prefixed helper receipts, outside the narrower personal-tools-independent-* temporary prefix. This incidental runner write footprint is disclosed, not claimed prefix-only compliant; no alternate helper, source/config repair, output restoration or deletion was used. Preserved copies reside inside the approved prefixed evidence directory.",
+    "productSourcesTestsConfigsDependenciesEdited": false,
+    "frontendHistoricalReportEdited": false,
+    "gitOrJoycodeMutation": false,
+    "frontendServerTouched": false,
+    "javaApplicationLaunched": false,
+    "realDbRedisMailWechatOperations": false,
+    "browserChecksPerformed": false
+  },
+  "handoff": {
+    "writeStop": "After this report creation, only read-only JSON/reference validation is authorized; no further product/test/config/dependency/runtime writes. Parent reads this ordinary report and owns all repair, artifact registration, decisions and stage completion.",
+    "parentAction": "Reconcile duplicated old/new Java main/test directories while preserving user work; do not assume historical move completion. Repair belongs to parent. Then dispatch a fresh independent invocation for priority frontend, Redis, complete frontend six checks and full backend verify, followed by fresh JAR inspection. Parent owns browser verification and unmet-acceptance decisions.",
+    "fullOriginalGoalAccepted": false,
+    "reuseAllowed": false
+  }
+}
