@@ -56,5 +56,5 @@ export function sanitizeContent(value: string): string {
 
 export function safeMarkdown(source: string): string {
   if (new TextEncoder().encode(source).length > 100 * 1024) throw Error('笔记内容超过限制')
-  return source.replace(/<[^>]*>/g, '').replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+  return source
 }

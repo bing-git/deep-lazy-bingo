@@ -25,6 +25,15 @@ export function today(): string {
   const date = new Date()
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
 }
+export function duePeriods(members: Membership[], periods: Period[], day = today()): Period[] {
+  const active = new Set(members.filter((member) => !member.archived).map((member) => member.id))
+  return periods.filter(
+    (period) =>
+      active.has(period.membershipId) &&
+      period.endDate >= day &&
+      shiftDate(period.endDate, -1) <= day
+  )
+}
 export function parseMoney(value: string, currency: string): number {
   if (!['CNY', 'USD', 'EUR', 'GBP', 'JPY'].includes(currency)) throw Error('币种无效')
   const digits = currency === 'JPY' ? 0 : 2

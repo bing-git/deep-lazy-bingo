@@ -1,0 +1,27 @@
+spring:
+  config:
+    import: ""
+  datasource:
+    url: jdbc:h2:mem:bingo_framework;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 1
+      database: 3
+      ssl:
+        enabled: false
+  flyway:
+    enabled: false
+  cache:
+    type: none
+management:
+  health:
+    redis:
+      enabled: false
+  endpoint:
+    health:
+      group:
+        readiness:
+          include: readinessState,db

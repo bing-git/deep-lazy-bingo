@@ -2,11 +2,19 @@
   <ModuleShell title="会员管理">
     <template #actions>
       <ElButton type="primary" @click="create"><ArtSvgIcon icon="ri:add-line" />新增会员</ElButton>
-      <ElButton @click="refresh"><ArtSvgIcon icon="ri:refresh-line" />刷新</ElButton>
+      <ElButton @click="refresh()"><ArtSvgIcon icon="ri:refresh-line" />刷新</ElButton>
+      <ElButton @click="connectionDialog = true">通知设置</ElButton>
+      <ElButton v-if="connected" :loading="syncing" @click="syncAll">同步通知</ElButton>
     </template>
     <ElAlert
-      title="邮件未配置；微信未接入。提醒不会自动发送，关闭浏览器后不执行通知。"
-      type="warning"
+      :title="
+        connected
+          ? emailEnabled
+            ? '通知后端已连接。已同步记录在后端运行期间可持续提醒；SMTP 接受不代表送达。微信未接入。'
+            : '通知后端已连接，但邮件未启用。登记可持久化同步，尚不会发送邮件。微信未接入。'
+          : '会员先保存在本机；连接并同步后，后端才会处理通知。微信未接入。'
+      "
+      :type="connected && emailEnabled ? 'info' : 'warning'"
       :closable="false"
     />
     <ElAlert v-if="error" :title="error" type="error" :closable="false" />
@@ -46,7 +54,7 @@
         </template></ElTableColumn
       >
     </ElTable>
-    <h2>待发送提醒</h2>
+    <h2>当前提醒</h2>
     <ElTable :data="due" empty-text="暂无到期待发送提醒" class="module-table">
       <ElTableColumn label="服务" min-width="140"
         ><template #default="{ row }">{{
@@ -59,7 +67,7 @@
       >
       <ElTableColumn prop="reminderEmail" label="邮箱" min-width="170" />
       <ElTableColumn label="发送状态" min-width="140"
-        ><template #default>未配置 / 未发送</template></ElTableColumn
+        ><template #default="{ row }">{{ reminderState(row.id) }}</template></ElTableColumn
       >
     </ElTable>
     <ElDialog
@@ -112,19 +120,76 @@
         >
       </ElTable>
     </ElDialog>
+    <ElDialog
+      v-model="connectionDialog"
+      title="通知后端"
+      width="520px"
+      @closed="loginPassword = ''"
+    >
+      <ElAlert
+        title="只上传会员登记、期限与提醒邮箱，不上传密码库或笔记。连接后保存会自动同步；已有记录请点击“同步通知”。"
+        type="info"
+        :closable="false"
+      />
+      <p>本机账号见后端 secrets/personal-tools/login.txt。凭据只保留在当前页内存中。</p>
+      <ElForm label-position="top" @submit.prevent="connect">
+        <ElFormItem label="通知账号"
+          ><ElInput v-model="loginName" autocomplete="username"
+        /></ElFormItem>
+        <ElFormItem label="通知密码">
+          <ElInput
+            v-model="loginPassword"
+            type="password"
+            autocomplete="current-password"
+            maxlength="1024"
+          />
+        </ElFormItem>
+        <ElAlert v-if="connectionError" :title="connectionError" type="error" :closable="false" />
+      </ElForm>
+      <template #footer>
+        <ElButton v-if="connected" @click="disconnect">断开连接</ElButton>
+        <ElButton type="primary" :loading="connecting" @click="connect">连接</ElButton>
+      </template>
+    </ElDialog>
   </ModuleShell>
 </template>
 <script setup lang="ts">
   import { computed, onMounted, onBeforeUnmount, ref, watch } from 'vue'
+  import { onBeforeRouteLeave } from 'vue-router'
   import ModuleShell from '@/components/business/ModuleShell.vue'
   import { usePersonalTools } from '@/personal-tools/session'
-  import { saveMembership, shiftDate, today, parseMoney } from '@/personal-tools/membership'
+  import {
+    saveMembership,
+    shiftDate,
+    today,
+    parseMoney,
+    duePeriods
+  } from '@/personal-tools/membership'
+  import { createMembershipClient, type ServerMembership } from '@/personal-tools/membership-api'
   import type { Membership, Period } from '@/personal-tools/local'
   const members = ref<Membership[]>([])
   const periods = ref<Period[]>([])
   const dialog = ref(false)
   const history = ref<Membership>()
+  const client = createMembershipClient()
+  const server = ref<ServerMembership[]>([])
+  const connected = ref(false)
+  const emailEnabled = ref(false)
+  const connectionDialog = ref(false)
+  const loginName = ref('owner')
+  const loginPassword = ref('')
+  const connectionError = ref('')
+  const connecting = ref(false)
+  const syncing = ref(false)
+  function disconnect() {
+    client.disconnect()
+    connected.value = false
+    emailEnabled.value = false
+    loginPassword.value = ''
+    server.value = []
+  }
   const { repo, error, allowed } = usePersonalTools(() => {
+    disconnect()
     members.value = []
     periods.value = []
     dialog.value = false
@@ -184,9 +249,19 @@
                 )[filter.value]))
     )
   )
-  const due = computed(() =>
-    periods.value.filter((item) => shiftDate(item.endDate, -1) <= day.value)
-  )
+  const due = computed(() => duePeriods(members.value, periods.value, day.value))
+  function reminderState(id: string) {
+    if (!connected.value) return '未连接，发送状态未知'
+    const period = server.value.flatMap((member) => member.periods).find((item) => item.id === id)
+    if (!period) return '本地记录，尚未同步'
+    return {
+      PENDING: emailEnabled.value ? '等待发送' : '已同步 / 邮件未启用',
+      CLAIMED: '处理中 / 结果待核对',
+      SMTP_ACCEPTED: 'SMTP 已接受（非送达回执）',
+      FAILED: '发送失败，需人工核对',
+      INVALID_RECIPIENT: '邮箱未登记或无效'
+    }[period.status]
+  }
   const totals = computed(() => {
     const values = new Map<string, number>()
     for (const member of visible.value) {
@@ -199,7 +274,7 @@
     new Intl.NumberFormat('zh-CN', { style: 'currency', currency }).format(
       minor / (currency === 'JPY' ? 1 : 100)
     )
-  async function refresh() {
+  async function loadLocal() {
     if (!repo.value) return
     try {
       const result = await Promise.all([repo.value.list('memberships'), repo.value.list('periods')])
@@ -210,7 +285,57 @@
       error.value = String(issue)
     }
   }
-  watch(repo, refresh)
+  async function refresh() {
+    await loadLocal()
+    if (client.connected()) {
+      try {
+        server.value = await client.refresh()
+      } catch (issue) {
+        server.value = []
+        connected.value = client.connected()
+        error.value = String(issue)
+      }
+    }
+  }
+  async function connect() {
+    if (!allowed() || connecting.value) return
+    connecting.value = true
+    connectionError.value = ''
+    try {
+      const session = await client.connect(loginName.value, loginPassword.value)
+      if (!allowed()) return disconnect()
+      connected.value = true
+      emailEnabled.value = session.emailEnabled
+      server.value = await client.refresh()
+      connectionDialog.value = false
+    } catch (issue) {
+      connected.value = client.connected()
+      connectionError.value = String(issue)
+    } finally {
+      loginPassword.value = ''
+      connecting.value = false
+    }
+  }
+  async function syncMember(member: Membership) {
+    if (!allowed() || !client.connected()) return
+    const saved = await client.sync(member, periods.value)
+    if (!allowed()) return
+    server.value = [...server.value.filter((item) => item.id !== saved.id), saved]
+  }
+  async function syncAll() {
+    if (!allowed() || syncing.value || !client.connected()) return
+    syncing.value = true
+    error.value = ''
+    try {
+      for (const member of members.value) await syncMember(member)
+    } catch (issue) {
+      error.value = `同步未全部完成：${String(issue)}。本地记录仍保留。`
+    } finally {
+      connected.value = client.connected()
+      syncing.value = false
+    }
+  }
+  watch(repo, loadLocal)
   function create() {
     draft.value = { ...base(), service: '', accountLabel: '', archived: false }
     period.value = {
@@ -262,7 +387,7 @@
     saving.value = true
     try {
       const withPeriod = !draft.value.revision || renewing.value
-      await saveMembership(
+      const saved = await saveMembership(
         repo.value,
         draft.value,
         withPeriod
@@ -270,7 +395,13 @@
           : undefined
       )
       dialog.value = false
-      await refresh()
+      await loadLocal()
+      try {
+        await syncMember(saved)
+      } catch (issue) {
+        connected.value = client.connected()
+        error.value = `本地已保存，通知同步失败：${String(issue)}`
+      }
     } catch (issue) {
       error.value = String(issue)
     } finally {
@@ -280,8 +411,14 @@
   async function archive(member: Membership) {
     if (!repo.value) return
     try {
-      await saveMembership(repo.value, { ...member, archived: !member.archived })
-      await refresh()
+      const saved = await saveMembership(repo.value, { ...member, archived: !member.archived })
+      await loadLocal()
+      try {
+        await syncMember(saved)
+      } catch (issue) {
+        connected.value = client.connected()
+        error.value = `本地已保存，后端归档状态尚未更新：${String(issue)}`
+      }
     } catch (issue) {
       error.value = String(issue)
     }
@@ -290,7 +427,9 @@
     day.value = today()
   }, 60000)
   onMounted(() => window.addEventListener('focus', refresh))
+  onBeforeRouteLeave(disconnect)
   onBeforeUnmount(() => {
+    disconnect()
     clearInterval(timer)
     window.removeEventListener('focus', refresh)
   })

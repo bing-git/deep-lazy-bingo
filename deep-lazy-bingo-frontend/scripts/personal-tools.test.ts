@@ -3,6 +3,53 @@ import { test } from 'node:test'
 import { BACKEND_LOCK, createBackendProbe } from '../src/learning/core'
 import 'fake-indexeddb/auto'
 
+test('Markdown preview renders headings, lists and fenced code without changing source', async () => {
+  const modulePath = '../src/personal-tools/markdown.ts'
+  const markdown = await import(modulePath).catch(() => null)
+  assert.ok(markdown, 'PT05 requires a pure Markdown preview renderer')
+  const source = '# Heading\n\n- first\n- second\n\n```html\n<b>literal</b>\n```\n'
+  const rendered = markdown.renderMarkdown(source)
+  assert.match(rendered, /<h1>Heading<\/h1>/)
+  assert.match(rendered, /<ul>\s*<li>first<\/li>\s*<li>second<\/li>\s*<\/ul>/)
+  assert.match(rendered, /<pre><code[^>]*>&lt;b&gt;literal&lt;\/b&gt;\n<\/code><\/pre>/)
+  const { safeMarkdown } = await import('../src/personal-tools/content')
+  const original = `${source}\n<img src="https://example.invalid/raw.png">\n![image](https://example.invalid/image.png)`
+  assert.equal(safeMarkdown(original), original)
+  assert.throws(() => safeMarkdown('x'.repeat(102401)), /超过限制/)
+})
+
+test('Markdown preview disables raw HTML and dangerous links without claiming DOM sanitization', async () => {
+  const modulePath = '../src/personal-tools/markdown.ts'
+  const markdown = await import(modulePath).catch(() => null)
+  assert.ok(markdown, 'PT05 requires a pure Markdown preview renderer')
+  const rendered = markdown.renderMarkdown(
+    '<script>alert(1)</script>\n\n<iframe src="https://example.invalid"></iframe>\n\n[bad](javascript:alert%281%29)\n\n[encoded](jav&#x61;script:alert%281%29)\n\n[data](data:text/html,test)\n\n[good](https://example.invalid/path)'
+  )
+  assert.doesNotMatch(rendered, /<script\b|<iframe\b|href=["'](?:javascript|data):/i)
+  assert.match(rendered, /&lt;script&gt;/)
+  assert.match(rendered, /href="https:\/\/example\.invalid\/path"/)
+})
+
+test('Markdown preview emits no images for remote, reference, data, blob or raw HTML input', async () => {
+  const modulePath = '../src/personal-tools/markdown.ts'
+  const markdown = await import(modulePath).catch(() => null)
+  assert.ok(markdown, 'PT05 requires a pure Markdown preview renderer')
+  const source = [
+    '![remote](https://example.invalid/remote.png)',
+    '![relative](/local.png)',
+    '![reference][asset]',
+    '',
+    '[asset]: https://example.invalid/reference.png',
+    '',
+    '![data](data:image/png;base64,AAAA)',
+    '![blob](blob:https://example.invalid/id)',
+    '<img src="https://example.invalid/raw.png" onerror="alert(1)">'
+  ].join('\n')
+  const rendered = markdown.renderMarkdown(source)
+  assert.doesNotMatch(rendered, /<(?:img|source|video|audio|iframe|object|embed)\b/i)
+  assert.throws(() => markdown.renderMarkdown('x'.repeat(102401)), /超过限制/)
+})
+
 test('worktab close can be canceled without exposing note content', async () => {
   const modulePath = '../src/config/family.ts'
   const policy = await import(modulePath)

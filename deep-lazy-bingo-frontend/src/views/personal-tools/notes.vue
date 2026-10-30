@@ -51,14 +51,37 @@
         </div>
         <ElInput v-model="draft.title" maxlength="150" placeholder="标题" aria-label="标题" />
         <ElInput v-model="tagText" placeholder="标签，以逗号分隔" aria-label="标签" />
+        <ElSegmented
+          v-if="draft.format === 'markdown'"
+          v-model="markdownView"
+          :options="[
+            { label: '源文', value: 'source' },
+            { label: '预览', value: 'preview' }
+          ]"
+          aria-label="Markdown 视图"
+        />
         <div @paste.capture="markdownPaste" @drop.capture.prevent.stop>
           <ElInput
-            v-if="draft.format === 'markdown'"
+            v-if="draft.format === 'markdown' && markdownView === 'source'"
             v-model="draft.body"
             type="textarea"
             :rows="18"
             aria-label="Markdown 正文"
           />
+          <template v-else-if="draft.format === 'markdown'">
+            <ElAlert
+              v-if="markdownPreview.error"
+              :title="markdownPreview.error"
+              type="error"
+              :closable="false"
+            />
+            <article
+              v-else
+              class="markdown-preview"
+              aria-label="Markdown 预览"
+              v-html="markdownPreview.html"
+            />
+          </template>
           <ArtWangEditor
             v-else
             v-model="draft.body"
@@ -101,6 +124,7 @@
   import ArtWangEditor from '@/components/core/forms/art-wang-editor/index.vue'
   import { usePersonalTools } from '@/personal-tools/session'
   import { sanitizeContent, safeMarkdown } from '@/personal-tools/content'
+  import { renderMarkdown } from '@/personal-tools/markdown'
   import { prepareAttachment, safeName, saveNote, validateNote } from '@/personal-tools/notes'
   import type { Attachment, Note } from '@/personal-tools/local'
   const notes = ref<Note[]>([])
@@ -111,6 +135,16 @@
   const baseline = ref('')
   const tagText = ref('')
   const saving = ref(false)
+  const markdownView = ref('source')
+  const markdownPreview = computed(() => {
+    if (draft.value?.format !== 'markdown' || markdownView.value !== 'preview')
+      return { html: '', error: '' }
+    try {
+      return { html: sanitizeContent(renderMarkdown(draft.value.body)), error: '' }
+    } catch {
+      return { html: '', error: '内容超过预览限制' }
+    }
+  })
   const query = ref('')
   const archived = ref(false)
   const importInput = ref<HTMLInputElement>()
@@ -150,6 +184,7 @@
   }
   function clear() {
     revoke()
+    markdownView.value = 'source'
     draft.value = undefined
     assets.value = []
     staged.value = []
@@ -447,6 +482,18 @@
     revoke()
   })
 </script>
+<style scoped lang="scss">
+  .markdown-preview {
+    min-width: 0;
+    min-height: 240px;
+    overflow: auto;
+    overflow-wrap: anywhere;
+
+    :deep(pre) {
+      white-space: pre-wrap;
+    }
+  }
+</style>
 <style scoped lang="scss">
   .notes-layout {
     display: grid;

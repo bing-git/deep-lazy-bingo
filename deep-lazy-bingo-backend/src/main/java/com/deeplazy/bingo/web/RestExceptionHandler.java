@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -19,6 +21,12 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(RestExceptionHandler.class);
+
+	@ExceptionHandler({OptimisticLockingFailureException.class, DataIntegrityViolationException.class})
+	public ResponseEntity<Object> handleConflict(RuntimeException exception) {
+		return ResponseEntity.status(HttpStatus.CONFLICT)
+			.body(problem(HttpStatus.CONFLICT, "Record conflict. Reload before retrying."));
+	}
 
 	/** Rejects invalid arguments without returning their messages. */
 	@ExceptionHandler(IllegalArgumentException.class)

@@ -37,7 +37,7 @@ PostgreSQL (+ pgvector) -- 受控文件存储 / 可选 AI 提供商
 
 ## 本地前端
 
-前端已接入 Art Design Pro MIT 开源工程，固定上游提交 `f3aaf58eec1a0e988f162352c33862327a484f95`，保留原生布局、组件、许可证和锁文件。默认使用双列导航，包含 7 个领域、28 个页面入口，以及顶栏、面包屑、访问标签页、导航搜索、专注模式和界面设置。
+前端已接入 Art Design Pro MIT 开源工程，固定上游提交 `f3aaf58eec1a0e988f162352c33862327a484f95`，保留原生布局、组件、许可证和锁文件。默认使用双列导航，包含 8 个领域、31 个页面入口，以及顶栏、面包屑、访问标签页、导航搜索、专注模式和界面设置。
 
 需要 Node.js >=20.19 和 pnpm；本次使用 Node.js 24、pnpm 10。首次运行：
 
@@ -49,7 +49,7 @@ pnpm dev --host 127.0.0.1 --port 5173
 
 访问 http://127.0.0.1:5173/#/workspace/overview 。开发配置显式开启 `VITE_INTERFACE_PREVIEW=true` 时，可在未登录状态查看应用壳；页面会标明预览状态，不创建模拟账号、令牌或授权事实。学习区使用独立 IndexedDB 验证库，样例明确标为原创，不混入真实数据库。生产构建始终关闭此预览入口，需要真实会话及后端返回的授权菜单。
 
-后端目前仅有基础框架，尚未实现业务 API。28 个入口均已有对应业务视图：工作台任务/日历/通知、学习计划/笔记/题库/进度、知识空间/来源/文档/本地解析、问答摘录/草稿审核/英语路径、健康记录、服务目录/人工状态/历史、成员资料/偏好/审计。记录在独立本机库中持久化，使用明确标记的原创样例；不代表真实登录、服务端权限、多设备同步或远端模型已接通。导航搜索仍只查当前菜单，不冒充服务端业务搜索。
+31 个入口均有对应业务视图，包括工作台、学习、知识库、学习 AI、健康、服务、家庭和个人工具；不再路由到通用空页面。既有业务示例保存在独立本机库中，明确标记为原创样例。后端目前提供受保护的会员通知同步 API，不代表全站登录、家庭权限、多设备同步或远端模型已经接通。导航搜索仍只查当前菜单，不冒充服务端业务搜索。
 
 ### 学习区
 
@@ -87,11 +87,21 @@ pnpm dev --host 127.0.0.1 --port 5173
 - 代理只是访问路径，不会补出尚未实现的接口。后端未运行时页面显示连接失败；不使用公开 Mock 服务或公共 CORS 代理，也不关闭 TLS 验证。
 - 生产环境由部署反向代理转发 `/api`，Vite 开发代理不会写入生产页面。不要把秘密放入任何 `VITE_*` 配置。
 
+### 个人工具
+
+- [会员管理](http://127.0.0.1:5173/#/personal-tools/memberships)：登记服务、账号、费用、币种和期限，编辑/归档、续费留存历史、按到期状态筛选。提醒使用到期日减一个日历月，月末自动钳制，不按固定 30 天计算。
+- [密码管理](http://127.0.0.1:5173/#/personal-tools/vault)：主密码解锁、平台账号密码及备注、临时显示/复制、锁定和 KDBX 加密备份/恢复。复用开源 KDBX 库，以 AES 与 Argon2id 保存密文；主密码和解密内容不写入本机数据库，不上传后端。空库不会植入示例口令。离页、隐藏页面和空闲两分钟会锁定。
+- [个人笔记](http://127.0.0.1:5173/#/personal-tools/notes)：Markdown 源文/预览、基于开源 wangEditor 的富文本、标签、搜索、归档、本地图片/文本附件，以及 Markdown/完整笔记导入导出。Markdown 复用 markdown-it；展示内容经 DOMPurify 清理，禁止远端图片自动加载。主密码不能恢复，笔记和加密密码库均应自行备份。
+
+会员“通知设置”使用下文生成的本机账号，凭据只在当前页内存中保存。连接本身不上传记录；“同步通知”上传既有会员，连接后保存的变更自动同步。只上传会员及提醒邮箱，不上传密码或笔记，也不改变原有后端能力探测门槛。未同步、认证失败或冲突会明确显示；历史期限不可覆盖，不能静默重试覆盖服务端版本。
+
+后端每分钟处理最多 100 条已同步、未归档、处于提醒日至到期日区间的邮件。唯一周期约束和原子领取避免重复提交；关闭浏览器不影响正在运行的后端。`SMTP_ACCEPTED` 仅代表 SMTP 接受，不是送达回执。失败、无效地址和发送结果不确定的领取状态需人工核对，不自动重新发送。当前未提供 SMTP/微信凭据，邮件默认关闭，微信尚未接入；不把未发送显示为成功。
+
 ## 后端框架
 
-后端基础工程已建立在 `deep-lazy-bingo-backend/`，采用 Java 21 编译目标、Spring Boot 4.1.2、MyBatis-Plus 3.5.18、PostgreSQL、Spring Data Redis 和 Flyway；本轮没有业务表、业务 Mapper、登录账号或业务 API。Spring AI 仅保留 BOM 管理，不加载模型 starter。前端仍保持本机业务模式，不因基础健康接口可用而自动切换真实后端。
+后端已建立在 `deep-lazy-bingo-backend/`，采用 Java 21 编译目标、Spring Boot 4.1.2、MyBatis-Plus 3.5.18、PostgreSQL、Spring Data Redis 和 Flyway。`com.deeplazy.bingo` 下包含 controller/service/entity/mapper，以及配置、异常处理和请求追踪。会员同步、期限和提醒队列已有实际持久化实现；其他业务仍是前端本机闭环，不冒充已实现服务端 API。Spring AI 仅保留 BOM 管理，不加载模型 starter。
 
-应用默认绑定 `127.0.0.1:8080`。仅 GET/HEAD 健康、存活和就绪探针公开，其他入口默认拒绝；OpenAPI 界面默认关闭。数据库表和 Flyway 历史表使用 `bingo_` 前缀，所有框架 Redis 模板及缓存统一使用 `bingo_` 命名空间，Redis 数据库固定为 3。没有执行共享库 DDL、Redis 写入或清空。
+应用默认绑定 `127.0.0.1:8080`。只有 GET/HEAD 健康探针公开；启用的会员接口必须通过唯一配置账号的 HTTP Basic 认证及写入 CSRF 检查，其他入口默认拒绝。该账号只管理个人会员，不是家庭权限系统。OpenAPI 默认关闭。表和 Flyway 历史表使用 `bingo_` 前缀，Redis 保留 `bingo_` 命名空间和数据库 3；没有执行共享 PostgreSQL DDL 或 Redis 写入。
 
 ### 构建和隔离启动
 
@@ -100,18 +110,19 @@ pnpm dev --host 127.0.0.1 --port 5173
 ```powershell
 Set-Location .\deep-lazy-bingo-backend
 .\mvnw.cmd --batch-mode verify
-.\mvnw.cmd spring-boot:run '-Dspring-boot.run.profiles=smoke'
+java -jar .\target\deep-lazy-bingo-backend-0.1.0.jar --init-local
+java -jar .\target\deep-lazy-bingo-backend-0.1.0.jar
 ```
 
-`smoke` 为无数据库、无 Redis、无口令的隔离框架检查，不代表远端服务已连接。基础探针为 http://127.0.0.1:8080/actuator/health/liveness 。普通本地配置使用已提供的连接地址；口令只能通过安全终端或秘密管理器注入 `BINGO_DB_PASSWORD` 和 `BINGO_REDIS_PASSWORD`，不得写入源码、日志、截图或示例文件。Spring Boot 不自动读取 `.env` 文件。
+应用配置全部使用 `.yml`，直接填写实际非秘密值，没有环境变量占位符。`--init-local` 一次性生成真实随机本机凭据及数据库口令，写入被 Git 忽略、仅文件所有者可访问的 `secrets\personal-tools\application-local-secrets.yml` 和 `login.txt`，不输出秘密；再次运行不会覆盖现有凭据。登录口令在 YAML 中仅存 BCrypt 哈希。不要删除这些文件后继续使用原数据库，也不要提交或共享这些文件。
 
-`Backend: framework tests` 包含完整 smoke Web 集成检查：随机回环端口、健康/存活/就绪探针、信息隐藏、401 与请求 ID，并在结束后关闭服务。该结果不代表独立调试进程已验收或后台服务正在常驻；当前机器的系统 Maven 镜像与固定构建任务不同，不能把它的启动失败当成已成功部署。
+默认 `desktop` 配置使用本机持久化 H2 文件 `data\bingo`，自动应用两条会员迁移，不连接 Redis，也不修改任何共享数据库。备份时应停止后端后备份本机数据文件及私有配置。原有 PostgreSQL/Redis 的非秘密连接地址、TLS 和迁移默认关闭设置保留在基础 YAML 中；切换远端环境前必须单独配置真实凭据并确认迁移授权，不能复用本机随机数据库口令。
 
-可覆盖的非秘密变量为 `BINGO_DB_HOST`、`BINGO_DB_PORT`、`BINGO_DB_NAME`、`BINGO_DB_USERNAME`、`BINGO_REDIS_HOST` 和 `BINGO_REDIS_PORT`。PostgreSQL 默认 `verify-full`，Redis 默认 TLS；远端认证、证书与是否支持 TLS 必须在实际环境确认，不能为连通性盲目降级。
+真实邮件仍需在上述私有 YAML 中填入本人批准使用的 `spring.mail.host/port/username/password`、`bingo.membership.notifications.from`，启用 `bingo.membership.notifications.enabled`，并设置强制 STARTTLS 或隐式 TLS。未提供真实值的字段不写伪造地址或占位符。SMTP 证书/主机名校验必须保留；启用后缺少安全传输配置会启动失败，而非悄悄不发送。微信需要单独选定渠道及凭据，目前没有实现。
 
-Flyway 默认关闭，且没有迁移 SQL；未来实际迁移需另行明确授权后设置 `BINGO_FLYWAY_ENABLED=true`。`clean` 与自动 baseline 禁用，历史表固定 `bingo_flyway_schema_history`。测试只使用 H2 内存库与受控替身，不把它当作 PostgreSQL/Redis 真实连接证据。
+需要无数据库、无 Redis、无账号的框架检查时，运行 `java -jar .\target\deep-lazy-bingo-backend-0.1.0.jar --spring.profiles.active=smoke`。探针为 http://127.0.0.1:8080/actuator/health/liveness 。自动化测试使用隔离 H2、SMTP 替身及本机 TLS SMTP 接收器；实际协议检查覆盖可信证书下的邮件提交与状态落库、重复执行不重发，以及拒绝不可信证书。测试证书仅在临时目录生成，不降低生产证书校验；本机 SMTP 接受不是外部邮箱送达证据，也不代表真实 PostgreSQL、Redis 或生产部署已经验收。Maven Wrapper 自身的 `.mvn\wrapper\maven-wrapper.properties` 是官方工具元数据，不是应用配置，保留以免破坏 Wrapper。
 
-构建、隔离 HTTP 检查和未验证事项见[后端框架验收记录](doc/analysis/2026-10-29-backend-bootstrap-verification.md)。
+从旧工作树增量构建时，应删除 `target\classes` / `target\test-classes` 中遗留的三个 `application*.properties`，或重新干净构建；测试会拒绝运行时类路径中的旧配置，防止它覆盖 YAML。历史框架验收记录保留在 [doc/analysis](doc/analysis/2026-10-29-backend-bootstrap-verification.md)，不代表本次新增接口的验收。
 
 ### 前端检查
 

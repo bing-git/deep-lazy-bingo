@@ -1,0 +1,23 @@
+spring:
+  autoconfigure:
+    exclude: org.springframework.boot.data.redis.autoconfigure.DataRedisAutoConfiguration
+  datasource:
+    url: jdbc:h2:file:./data/bingo;MODE=PostgreSQL;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+  flyway:
+    enabled: true
+  cache:
+    type: none
+management:
+  health:
+    redis:
+      enabled: false
+  endpoint:
+    health:
+      group:
+        readiness:
+          include: readinessState,db
+bingo:
+  personal-tools:
+    enabled: true

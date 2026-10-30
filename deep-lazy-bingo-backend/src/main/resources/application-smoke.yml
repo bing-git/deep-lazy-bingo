@@ -1,0 +1,26 @@
+spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.jdbc.autoconfigure.DataSourceAutoConfiguration
+      - org.springframework.boot.data.redis.autoconfigure.DataRedisAutoConfiguration
+  flyway:
+    enabled: false
+  cache:
+    type: none
+bingo:
+  personal-tools:
+    enabled: false
+  membership:
+    notifications:
+      enabled: false
+management:
+  health:
+    db:
+      enabled: false
+    redis:
+      enabled: false
+  endpoint:
+    health:
+      group:
+        readiness:
+          include: readinessState

@@ -169,15 +169,17 @@ class RedisNamespaceTest {
     }
 
     @Test
-    void smokeProfileOmitsInfrastructureWithoutConnectionFactory() throws Exception {
-        new ApplicationContextRunner().withUserConfiguration(configurationClass())
-                .withPropertyValues("spring.profiles.active=smoke")
+    void isolatedProfilesOmitInfrastructureWithoutConnectionFactory() throws Exception {
+        for (String profile : List.of("smoke", "desktop")) {
+            new ApplicationContextRunner().withUserConfiguration(configurationClass())
+                .withPropertyValues("spring.profiles.active=" + profile)
                 .run(context -> {
                     assertThat(context).hasNotFailed();
                     assertThat(context).doesNotHaveBean(RedisTemplate.class)
                             .doesNotHaveBean(ReactiveRedisTemplate.class).doesNotHaveBean(CacheManager.class);
                     assertThat(context.getBeansWithAnnotation(Configuration.class)).doesNotContainKey("redisInfrastructureConfiguration");
                 });
+        }
     }
 
     private ApplicationContextRunner runner() throws Exception {

@@ -15,10 +15,10 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
-/** Supplies string-only Redis infrastructure outside the isolated smoke profile. */
+/** Supplies string-only Redis infrastructure outside isolated local profiles. */
 @Configuration(proxyBeanMethods = false)
 @EnableCaching
-@Profile("!smoke")
+@Profile("!smoke & !desktop")
 public class RedisInfrastructureConfiguration {
 
     /** Shares one namespaced synchronous template under both standard names. */

@@ -1,0 +1,104 @@
+spring:
+  application:
+    name: deep-lazy-bingo-backend
+  profiles:
+    default: desktop
+  config:
+    import: optional:file:./secrets/personal-tools/application-local-secrets.yml
+  datasource:
+    url: jdbc:postgresql://li19posdb11vm.bmwgroup.net:5620/pos_chat_dev?sslmode=verify-full&connectTimeout=5&socketTimeout=10&ApplicationName=bingo_backend
+    username: pos_dev
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      pool-name: bingo_pool
+      maximum-pool-size: 5
+      minimum-idle: 0
+      connection-timeout: 10000
+      validation-timeout: 3000
+  data:
+    redis:
+      host: lt19dkpos09vm.bmwgroup.net
+      port: 6300
+      database: 3
+      ssl:
+        enabled: true
+      connect-timeout: 5s
+      timeout: 5s
+      repositories:
+        enabled: false
+  flyway:
+    enabled: false
+    table: bingo_flyway_schema_history
+    locations: classpath:db/migration
+    validate-on-migrate: true
+    validate-migration-naming: true
+    baseline-on-migrate: false
+    clean-disabled: true
+  sql:
+    init:
+      mode: never
+  mvc:
+    problemdetails:
+      enabled: true
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 6MB
+  lifecycle:
+    timeout-per-shutdown-phase: 15s
+server:
+  address: 127.0.0.1
+  port: 8080
+  shutdown: graceful
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-binding-errors: never
+    include-exception: false
+  servlet:
+    session:
+      cookie:
+        http-only: true
+        same-site: strict
+mybatis-plus:
+  global-config:
+    banner: false
+    db-config:
+      table-prefix: bingo_
+      id-type: assign_uuid
+  configuration:
+    map-underscore-to-camel-case: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: never
+      show-components: never
+      probes:
+        enabled: true
+      group:
+        liveness:
+          include: livenessState
+        readiness:
+          include: readinessState,db,redis
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
+logging:
+  pattern:
+    level: "%5p [requestId=%X{requestId:-}]"
+bingo:
+  ai:
+    enabled: false
+  personal-tools:
+    enabled: false
+    username: owner
+  membership:
+    notifications:
+      enabled: false
+      zone: Asia/Shanghai
